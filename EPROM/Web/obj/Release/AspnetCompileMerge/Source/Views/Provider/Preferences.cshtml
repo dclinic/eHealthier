@@ -1,0 +1,457 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Provider Management";
+    ViewBag.PageTitle = "Provider Management";
+}
+
+<section ng-app="app" ng-controller="providerController" class="portlet-body custom-form">
+    <div ng-cloak>
+        <div class="loading-box" style="opacity:0.8 !important;" ng-if="Provider.IsStartLoading">
+        </div>
+        <div class="loading-box" ng-if="Provider.IsLoading">
+        </div>
+        <md-content>
+            <md-tabs md-selected="Provider.tabSelectedIndex" md-dynamic-height md-border-bottom>
+                <md-tab label="Details">
+                    <md-content class="md-padding">
+                        <div class="tab-pane" id="tab6">
+                            <form name="formRegistrationDetail">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>First Name</label>
+                                            <input ng-model="Provider.Item.User.FirstName" name="fname" required />
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.fname.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">First Name is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <md-input-container style="width: 100%;">
+                                            <label>Salutation</label>
+                                            <md-select aria-label="salutationname" ng-model="Provider.Item.SalutationID" name="salutationname" tabindex="1">
+                                                <md-option ng-repeat="item in Provider.SalutationList" ng-if="item.SalutationName != ''" ng-cloak="true" ng-value="item.ID">{{item.SalutationName}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Middle Name</label>
+                                            <input ng-model="Provider.Item.User.MiddleName" name="mname" />
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Surname</label>
+                                            <input ng-model="Provider.Item.User.LastName" name="surname" required />
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.surname.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">Surname is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Address Line 1</label>
+                                            <input ng-model="Provider.Item.Address.Line1" name="address" required />
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.address.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">Address is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Address Line 2</label>
+                                            <input ng-model="Provider.Item.Address.Line2" />
+                                        </md-input-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Suburb</label>
+                                            <input ng-model="Provider.Item.Address.Suburb" name="suburb" required />
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.suburb.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">Suburb is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Postcode</label>
+                                            <input ng-model="Provider.Item.Address.ZipCode" name="zipcode" required />
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.zipcode.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">ZipCode is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container style="width: 100%;">
+                                            <label>State</label>
+                                            <md-select aria-label="State" ng-model="Provider.Item.Address.StateID" name="state" required>
+                                                <md-option ng-repeat="item in Provider.Items.States" ng-if="item.StateName != ''" ng-cloak="true" ng-value="item.ID">{{item.StateName}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.state.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">Please Select State</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container style="width: 100%;">
+                                            <label>Country</label>
+                                            <md-select aria-label="Country" ng-model="Provider.Item.Address.CountryID" name="country" required>
+                                                <md-option ng-repeat="item in Provider.Items.Countries" ng-if="item.CountryName != ''" ng-cloak="true" ng-value="item.ID">{{item.CountryName}}</md-option>
+                                            </md-select>
+                                        </md-input-container>
+                                        <div ng-messages="formRegistrationDetail.country.$error" ng-if="Provider.issubmitted">
+                                            <div ng-message="required" class="required">Please Select Country</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb15 submit-login-provider">
+                                    <div class="col-md-12 text-right">
+                                        <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                                            <i class="fa fa-question"></i>
+                                        </a>
+
+                                        <md-button class="md-raised md-primary" ng-click="Provider.Methods.UpdateProviderDetails()">Submit</md-button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Phone">
+                    <md-content class="md-padding">
+                        <div class="tab-pane" id="tab1">
+                            <div class="row has-success">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block phone-mask" flex-gt-sm><label>Landline</label><input ng-model="Provider.Item.Contact.Mobile2" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Mobile</label><input ng-model="Provider.Item.Contact.Mobile" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Fax</label><input ng-model="Provider.Item.Contact.FAX" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Pager</label><input ng-model="Provider.Item.Contact.Pager" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Emergency</label><input ng-model="Provider.Item.Contact.Emergency" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row submit-login-provider">
+                                <div class="col-md-12 text-right">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                    <md-button class="md-raised md-primary" ng-click="Provider.Methods.UpdateContactDetails('1')">Submit</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Email">
+                    <md-content class="md-padding">
+                        <form name="formEmail">
+                            <div class="tab-pane" id="tab2">
+                                <div class="row has-error">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm><label>Skype</label><input ng-model="Provider.Item.Contact.Skype" /></md-input-container>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm><label>Email (org)</label><input ng-model="Provider.Item.Contact.EmailBusiness" type="email" name="EmailBusiness" /></md-input-container>
+                                        <div ng-messages="formEmail.EmailBusiness.$error">
+                                            <div ng-message="required" class="required">Email (org) is not valid</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb15">
+                                    <div class="col-sm-12">
+                                        <md-input-container class="md-block" flex-gt-sm><label>Email (private)</label><input ng-model="Provider.Item.Contact.EmailPersonal" type="email" name="EmailPersonal" /></md-input-container>
+                                        <div ng-messages="formEmail.EmailPersonal.$error">
+                                            <div ng-message="required" class="required">Email (private) is not valid</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb15 submit-login-provider">
+                                    <div class="col-md-12 text-right">
+                                        <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                                            <i class="fa fa-question"></i>
+                                        </a>
+                                        <md-button class="md-raised md-primary" ng-click="Provider.Methods.UpdateEmailDetails('2')">Submit</md-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Web">
+                    <md-content class="md-padding">
+                        <div class="tab-pane" id="tab3">
+                            <div class="row mb15">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>LinkedIN</label><input ng-model="Provider.Item.Contact.LinkedIN" type="email" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row mb15">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>My URL</label><input ng-model="Provider.Item.Contact.Website" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row mb15 submit-login-provider">
+                                <div class="col-md-12 text-right">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                    <md-button class="md-raised md-primary" ng-click="Provider.Methods.UpdateContactDetails('3')">Submit</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="ID's">
+                    <md-content class="md-padding">
+                        <div class="tab-pane" id="tab4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Medicare Provider Number (s)</label><textarea ng-model="Provider.Item.MedicareProviderNumber" maxlength="50"></textarea></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Health Provider Identifier</label><input ng-model="Provider.Item.HealthProviderIdentifier" maxlength="10" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row mb15 hide">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                                        <thead>
+                                            <tr>
+                                                <th class="hidden"></th>
+                                                <th> Insurer </th>
+                                                <th> My Id with this Insurer </th>
+                                                <th> Insurer URL </th>
+                                                <th> Remove </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd gradeX">
+                                                <td class="hidden"></td>
+                                                <td style="width:25%;position:relative;">
+                                                    <md-input-container style="width:100%;">
+                                                        <md-select ng-model="Insurer" aria-label="insurer">
+                                                            <md-option value="Default to" selected>Default to</md-option>
+                                                            <md-option value="Clinics">Clinics</md-option>
+                                                            <md-option value="In PHN">In PHN</md-option>
+                                                            <md-option value="In LHD">In LHD</md-option>
+                                                            <md-option value="By name OR Clinic Provider Number">By name OR Clinic Provider Number</md-option>
+                                                        </md-select>
+                                                    </md-input-container>
+                                                </td>
+                                                <td>
+                                                    <md-input-container class="md-block" flex-gt-sm><label>Insurer Id</label><input ng-model="InsurerId" /></md-input-container>
+                                                </td>
+                                                <td>
+                                                    <a href="" class="label font-blue text-decoration"> Insurer URL </a>
+                                                </td>
+                                                <td class="center">
+                                                    <md-button class="md-raised md-warn" ng-click="Provider.Methods.UpdateContactDetails()">Delete</md-button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mb15 hide">
+                                <label class="col-xs-12 col-md-2 control-label">
+                                    My PHN <a href="javascript:;" class="btn btn-circle btn-icon-only greymint pull-right" data-toggle="tooltip" title="Questions?">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                </label>
+                                <div class="col-md-10">
+                                    <md-input-container style="width:100%;">
+                                        <md-select ng-model="PHN" aria-label="phn">
+                                            <md-option value="Default to associated PHN" selected>Default to associated PHN</md-option>
+                                            <md-option value="Ketchup">Ketchup</md-option>
+                                            <md-option value="Relish">Relish</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div class="row mb15 hide">
+                                <label class="col-xs-12 col-md-2 control-label">
+                                    My LHD <a href="javascript:;" class="btn btn-circle btn-icon-only greymint pull-right" data-toggle="tooltip" title="Questions?">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                </label>
+                                <div class="col-md-10">
+                                    <md-input-container style="width:100%;">
+                                        <md-select ng-model="LHD" aria-label="lhd">
+                                            <md-option value="Default to associated LHD" selected>Default to associated LHD</md-option>
+                                            <md-option value="Ketchup">Ketchup</md-option>
+                                            <md-option value="Relish">Relish</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div class="row mb15 hide">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                                        <thead>
+                                            <tr>
+                                                <th class="hidden"></th>
+                                                <th> My Clinics </th>
+                                                <th> My Role </th>
+                                                <th> Clinic URL </th>
+                                                <th> Remove </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd gradeX">
+                                                <td class="hidden"></td>
+                                                <td style="width:25%;padding-bottom:15px;min-height:63px;position:relative;">
+                                                    <md-input-container style="width:100%;">
+                                                        <md-select ng-model="Clinics" aria-label="Clinics">
+                                                            <md-option value="Default to" selected>Default to</md-option>
+                                                            <md-option value="Clinics">Clinics</md-option>
+                                                            <md-option value="In PHN">In PHN</md-option>
+                                                            <md-option value="In LHD">In LHD</md-option>
+                                                            <md-option value="By name OR Clinic Provider Number">By name OR Clinic Provider Number</md-option>
+                                                        </md-select>
+                                                    </md-input-container>
+                                                </td>
+                                                <td style="width:25%;position:relative;">
+                                                    <md-input-container style="width:100%;">
+                                                        <md-select ng-model="Role" aria-label="role">
+                                                            <md-option value="GP" selected>GP</md-option>
+                                                            <md-option value="Admin">Admin</md-option>
+                                                            <md-option value="ETC..">ETC..</md-option>
+                                                        </md-select>
+                                                    </md-input-container>
+                                                </td>
+                                                <td style="min-height:63px;">
+                                                    <a href="" class="label font-blue text-decoration"> Clinic URL </a>
+                                                </td>
+                                                <td class="center">
+                                                    <md-button class="md-raised md-warn" ng-click="Provider.Methods.UpdateContactDetails()">Delete</md-button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row mb15 submit-login-provider">
+                                <div class="col-md-12 text-right">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                    <md-button class="md-raised md-primary" ng-click="Provider.Methods.UpdateContactDetails('4')">Submit</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Login/Password">
+                    <md-content class="md-padding">
+                        <div class="tab-pane" id="tab6">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Login Name</label><input ng-model="Provider.Item.User.UserName" type="email" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Password</label><input ng-model="Provider.Item.Password" type="password" name="password" ng-change="Provider.Methods.comparePassword()" /></md-input-container>
+                                </div>
+                                <div class="col-sm-6 password-status" style="display:none;">
+                                    <span>Weak</span>
+                                    <div class="progress" style="display:inline-block;margin-bottom:0;width:55%;vertical-align:middle;">
+                                        <div class="progress-bar progress-bar-danger" style="width: 35%">
+                                            <span class="sr-only"> 35% Complete (success) </span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-warning" style="width: 33%">
+                                            <span class="sr-only"> 20% Complete (warning) </span>
+                                        </div>
+                                        <div class="progress-bar progress-bar-success" style="width: 32%">
+                                            <span class="sr-only"> 10% Complete (danger) </span>
+                                        </div>
+                                    </div>
+                                    <span>Strong</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Confirm Password</label><input ng-model="Provider.Item.confirmPassword" type="password" name="confirmPassword" ng-change="Provider.Methods.comparePassword()" /></md-input-container>
+
+                                    <div ng-show="Provider.IspasswordMatch">
+                                        <div class="required">Password and confirm password not match</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-2 control-label">Secret Question</label>
+                                <div class="col-md-10">
+                                    <md-radio-group ng-model="Provider.Item.SecretQuestionID">
+                                        <md-radio-button ng-repeat="item in Provider.SecretQuestionlist" ng-value="item.ID" class="md-primary" disabled>{{item.Questions}}</md-radio-button>
+                                    </md-radio-group>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <md-input-container class="md-block" flex-gt-sm><label>Answer</label><input disabled ng-model="Provider.Item.Answer" /></md-input-container>
+                                </div>
+                            </div>
+                            <div class="row mb15 submit-login-provider">
+                                <div class="col-md-12 text-right">
+                                    <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                    <md-button class="md-raised md-primary" ng-click="Provider.Methods.ChangePassword()">Submit</md-button>
+                                    <md-button class="md-raised" ng-click="Provider.Methods.redirectToDashboard()">Finish</md-button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/select-js")
+    @Scripts.Render("~/bundles/datepicker-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/provider-js")
+}

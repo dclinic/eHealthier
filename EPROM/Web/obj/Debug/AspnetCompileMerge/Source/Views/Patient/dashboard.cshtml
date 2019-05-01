@@ -1,0 +1,285 @@
+﻿@{
+    Layout = "~/Views/Shared/PatientLayout.cshtml";
+    ViewBag.Title = "Patient Dashboard";
+    ViewBag.PageTitle = "My Dashboard";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="DashboardController">
+    <div ng-if="Dashboard.IsLoading" class="loading-box"> </div>
+
+    <div class="set-border-margin">
+        <h3 class="page-sub-title"><span class="text-uppercase">{{Dashboard.SurveyName}}</span></h3>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover order-column sample_1">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX">
+                                <td>
+                                    PatientName
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.PatientName}}</span>
+                                </td>
+                            </tr>
+                            <tr class="even">
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.Email}}</span>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td>
+                                    IHI No.
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.IHINumber}}</span>
+                                </td>
+                            </tr>
+                            <tr class="even">
+                                <td>
+                                    Medicare No.
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.MedicareNumber}}</span>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td>
+                                    DOB
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.DOB | date: "d/M/yyyy" }}</span>
+                                </td>
+                            </tr>
+                            <tr class="even">
+                                <td>
+                                    Provider
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.ProviderName}}</span>
+                                </td>
+                            </tr>
+                            <tr class="odd gradeX">
+                                <td>
+                                    Organization
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.OrganizationName}}</span>
+                                </td>
+                            </tr>
+                            <tr class="even">
+                                <td>
+                                    Practice
+                                </td>
+                                <td>
+                                    <span>{{Dashboard.PracticeName}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+        <div id="population-chart" class="modified-chart" ng-show="Dashboard.SurveyStatusData.length > 0"></div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="sub-group-block">
+                    <h3 class="page-sub-title hide">ePROMs Suggested Goal</h3>
+                    <div class="form-md-checkboxes mb15 hide">
+                        <div class="md-checkbox-list">
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="checkbox1" class="md-check">
+                                <label for="checkbox1">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span> PROMIS Physical Health
+                                </label>
+                            </div>
+                            <div class="md-checkbox">
+                                <input type="checkbox" id="checkbox2" class="md-check" checked>
+                                <label for="checkbox2">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span> PROMIS Mental Health
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb15 hide">
+                        <label class="col-md-2 control-label">Suggested Score/Goal</label>
+                        <div class="col-md-4">
+                            <input class="form-control" placeholder="50" type="text" disabled>
+                        </div>
+                        <label class="col-md-1 control-label">By</label>
+                        <div class="col-md-5">
+                            <div class="input-group date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                                <input type="text" class="form-control" readonly disabled>
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button" style="height:43px;border:1px solid #ccc;">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb15 hide">
+                        <div class="col-xs-12">
+                            <div class="modified-chart">
+                                <div class="row">
+                                    <div class="col-md-10 mb15">
+                                        <div id="suggested-score" class=""></div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <button type="button" class="btn custom-btn">Refresh</button>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb15 hide">
+                        <div class="col-xs-12">
+                            <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                                <thead>
+                                    <tr>
+                                        <th> ePROMs </th>
+                                        <th> Start Date </th>
+                                        <th> End Date </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr select-last ng-repeat='item in Dashboard.Item.surveyList' class="odd gradeX">
+                                        <td width="50%">
+                                            {{item.ExternalTitle}}
+                                        </td>
+                                        <td>
+                                            {{item.StartDate | date : "d/M/yyyy" }}
+                                        </td>
+                                        <td>
+                                            {{item.EndDate | date : "d/M/yyyy" }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row mb15">
+                        <div class="col-xs-12">
+                            <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1" ng-if="Dashboard.PatientIndicatorList.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th class="hidden"></th>
+                                        <th>Indicator</th>
+                                        <th>Status</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" ng-repeat="item in Dashboard.PatientIndicatorList">
+                                        <td class="hidden"></td>
+                                        <td>
+                                            <span>{{item.IndicatorName}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{item.Status}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{item.Comments}}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row mb15">
+                        <div class="col-xs-12">
+                            <h3 class="page-title text-center">My Doctor's Suggestions and Comments</h3>
+                        </div>
+                    </div>
+
+                    <div class="row mb15" ng-show="Dashboard.AppList.length > 0">
+                        <div class="col-xs-12">
+                            <h4 class="text-center">Third Party App</h4>
+                            <table class="table table-striped table-bordered table-hover table-checkable ">
+                                <thead>
+                                    <tr>
+                                        <th width="40%">Third Party App</th>
+                                        <th width="60%">URL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in Dashboard.AppList">
+                                        <td>{{item.AppName}}</td>
+                                        <td><a target="_blank" href={{item.URL}} class="font-blue text-decoration">{{item.URL}}</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mb15">
+                        <div class="col-xs-12">
+                            <textarea class="form-control" style="height:100px;" ng-model="Dashboard.SuggestionList.Suggestions" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb15">
+                        <div class="col-xs-12">
+                            <div class="form-md-checkboxes mb15">
+                                <div class="md-checkbox-list">
+                                    <div class="md-checkbox">
+                                        <input id="checkbox3" class="md-check" type="checkbox">
+                                        <label for="checkbox3">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span>Need to see my doctor
+                                        </label>
+                                    </div>
+                                    <div class="md-checkbox">
+                                        <input id="checkbox4" class="md-check" type="checkbox">
+                                        <label for="checkbox4">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> Notify my doctor I have seen advice
+                                        </label>
+                                    </div>
+                                    <div class="md-checkbox">
+                                        <input id="checkbox5" class="md-check" checked="" type="checkbox">
+                                        <label for="checkbox5">
+                                            <span></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span>My Insurer can see
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 text-right">
+                            <button type="button" class="btn btn-blue">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb15 submit-login-provider">
+            <div class="col-xs-12 text-center">
+                <button type="button" class="btn btn-yellow hide" onclick="window.location.href = '/Patient/PatientDashboard'">Dashboard filter</button>
+                <button type="button" class="btn custom-btn hide">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/dashboard-js")
+}

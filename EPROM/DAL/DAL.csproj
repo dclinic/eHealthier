@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04D3D482-0A31-4913-9C35-F87BD926EB97}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvailableEprom.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CINTScore.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ControlType.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultDay.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities.cs" />
+    <Compile Include="EPROMDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EPROMDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPROMDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EPROMDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EPROMDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FlagGroup.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetConsumerDetailAddr_Result.cs">
+      <DependentUpon>ShEhrDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetConsumerDetail_Result.cs">
+      <DependentUpon>ShEhrDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Indicator.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LogEntry.cs" />
+    <Compile Include="LogManagement.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Organization.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationType.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pathway.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patient.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientCategory.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientIndicator.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientProvider.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSuggestion.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSurvey.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSurveyStatu.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSurveys_Temp.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatientSurvey_Pathway_PatientSurveyStatus.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Practice.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PracticeRole.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Provider.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderOrganization.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderPatientThirdPartyApp.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderPractice.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderPracticeRole.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderTerm.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProviderType.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Salutation.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SecretQuestion.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShEhrDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShEhrDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShEhrDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShEhrDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShEhrDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShEhrDbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_isCINTExist_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Survey.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurveyCategory.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SurveyType.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemFlag.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Term.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThirdPartyApp.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Token.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDetail.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserProperty.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSecretQuestion.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersInRole.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSurvey.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserType.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_FlagGroupByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_IndicatorsByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_OrganizationTypeByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_PathwayByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_PatientCategoryByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_SurveyByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_SurveyCategoryByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_SystemFlagByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_ThirdPartyAppByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_search_UserTypeByFilter_Result.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_Membership.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_OAuthMembership.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="webpages_Roles.cs">
+      <DependentUpon>EPROMDB.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{efcc203e-1442-465a-b1b3-be6507d1c1f7}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <EntityDeploy Include="EPROMDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EPROMDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EPROMDB.edmx.diagram">
+      <DependentUpon>EPROMDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="ShEhrDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShEhrDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ShEhrDbModel.edmx.diagram">
+      <DependentUpon>ShEhrDbModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EPROMDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EPROMDB.edmx</DependentUpon>
+      <LastGenOutput>EPROMDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EPROMDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EPROMDB.edmx</DependentUpon>
+      <LastGenOutput>EPROMDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="ShEhrDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShEhrDbModel.edmx</DependentUpon>
+      <LastGenOutput>ShEhrDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ShEhrDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShEhrDbModel.edmx</DependentUpon>
+      <LastGenOutput>ShEhrDbModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

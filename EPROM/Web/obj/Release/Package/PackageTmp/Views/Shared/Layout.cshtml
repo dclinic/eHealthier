@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="adminbg">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/bundles/user/bootstrap")
+    @Styles.Render("~/bundles/user/theme")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/user-js")
+    <script src="~/Resources/scripts/third-party/angular-filter.js"></script>
+</head>
+<body class="custom-form" ng-app="app">
+    <header></header>
+    <div class="container-fluid body-background">
+        <div class="container">
+            <div class="row header-borderbottom  backgroundcolor-white">
+                <div class="col-xs-5 col-sm-2  top-nav-contain-logo">
+                    <img class="logo" src="~/Resources/Images/ePROMS-new-logo.png" />
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="col-xs-7 col-sm-9 text-right">
+                        <div class="top-nav-contain">
+                            <div class="user-nav">
+                                <div class="sidebar-toggler-mob"></div>
+                                <ul class="admin-nav">
+                                    <li class="dropdown pull-right identity-title">
+                                        <div class="text-center pull-left">
+                                            <img src="~/Resources/Images/Male.png" class="login-profile-pic" />
+                                        </div>
+                                        <div class="pull-right">
+                                            <a data-toggle="dropdown" class="dropdown-toggle profileimagename" href="#">
+                                                <span class="username">@this.User.Identity.Name</span>
+                                            </a>
+
+                                            <ul class="dropdown-menu user-dropdown">
+                                                <li>
+                                                    @using (Html.BeginForm("LogOff", "Provider", FormMethod.Post, new { id = "logoutForm" }))
+                                                    {
+                                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="logoff_link"><i class="fa fa-power-off"></i>Log off</a>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row backgroundcolor-white">
+                <div class="col-xs-12 col-sm-5">
+                    <h3 class="page-title">@ViewBag.PageTitle</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="inner-wrapper">
+                    <toaster-container toaster-options="{'position-class': 'toast-top-right'}"></toaster-container>
+                    @RenderSection("featured", required: false)
+                    <section>
+                        @RenderBody()
+
+                        <div class="foter-links ftr-link-size">
+                            <a href="javascript:;" class="uppercase">Company</a>
+                            <a href="javascript:;" class="uppercase">Contact Us</a>
+                            <a href="javascript:;" class="uppercase">Terms and Conditions</a>
+                            <a href="javascript:;" class="uppercase">Copyright Notice</a>
+                        </div>
+                    </section>
+                    @RenderSection("scripts", required: false)
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

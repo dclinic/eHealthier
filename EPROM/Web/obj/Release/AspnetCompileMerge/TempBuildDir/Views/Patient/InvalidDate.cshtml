@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/PatientLayout.cshtml";
+    ViewBag.Title = "ExpiredDate";
+}
+<section style="min-height:300px;text-align:center">
+    <h2>
+        Sorry, you can not attend this survey.
+    </h2>
+    @if (ViewBag.EndDate != "")
+    {
+        <div style="margin-top:10px;font-size:20px;">
+            <span>This ePROM was expired on <b>@ViewBag.EndDate</b>.</span>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-xs-12 text-center mt80">
+            <button class="btn btn-default yellow-btn" type="button" onclick="window.location.href = '/Patient/PatientDashboard'">MY DASHBOARD</button>
+
+            <button class="ml15 btn btn-default yellow-btn" type="button" onclick="window.location.href = '/Patient/PatientEprom'">My Eprom</button>
+        </div>
+    </div>
+</section>

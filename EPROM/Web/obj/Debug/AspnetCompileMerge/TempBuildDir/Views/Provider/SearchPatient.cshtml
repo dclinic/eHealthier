@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Search Patients";
+    ViewBag.PageTitle = "Search Patients";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="patientController">
+    <div ng-if="Patient.IsLoading" class="loading-box"> </div>
+
+    <div class="set-border-margin">
+        <form name="frmSearchPatient">
+            <md-radio-group ng-model="Patient.Choose" ng-change="Patient.Methods.PatientSearch(Patient.Choose)">
+                <md-radio-button value="exist" class="md-primary">Use existing IHI Number OR Medicare Number</md-radio-button>
+                <md-radio-button value="new" class="md-primary">New IHI Number and Medicare Number</md-radio-button>
+            </md-radio-group>
+
+            <div ng-show="Patient.ischooseExist">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <md-input-container class="md-block" flex-gt-sm><label>IHI Number</label><input ng-model="Patient.Item.IHINumber" name="IHINumber" ng-change="Patient.Methods.CheckExistingIHINumber(Patient.Item.IHINumber)" /></md-input-container>
+
+                        @*<div ng-messages="frmSearchPatient.IHINumber.$error" ng-if="Patient.issubmitted">
+                                <div ng-message="required" class="required">IHI Number is required</div>
+                            </div>*@
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <md-input-container class="md-block" flex-gt-sm><label>Medicare Number</label><input ng-model="Patient.Item.MedicareNumber" name="MedicareNumber" ng-change="Patient.Methods.CheckExistingMedicure(Patient.Item.MedicareNumber)" /></md-input-container>
+
+                        @*<div ng-messages="frmSearchPatient.MedicareNumber.$error" ng-if="Patient.issubmitted">
+                                <div ng-message="required" class="required">Medicare Number is required</div>
+                            </div>*@
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <button type="button" class="btn col-xs-6 btn-blue" ng-click="Patient.Methods.SearchPatientDetail(Patient.Item.IHINumber, Patient.Item.MedicareNumber)">Search Patient</button>
+
+                        <button type="button" class="btn col-xs-4 btn-black" ng-click="Patient.Methods.ClearSearch()">Cancel</button>
+                    </div>
+                </div>
+
+                <div class="row margin-top-2">
+                    <div class="col-xs-12">
+                        <div class="table-responsive" ng-show="Patient.isSearch && Patient.Search != null">
+                            <table class="table table-striped table-bordered table-hover table-checkable">
+                                <thead>
+                                    <tr>
+                                        <th style="max-width:250px;"> Patient Name </th>
+                                        <th> IHI No.</th>
+                                        <th> Medicare No.</th>
+                                        <th> DOB </th>
+                                        <th> Mobile </th>
+                                        <th>Email</th>
+                                        <th ng-show="!Patient.Search.IsPatientExist">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" ng-cloak="true">
+                                        <td>
+                                            {{Patient.Search.User.FirstName}} {{Patient.Search.User.LastName}}
+                                        </td>
+
+                                        <td>
+                                            <span>{{Patient.Search.IHINumber}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{Patient.Search.MedicareNumber}}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{Patient.Search.User.DOB | date : "d/M/yyyy" }}</span>
+                                        </td>
+                                        <td>
+                                            <span>{{Patient.Search.Contact.Mobile}}</span>
+                                        </td>
+                                        <td>
+                                            {{Patient.Search.Contact.EmailPersonal}}
+                                        </td>
+                                        <td ng-show="!Patient.Search.IsPatientExist">
+                                            <button type="button" class="btn custom-btn" ng-click="Patient.Methods.CreatePatientProvider(Patient.Search.ID)">Add Patient</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-show="Patient.Search == null">
+                            No Match Found.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-hide="Patient.ischooseExist">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-2">
+                        <button type="button" class="btn btn-blue" onclick="window.location.href='/Patient/Create'">Add Patient</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/patient-js")
+}

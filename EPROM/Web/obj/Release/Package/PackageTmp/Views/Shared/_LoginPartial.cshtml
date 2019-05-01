@@ -1,0 +1,24 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <style>
+        .logoff_link:hover { background-color: #000 !important; }
+    </style>
+    <text>
+        <ul class="admin-nav">
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle profileimagename" href="#">
+                    <img src="~/Resources/Images/Male.png" />
+                    <span>@this.User.Identity.Name </span>
+                </a>
+                <ul class="dropdown-menu user-dropdown">
+                    <li>
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="logoff_link" style="background-color:#355486"><i class="fa fa-power-off"></i>Log off</a>
+                        }
+                    </li>
+                </ul>
+            </li>s
+        </ul>
+    </text>
+}

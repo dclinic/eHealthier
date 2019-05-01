@@ -1,0 +1,335 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Population Dashboard";
+    ViewBag.PageTitle = "Population Dashboard";
+}
+
+<style>
+    .dataTables_length {
+        margin-bottom: 20px;
+    }
+</style>
+<section ng-app="app" ng-controller="DashboardController" style="margin-top:-35px;">
+    <div class="loading-box" ng-if="Dashboard.IsLoading">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <md-input-container style="width:100%;">
+                <label>Patient</label>
+                <md-select aria-label="Eprom" ng-model="Dashboard.Item.PatientID" required ng-change="Dashboard.Methods.GetPatientSurveyStatus(true)">
+                    @*<md-option ng-cloak="true" ng-value="-1">All Patients Doing ePROMs</md-option>*@
+                    <md-option ng-repeat="item in Dashboard.PatientList" ng-cloak="true" ng-value="item.PatientID">{{item.Patients.User.FirstName}} {{item.Patients.User.LastName}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <md-input-container style="width:100%;" class="hide">
+                <label>Patients Age Groups</label>
+                <md-select aria-label="Eprom" ng-model="Dashboard.Item.AgeGroup" required>
+                    <md-option ng-cloak="true" ng-value="-1">All Age</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">15-20</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">20-25</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">25-30</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">30-35</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">35-40</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">40-45</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">45-50</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">50-55</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">55-60</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div class="row mb15">
+        <div class="col-md-12">
+            <md-input-container style="width:100%;" class="hide">
+                <label>My Patients Categories</label>
+                <md-select aria-label="Eprom" ng-model="Dashboard.Item.Category" required>
+                    <md-option ng-cloak="true" ng-value="-1">All Categories</md-option>
+                    <md-option ng-cloak="true" ng-value="-1">Smokers</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sub-group-block">
+                <h3 class="page-sub-title">ePROMs</h3>
+                <div class="multiple-scroll-checkboxes">
+                    <md-radio-group ng-model="Dashboard.Item.SurveyID" ng-click="Dashboard.Methods.GetPatientSurveyStatus(false)">
+                        <md-radio-button ng-repeat="item in Dashboard.SurveyList | unique: 'SurveyID'" ng-value=item.SurveyID class="md-primary">{{item.ExternalTitle}}</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="QuestionModel" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">{{Dashboard.SurveyName}}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Questions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyQuestions"></tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" style="padding:0;">
+            <label class="col-md-4 control-label">From Date</label>
+            <div class="col-md-8 mb15">
+                <md-datepicker md-placeholder="From Date" ng-model="Dashboard.FromDate" ng-change="Dashboard.Methods.GetPatientSurveyStatus(false)" md-open-on-focus></md-datepicker>
+            </div>
+            <label class="col-md-4 control-label">To Date</label>
+            <div class="col-md-8 mb15">
+                <md-datepicker md-placeholder="To Date" ng-model="Dashboard.ToDate" ng-change="Dashboard.Methods.GetPatientSurveyStatus(false)" md-open-on-focus></md-datepicker>
+            </div>
+
+            <label class="col-md-4 control-label">Pathway</label>
+            <div class="col-md-8 mb15">
+                <md-select aria-label="Pathway" ng-model="Dashboard.PathwayID" ng-change="Dashboard.Methods.GetPatientSurveyStatus(false)">
+                    <md-option ng-repeat="item in Dashboard.PathwayList" ng-cloak="true" ng-value="item.ID">{{item.PathwayName}}</md-option>
+                </md-select>
+            </div>
+
+        </div>
+        <div class="col-md-5 col-md-offset-1 hide">
+            <div class="form-md-checkboxes ">
+                <div class="md-checkbox-list">
+                    <div class="md-checkbox">
+                        <input type="checkbox" id="checkbox7" class="md-check">
+                        <label for="checkbox7">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span> All Sites
+                        </label>
+                    </div>
+                    <div class="md-checkbox">
+                        <input type="checkbox" id="checkbox8" class="md-check" checked>
+                        <label for="checkbox8">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span>Males
+                        </label>
+                    </div>
+                    <div class="md-checkbox">
+                        <input type="checkbox" id="checkbox19" class="md-check">
+                        <label for="checkbox19">
+                            <span></span>
+                            <span class="check"></span>
+                            <span class="box"></span>Females
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="Dashboard.SurveyStatusData.length > 0">
+        <div class="col-md-2">
+            <label>Suggested Score/Goal</label>
+        </div>
+        <div class="col-md-3">
+            <md-input-container style="width: 100%;" class="m0">
+                <input type="text" ng-model="Dashboard.NormValue" name="normvalue" ng-change="Dashboard.Methods.GetPatientSurveyStatusData()" numbers-Only />
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="population-chart" class="modified-chart mb15" ng-show="Dashboard.SurveyStatusData.length > 0"></div>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover table-checkable order-column" ng-if="Dashboard.ScoreList.length > 0">
+                <tr>
+                    <td>Patient</td>
+                    <td>Date</td>
+                    <td>Score</td>
+                </tr>
+                <tr ng-repeat="item in Dashboard.ScoreList">
+                    <td>{{item.Email}}</td>
+                    <td>
+                        {{item.CreatedDate | date : "d/M/yyyy" }}
+                    </td>
+                    <td ng-if="item.Score.length==1">
+                        <span>{{item.Score[0].Value}}</span>
+                    </td>
+                    <td ng-if="item.Score.length >1">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1" ng-show="item.Score.length > 0">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="score in item.Score">
+                                    <td>{{score.Title}}</td>
+                                    <td>{{score.Value}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>*@
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="sub-group-block" ng-repeat="item in Dashboard.AnalyzeResult track by $index">
+                <h3 class="page-sub-title mb10">Page {{item.position}}  :  {{item.page_title}}</h3>
+                <div ng-repeat="questionItem in item.questions track by $index">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12">
+                            <div class="question-header mb10">Question : {{$index + 1}}</div>
+                            <div style="margin-top:0;">{{questionItem.question_title}}</div>
+                        </div>
+                    </div>
+                    <div class="row mt10" ng-if="questionItem.answers != undefined">
+                        <div class="col-xs-12 col-sm-12">
+                            <div> Answerd : {{questionItem.answers|sum:'choice_count'}}</div>
+                        </div>
+                    </div>
+                    <div ng-if="questionItem.answers != undefined && questionItem.answers[0].textonly != true" id=AnalyzeChart_{{questionItem.question_id}} class="modified-chart mt15" ng-bind="Dashboard.Methods.BindChart(questionItem.question_id, questionItem.answers, questionItem.question_title)"></div>
+
+                    <div class="row mb15 mt15" ng-if="questionItem.answers != undefined">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1" ng-if="questionItem.answers !=undefined">
+                                <thead>
+                                    <tr>
+                                        <th>Answer Choices</th>
+                                        <th>Responses</th>
+                                        <th ng-if="questionItem.answers[0].textonly != true">Responses Percentage</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" ng-repeat='answerItem in questionItem.answers track by $index'>
+                                        <td>{{answerItem.answer_text}}</td>
+                                        <td>{{answerItem.choice_count}}</td>
+                                        <td ng-if="questionItem.answers[0].textonly != true">{{(answerItem.choice_count * 100 /(questionItem.answers|sum:'choice_count')) | number : 2}} %</td>
+                                    </tr>
+                                    <tr class="bg-warning">
+                                        <td>Total</td>
+                                        <th>{{questionItem.answers|sum:'choice_count'}}</th>
+                                        <th></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row mt10" ng-if="questionItem.inputResponse != undefined">
+                        <div class="col-xs-12 col-sm-12">
+                            <div> Answerd : {{questionItem.inputResponse.length}}</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb15 mt15" ng-if="questionItem.inputResponse !=undefined">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1" ng-if="questionItem.inputResponse !=undefined && questionItem.inputResponse.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th>Sr.No</th>
+                                        <th>Response Text</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" ng-repeat='inputItem in questionItem.inputResponse | reverse  track by $index'>
+                                        <td>{{$index +1}}</td>
+                                        <td>{{inputItem.text}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hide">
+        <div class="row mb15">
+            <div class="col-xs-12">
+                <h3 class="page-title text-center">Comments</h3>
+            </div>
+            <div class="col-xs-12">
+                <textarea class="form-control" style="height:100px;">You are currently on a score of 42 and your chances of hospitalization within the next 6 months is 10%.</textarea>
+            </div>
+        </div>
+        <div class="row mb15">
+            <div class="col-md-6">
+                <div class="sub-group-block">
+                    <h3 class="page-sub-title">Show Patient</h3>
+                    <select class="bs-select" data-width="100%">
+                        <option>Mr James Benjamin</option>
+                        <option>Ms jenifer pollock</option>
+                        <option>Mr Eddie Price</option>
+                        <option>Mr Arthur Saeed</option>
+                        <option>Dr Richard Satur</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="sub-group-block">
+                    <h3 class="page-sub-title">For Practices</h3>
+                    <select class="bs-select" data-width="100%">
+                        <option>My Practics (XYZ)</option>
+                        <option>All My Sites</option>
+                        <option>My Region</option>
+                        <option>Within My State</option>
+                        <option>All Practices</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row mb15">
+            <label class="col-sm-4 col-md-offset-2 col-md-2 control-label">Behavioural Intervention</label>
+            <div class="col-sm-8  col-md-5">
+                <div class="btn-group btn-group btn-group-justified">
+                    <a href="javascript:;" class="btn custom-btn red"> Before </a>
+                    <a href="javascript:;" class="btn custom-btn greymint"> After </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <button type="button" class="btn mb15 custom-btn" ng-click="Dashboard.Methods.redirectToProviderDashboard()">My Dashboard</button>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/dashboard-js")
+}

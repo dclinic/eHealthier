@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShEhrDbModelStoreContainer" CdmEntityContainer="ShEhrDbEntities">
+    <FunctionImportMapping FunctionImportName="GetConsumerDetail" FunctionName="ShEhrDbModel.Store.GetConsumerDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShEhrDbModel.GetConsumerDetail_Result">
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Line1" ColumnName="Line1" />
+          <ScalarProperty Name="Line2" ColumnName="Line2" />
+          <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IHI" ColumnName="IHI" />
+          <ScalarProperty Name="HCID" ColumnName="HCID" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetConsumerDetailAddr" FunctionName="ShEhrDbModel.Store.GetConsumerDetailAddr">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ShEhrDbModel.GetConsumerDetailAddr_Result">
+          <ScalarProperty Name="addressId" ColumnName="addressId" />
+          <ScalarProperty Name="contactId" ColumnName="contactId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="suburb" ColumnName="suburb" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="telecom" ColumnName="telecom" />
+          <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+          <ScalarProperty Name="typeCodeString" ColumnName="typeCodeString" />
+          <ScalarProperty Name="typeTerminologyId" ColumnName="typeTerminologyId" />
+          <ScalarProperty Name="detailsInstance" ColumnName="detailsInstance" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

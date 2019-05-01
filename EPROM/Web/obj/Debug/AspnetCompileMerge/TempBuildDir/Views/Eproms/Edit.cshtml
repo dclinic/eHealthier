@@ -1,0 +1,204 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit ePROMs";
+}
+<div class="box_modify" ng-controller="AddEpromsController">
+    <form name="formAddEproms">
+        <div class="fix-head-line">
+            <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block"><a href="/Admin/Home"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i><span>ePROMs</span></div>
+        </div>
+
+        <div class="fix-body-line">
+            <div class="head-title">
+                <span style="font-weight:bold;">Edit ePROM</span>
+            </div>
+            <div class="pull-right">
+                <div class="shotcut-btn pr15">
+                    <a ng-click="AddEproms.Methods.Put()" class="head-btn">Save</a>
+                    <a onclick="window.location.href = '/Eproms/Index'" class="head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div ng-if="AddEproms.IsLoading" class="loading-box">
+        </div>
+        <div class="details">
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Title
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="Title" ng-model="AddEproms.Item.Title" ng-required="true" name="Title" placeholder="Title" />
+                    <div ng-messages="formAddEproms.Title.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">Title is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    External Title
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="Title" ng-model="AddEproms.Item.ExternalTitle" ng-required="true" name="ExternalTitle" placeholder="External Title" disabled />
+
+                    <div ng-messages="formAddEproms.ExternalTitle.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">External Title is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    ExternalID
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="ExternalID" ng-model="AddEproms.Item.ExternalID" ng-required="true" name="ExternalID" placeholder="External ID" disabled />
+                    <div ng-messages="formAddEproms.ExternalID.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">External ID is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    URL
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="URL" ng-model="AddEproms.Item.URL" ng-required="true" name="URL" placeholder="URL" disabled />
+                    <div ng-messages="formAddEproms.URL.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">URL is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Content URL
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="Title" ng-model="AddEproms.Item.ContentCode" name="ContentCode" placeholder="Content Url" disabled />
+
+                    <div ng-messages="formAddEproms.ContentCode.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">Content Url is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Category
+                </div>
+                <div class="col-xs-4">
+                    <select class="form-control" ng-model="AddEproms.Item.SurveyCategoryID" name="SurvayCategoryName" ng-options="a.ID as a.SurvayCategoryName for a in AddEproms.list_SurvayCategory" ng-required="true" ng-change="AddEproms.Methods.GetSubCategoryById(AddEproms.Item.SurveyCategoryID)">
+                        <option value="">Select Category</option>
+                    </select>
+                    <div ng-messages="formAddEproms.SurvayCategoryName.$error" ng-if="AddEproms.issubmitted" style="margin-top:10px !important;">
+                        <div ng-message="required" class="required">Category selection is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Sub Category
+                </div>
+                <div class="col-xs-4">
+                    <select class="form-control" ng-model="AddEproms.Item.SurveySubCategoryID" name="subCategoryName" ng-options="a.ID as a.SurvayCategoryName for a in AddEproms.list_SubCategory">
+                        <option value="">Select Subcategory</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    ePROM Type
+                </div>
+                <div class="col-xs-4">
+                    <select class="form-control" ng-model="AddEproms.Item.SurveyTypeID" name="SurvayTypeName" ng-options="a.ID as a.SurvayTypeName for a in AddEproms.list_SurvayType" ng-required="true">
+                        <option value="">Select ePROM Type </option>
+                    </select>
+                    <div ng-messages="formAddEproms.SurvayTypeName.$error" ng-if="AddEproms.issubmitted" style="margin-top:10px !important;">
+                        <div ng-message="required" class="required">ePROM Type selection is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Description
+                </div>
+                <div class="col-xs-4">
+                    <textarea class="form-control" id="URL" ng-model="AddEproms.Item.Description" name="Description" placeholder="Description"></textarea>
+
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Start Date
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" name="startdate" class="form-control form-date" uib-datepicker-popup="{{format}}" ng-model="AddEproms.Item.StartDate" is-open="AddEproms.datepickerStartDate.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-change="AddEproms.Methods.CheckDateValidation()" />
+                    <span class="input-group-btn datepicker-icon">
+                        <button type="button" class="btn btn-default" ng-click="AddEproms.Methods.opendatePicker1()"><i class="fa fa-calendar"></i></button>
+                    </span>
+
+                    <div ng-messages="formAddEproms.startdate.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">Start date is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    End Date
+                </div>
+                <div class="col-xs-4">
+                    <input name="enddate" type="text" class="form-control form-date" uib-datepicker-popup="{{format}}" ng-model="AddEproms.Item.EndDate" is-open="AddEproms.datepickerEndDate.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" ng-change="AddEproms.Methods.CheckDateValidation()" />
+                    <span class="input-group-btn datepicker-icon">
+                        <button type="button" class="btn btn-default" ng-click="AddEproms.Methods.opendatePicker2()"><i class="fa fa-calendar"></i></button>
+                    </span>
+
+                    <div ng-messages="formAddEproms.enddate.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">End date is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Norm
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="Norm" ng-model="AddEproms.Item.NormValue" ng-required="true" name="Norm" placeholder="Norm Value" />
+                    <div ng-messages="formAddEproms.NormValue.$error" ng-if="AddEproms.issubmitted">
+                        <div ng-message="required" class="required">Norm value is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="span3">  </div>
+                <div class="span6">
+                    <span class="required">{{errMessage}}</span>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-4">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="AddEproms.Item.IsPublish" checked="checked"> Is Publish
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/add-eproms-js")
+}
+
+
+

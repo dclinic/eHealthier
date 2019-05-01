@@ -1,0 +1,203 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ePROMs";
+}
+
+<div class="box_modify" ng-controller="EpromsController">
+    <div class="fix-head-line">
+        <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+            <a href="/Home">
+                <i class="fa fa-home"></i>
+            </a>
+            <i class="fa fa-angle-right"></i>
+            <span>ePROMs</span>
+        </div>
+
+        <div class="shotcut-btn">
+            <div class="btn-group pb6">
+                <a id="AddEproms" class="AccessAdd head-btn" ng-click="Eproms.Methods.RedirecttoCreate()">
+                    <i class="fa fa-plus"></i>
+                    <span class="pl5">Add ePROMs</span>
+                </a>
+            </div>
+            <div class="btn-group mob-search-block">
+                <div class="input-append searchdropdown">
+                    <input type="text" class="search-bar mt0" placeholder="Search" ng-model="Eproms.Search">
+                    <a class="add-on btn-search icon-search" ng-click="Eproms.Methods.GetEpromsSearch(0)">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fix-body-line">
+        <div class="action-block">
+            <div class="btn-group allcheck">
+                <input type="checkbox" ng-model="Eproms.Methods.allSelected" ng-model-options="{getterSetter: true}" />
+            </div>
+            <div class="btn-group mt-1">
+                <select id="DDLAction" class="form-control" ng-change="Eproms.Methods.UpdateIsActiveStatus(Eproms.Action)" ng-model="Eproms.Action">
+                    <option value="">Action</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Delete</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pull-right plr15">
+            <span class="lbl-small">Filter By</span>
+            <div class="btn-group mt1">
+                <select id="DDLFilterBy" class="form-control" ng-change="Eproms.Methods.GetEpromsSearch(0)" ng-model="Eproms.Filter">
+                    <option>All</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+
+            <span class="lbl-small">Page Size</span>
+            <div class="btn-group mt1">
+                <select id="DDLPageSize" class="form-control" ng-change="Eproms.Methods.GetEpromsSearch(0)" ng-model="Eproms.PageParams.FetchRecords" ng-options="page.id as page.name for page in Eproms.PageSize"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="nat-list" ng-repeat="item in Eproms.Eproms" ng-cloak>
+        <div class="listviewDetails row-data mob-row-data">
+            <div class="grid1" style="width:79%">
+                <div class="fold-upblock collapsed" data-toggle="collapse" data-target="{{ '#ItemSubList-' + item.ID }}">
+                    <div class="iconplus">
+                        <a title=""><span class="arrowplus"></span></a>
+                    </div>
+                    <div class="namelist" style="margin-top: -28px;">
+                        <div class="rest-info ml5">
+                            <div>
+                                <span id="Exdternaltitle" class="lbl-medium">{{item.ExternalTitle}}</span>
+                            </div>
+                            <div>
+                                <span class="lbl-small">{{item.Title}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="chk-action">
+                    <input type="checkbox" ng-model="item.Selected">
+                </div>
+            </div>
+            <div class="grid2" style="width:20%">
+                <div class="action-icon">
+                    <a id="uploadEproms" class="AccessAdd head-btn hide" ng-click="Eproms.Methods.OpenUploadModal(item.ID)">
+                        <i class="fa fa-upload"></i>
+                        <span class="pl5">Upload File</span>
+                    </a>
+                    <input type="checkbox" ng-model="item.IsActive" ng-change="Eproms.Methods.SwitchStatus(item.ID,item.IsActive)" bootstrap-switch />
+
+                    <a ng-click='Eproms.Methods.GetEpromsById(item.ID)' class="fa fa-edit"></a>
+                    <a ng-click='Eproms.Methods.OpenDeleteDialog(item.ID)' class="fa fa-trash"></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="{{ 'ItemSubList-' + item.ID }}" class="collapse">
+            <div class="nat-sublist">
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">Category</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2"><span id="SurvayCategoryName" class="lbl-small">{{item.SurvayCategoryName}}</span></div>
+                </div>
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">URL</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.URL}}</span>
+                    </div>
+                </div>
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">ePROM Type</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.SurvayTypeName}}</span>
+                    </div>
+                </div>
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">Description</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.Description}}</span>
+                    </div>
+                </div>
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">External ID</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.ExternalID}}</span>
+                    </div>
+                </div>
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">Default Days</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Days" class="lbl-small">{{item.Days}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="DivPageNumber" class="pagination_body ">
+            <span id="LBLRecordsShow" class="total_record">Showing {{Eproms.PageParams.CurrentStartIndex + 1}} to {{Eproms.PageParams.CurrentEndIndex}} of Total {{Eproms.PageParams.TotalCount}} Records</span>
+            <div id="DivCustomDataPager" class="page_block">
+                <a ng-repeat="btn in Eproms.Buttons" ng-class='{active : Eproms.PageNo == btn.currentindex}' class="paginationbtn" ng-click="Eproms.Methods.GetEpromsSearch(btn.currentindex)">{{btn.currentindex}}</a>
+            </div>
+        </div>
+
+
+        <div id="UploadCsvModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Upload Eprom Data</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb15 submit-login-provider">
+                            <label class="col-xs-12 col-md-1 control-label"></label>
+                            <div class="col-xs-12 col-sm-8 col-md-8">
+                                <input type="file" id="UploadCsvFile" name="UploadCsvFile" style="width: 100%;" />
+                            </div>
+                            <div class="col-xs-12 col-sm-8 col-md-2 pull-right">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="Eproms.Methods.UploadCsvFile()">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/eproms-js")
+}  

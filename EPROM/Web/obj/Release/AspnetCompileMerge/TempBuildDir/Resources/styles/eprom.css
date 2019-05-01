@@ -1,0 +1,534 @@
+﻿/*default css start*/
+body {
+    background-color: #ECEEF1 !important;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 300;
+    color: #525e64;
+    font-family: "lato",sans-serif;
+    margin: 30px 0;
+}
+
+    .page-title > i {
+        margin-right: 10px;
+    }
+
+.page-sub-title {
+    font-size: 20px;
+    font-weight: 300;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    color: #525e64;
+    font-family: "lato",sans-serif;
+    margin: 30px 0;
+}
+
+.text-decoration {
+    text-decoration: underline !important;
+}
+
+.custom-form .bs-select .dropdown-toggle {
+    background-color: #DDE3EC;
+    height: 43px;
+}
+
+.custom-form .bs-select .disabled {
+    background-color: #f6f6f6;
+    height: 43px;
+}
+
+.custom-form .form-control {
+    background-color: #dde3ec;
+    height: 43px;
+    color: #8290a3;
+}
+
+.form-control:disabled {
+    background-color: #f6f6f6;
+}
+
+.custom-form textarea.form-control {
+    height: auto;
+}
+
+.custom-form .form-control:active, .login .form-control:focus {
+    border: 1px solid #c3ccda;
+}
+
+.custom-form .form-control::-moz-placeholder {
+    color: #8290a3;
+    opacity: 1;
+}
+
+.custom-form .form-control:-ms-input-placeholder {
+    color: #8290a3;
+}
+
+.custom-form .form-control::-webkit-input-placeholder {
+    color: #8290a3;
+}
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.custom-btn {
+    padding: 10px 20px;
+    color: black;
+    background-color: #F4D03F;
+    border-color: #F4D03F;
+    line-height: 1.44;
+}
+
+    .custom-btn:hover, .custom-btn:focus {
+        background-color: #f1c40f;
+        border-color: #e8bd0d;
+        color: black;
+    }
+
+.custom-link, .custom-link:hover {
+    color: #f3c200;
+    cursor: pointer;
+}
+
+.external-link {
+    color: #337ab7;
+    cursor: pointer;
+}
+
+    .external-link:hover {
+        text-decoration: underline;
+        color: #23527c;
+    }
+
+a:hover {
+    cursor: pointer;
+    color: #23527c;
+}
+/*default css end*/
+
+/*login page css start*/
+
+.top-nav-contain {
+    margin: 20px 0;
+}
+
+.top-nav-contain-logo {
+    margin-top: 30px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.login-profile-pic {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.admin-nav ul.user-dropdown {
+    right: 0;
+    left: auto;
+    min-width: 160px;
+}
+
+    .admin-nav ul.user-dropdown:before {
+        left: auto;
+        right: 9px;
+    }
+
+    .admin-nav ul.user-dropdown:after {
+        left: auto;
+        right: 15px;
+    }
+
+.logoff_link {
+    display: block;
+    padding: 5px 10px;
+    transition: all 0.5s;
+}
+
+    .logoff_link:hover {
+        text-decoration: none;
+        background-color: #f3f3f3;
+    }
+
+    .logoff_link > i {
+        margin-right: 10px;
+    }
+
+.inner-wrapper {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.login-wrapper {
+    background-color: #fff;
+    width: 600px;
+    margin: 40px auto;
+    padding: 40px 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.foter-links {
+    text-align: center;
+    padding-top: 10px;
+    width: 100%;
+}
+
+    .foter-links > a {
+        padding: 0 10px;
+        border-right: 1px solid #454545;
+    }
+
+        .foter-links > a:last-child {
+            border-right: none;
+        }
+
+/*Login page custom css end*/
+
+/*provider login page custom css*/
+
+.nav > li > a {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #727272;
+}
+
+.nav-pills .dropdown.open > .dropdown-toggle, .nav-tabs .dropdown.open > .dropdown-toggle {
+    background-color: transparent;
+}
+
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    background-color: #ddd;
+}
+
+#myBar {
+    position: absolute;
+    width: 85%;
+    height: 100%;
+    background-color: #4CAF50;
+}
+
+
+/*provider login details css*/
+.portlet-body .tab-content { /*max-height: 80vh;*/
+    overflow: auto;
+    padding: 30px 30px 10px 30px;
+}
+
+    .portlet-body .tab-content .form-group {
+        float: left;
+        width: 100%;
+    }
+
+.submit-login-provider [data-toggle*=tooltip] {
+    margin-right: 20px;
+}
+
+.portlet-body .tab-pane .form-group:first-child {
+    margin-top: 20px;
+}
+
+.password-status {
+    position: relative;
+    top: 10px;
+}
+
+.portlet-body {
+    padding-top: 90px;
+    position: relative;
+}
+
+.setposition {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.blockborder {
+    border: 1px solid #f1c40f;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.sub-group-block {
+    border: 1px solid #f1c40f;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+    .sub-group-block > h3:first-child {
+        margin: 10px 0 !important;
+    }
+
+/*provider-registration-details*/
+
+.multiple-scroll-checkboxes {
+    max-height: 180px;
+    overflow: auto;
+}
+
+.input-file-box {
+    float: left;
+    max-width: 65%;
+    min-width: 0;
+    padding: 10px !important;
+}
+
+.input-file-select {
+    float: left;
+    width: 18%;
+    height: 43px;
+    padding: 10px !important;
+}
+
+.input-file-remove {
+    float: left;
+    width: 10%;
+    height: 43px;
+    padding: 10px !important;
+}
+
+.input-file-upload-icon {
+    width: 10%;
+    max-width: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.input-file-name {
+    width: 85%;
+    display: inline-block;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.divider {
+    width: 100%;
+    border-radius: 5px !important;
+    height: 1px;
+    background-color: #454545;
+    box-shadow: 0 0 5px 0px #454545;
+    margin: 30px 0;
+}
+
+.modified-chart {
+    padding: 50px 5px;
+    border: 1px solid #ccc;
+}
+
+.patient-details-question {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+/*.dataTables_length, .dataTables_filter, .dataTables_paginate { display: none; }*/
+
+#DataTables_Table_0 { /*width:100% !important;*/
+}
+
+.table-scrollable {
+    overflow-y: visible !important;
+}
+
+/*#hospitalization-risk svg text[text-anchor="end"]{
+    display:none;
+}*/
+
+/*.overflow-wrapper{
+    position:absolute;
+    max-width:25%;
+}
+
+.overflow-wrapper > .btn-group{
+position: relative !important;
+max-width: calc(100% - 20px) !important;
+width:100% !important;
+}*/
+
+@media all and (max-width:480px) {
+    .patient-details-question {
+        float: right;
+    }
+
+    .login-profile-pic {
+        width: 40px;
+        height: 40px;
+    }
+
+    .username {
+        font-size: 12px;
+    }
+}
+
+@media all and (max-width:767px) {
+
+    .forget-password {
+        display: inline-block;
+    }
+
+    .login-wrapper {
+        margin: 10px;
+        padding: 20px 15px;
+        width: auto;
+    }
+
+    .inner-wrapper {
+        padding: 20px 15px;
+    }
+
+
+
+    .foter-links > a {
+        padding: 0 5px;
+        font-size: 11px;
+    }
+
+    .portlet-body .tab-content {
+        max-height: 70vh;
+        padding: 20px 15px;
+    }
+
+    .input-file-box {
+        max-width: 56%;
+    }
+
+    .input-file-select {
+        width: 42%;
+    }
+
+    .input-file-remove {
+        width: 14%;
+        padding: 10px 0;
+    }
+}
+
+@media all and (orientation:landscape) {
+    .portlet-body .tab-content { /*max-height: 55vh;*/
+    }
+}
+
+@media all and (max-width:991px) {
+    .mb-md-15 {
+        margin-bottom: 15px;
+    }
+
+    .password-status {
+        top: 0px;
+    }
+
+    .login-btn {
+        margin-top: 20px;
+    }
+}
+
+@media all and (min-width:992px) {
+    .control-label {
+        margin-top: 10px;
+    }
+}
+
+.from-date .md-icon-button {
+    text-align: left !important;
+    width: 25px !important;
+    height: 25px !important;
+    margin: 0 0px !important;
+    padding: 0 !important;
+}
+
+.from-date .md-datepicker-input-container {
+    width: 90%;
+}
+
+.md-calendar-day-header th {
+    line-height: 40px;
+}
+
+.header-borderbottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.body-background {
+    background-color: #ECEEF1;
+}
+
+.logo {
+    width: 100%;
+    max-width: 100%;
+}
+
+.addPatient-btn {
+    float: right !important;
+    margin-top: -80px !important;
+}
+
+.icon-size {
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+.row-validation {
+    margin-top: 8px;
+    text-align: center;
+}
+
+.date > .md-datepicker-input-container {
+    margin-top: 23px;
+}
+
+.logo-heading span {
+    color: #F9D440;
+    font-size: 36px;
+}
+
+.logo-heading {
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    font-weight: bold;
+    color: #7A7A70;
+}
+
+.backgroundcolor-white {
+    background-color: #fff;
+}
+
+.login-logo {
+    width: 250px;
+    margin-top: 50px;
+}
+
+.login-logo-parent {
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.population-table label > .form-control {
+    height: auto;
+    background-color: transparent;
+    font-size: 14px;
+    color: #000;
+}
+
+.global-score thead > tr > th:first-child {
+    max-width: 80px !important;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.md-default-theme .md-datepicker-calendar-pane, .md-datepicker-calendar-pane {
+    border-color: rgb(224,224,224);
+}
+
+.ftr-link-size {
+    font-size: 85%;
+}

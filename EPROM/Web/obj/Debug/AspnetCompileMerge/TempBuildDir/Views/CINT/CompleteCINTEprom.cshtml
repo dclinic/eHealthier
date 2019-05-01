@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "ePROMs";
+    ViewBag.PageTitle = "ePROMs";
+}
+
+<script src="~/Resources/scripts/jquery-2.2.4.js"></script>
+<script src="~/Resources/scripts/angular.js"></script>
+<script src="~/Resources/scripts/angular-route.js"></script>
+<script src="~/Resources/scripts/third-party/angular-file-upload.min.js"></script>
+<script src="~/Resources/scripts/third-party/ngModelOptions.js"></script>
+<script src="~/Resources/scripts/third-party/angular-ng-message.js"></script>
+<script src="~/Resources/scripts/third-party/ui-bootstrap-tpls-1.2.2.js"></script>
+<script src="~/Resources/scripts/third-party/ngBootbox.js"></script>
+<script src="~/Resources/scripts/third-party/angular-animate-1.5.5.min.js"></script>
+<script src="~/Resources/scripts/third-party/angular-aria-1.5.5.min.js"></script>
+<script src="~/Resources/scripts/third-party/angular-messages-1.5.5.min.js"></script>
+<script src="~/Resources/scripts/third-party/angular-material-1.1.0.min.js"></script>
+<script src="~/Resources/scripts/third-party/toaster.js"></script>
+<script src="~/Resources/scripts/third-party/angular-bootstrap-select.js"></script>
+<script src="~/Resources/scripts/third-party/angular-cookies.js"></script>
+<script src="~/Resources/scripts/third-party/angular-filter.js"></script>
+<script src="~/Resources/scripts/third-party/highcharts.js"></script>
+<script src="~/Resources/scripts/third-party/exporting.js"></script>
+<script src="~/Resources/scripts/app.js"></script>
+
+<link href="~/Resources/styles/bootstrap.css" rel="stylesheet" />
+<link href="~/Resources/styles/font-awesome.css" rel="stylesheet" />
+<link href="~/Resources/NEW_DESIGN/epromDesign.css" rel="stylesheet" />
+
+<script src="~/Resources/scripts/App/CINTepromController.js"></script>
+
+<style>
+    body {
+        background: none !important;
+    }
+</style>
+
+<section ng-app="app" ng-controller="CINTepromController">
+    <div ng-if="PatientEprom.IsLoading" class="loading-box"> </div>
+
+    <div id="score-chart" class="modified-chart mb15" ng-hide="true"></div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>Thank You,</h2>
+            <h4>Your Response has been received</h4>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/cint-eprom-js")
+}

@@ -1,0 +1,104 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "System Flag";
+}
+<div class="box_modify" ng-controller="AddSystemFlagController">
+    <form name="frmSystemFlag">
+        <div class="fix-head-line">
+            <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block"><a href="/Admin/Home"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i><span>System Flag</span></div>
+        </div>
+
+        <div class="fix-body-line">
+            <div class="head-title">
+                <span style="font-weight:bold;">Create System Flag</span>
+            </div>
+            <div class="pull-right">
+                <div class="shotcut-btn pr15">
+                    <a ng-click="AddSystemFlag.Methods.Create()" class="head-btn">Save</a>
+                    <a ng-click="AddSystemFlag.Methods.RedirecttoList()" class="head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div ng-if="AddSystemFlag.IsLoading" class="loading-box">
+        </div>
+        <div class="details">
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    System FlagName
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="SystemFlagName" ng-model="AddSystemFlag.SystemFlagName" ng-required="true" name="SystemFlagName" placeholder="System FlagName" />
+                    <div ng-messages="frmSystemFlag.SystemFlagName.$error" ng-if="AddSystemFlag.issubmitted">
+                        <div ng-message="required" class="required">System FlagName is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    FlagGroup
+                </div>
+                <div class="col-xs-4">
+                    <select class="form-control" ng-model="AddSystemFlag.FlagGroupID" name="FlagGroup" ng-options="a.ID as a.FlagGroupName for a in AddSystemFlag.list_FlagGroup" ng-required="true">
+                        <option value="">Select Flag Group</option>
+                    </select>
+                    <div ng-messages="frmSystemFlag.AddSystemFlag.$error" ng-if="AddSystemFlag.issubmitted">
+                        <div ng-message="required" class="required">Flag Group selection is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Default Value
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="DefaultValue" ng-model="AddSystemFlag.DefaultValue" ng-required="true" name="DefaultValue" placeholder="Default Value" />
+                    <div ng-messages="frmSystemFlag.DefaultValue.$error" ng-if="AddSystemFlag.issubmitted">
+                        <div ng-message="required" class="required">Default Value is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Value
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="Value" ng-model="AddSystemFlag.Value" ng-required="true" name="Value" placeholder="Value" />
+                    <div ng-messages="frmSystemFlag.Value.$error" ng-if="AddSystemFlag.issubmitted">
+                        <div ng-message="required" class="required">Value is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Display Order
+                </div>
+                <div class="col-xs-4">
+                    <input type="number" class="form-control" id="DisplayOrder" ng-model="AddSystemFlag.DisplayOrder" ng-required="true" name="DisplayOrder" placeholder="DisplayOrder" min="1" ng-change="AddSystemFlag.Methods.CheckDisplayOrderIsExistOrNot()" />
+                    <div class="required">{{ AddSystemFlag.Msg }}</div>
+                    <div ng-messages="frmSystemFlag.DisplayOrder.$error" ng-if="AddSystemFlag.issubmitted">
+                        <div ng-message="required" class="required">Display Order is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-4">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="AddSystemFlag.IsActive" checked="checked"> Is Active
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/add-system-flag-js")
+}
+
+
+

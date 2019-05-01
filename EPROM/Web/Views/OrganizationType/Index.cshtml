@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Organization Type";
+}
+<div class="box_modify" ng-controller="OTController">
+    <div class="fix-head-line">
+        <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+            <a href="/Admin/Home"><i class="fa fa-home"></i></a>
+            <i class="fa fa-angle-right"></i>
+            <span>Organization Type</span>
+        </div>
+
+        <div class="shotcut-btn">
+            <div class="btn-group pb6">
+                <a class="AccessAdd head-btn" ng-click="OTs.Methods.RedirecttoCreate()">
+                    <i class="fa fa-plus"></i>
+                    <span class="pl5">Add</span>
+                </a>
+            </div>
+            <div class="btn-group mob-search-block">
+                <div class="input-append searchdropdown">
+                    <input type="text" placeholder="Search" ng-model="OTs.Search" class="search-bar mt0">
+                    <a class="add-on btn-search icon-search" ng-click="OTs.Methods.GetOTSearch(0)">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fix-body-line">
+        <div class="action-block">
+            <div class="btn-group allcheck">
+                <input type="checkbox" ng-model="OTs.Methods.allSelected" ng-model-options="{getterSetter: true}" />
+            </div>
+            <div class="btn-group mt-1">
+                <select id="DDLAction" class="form-control" ng-change="OTs.Methods.UpdateIsActiveStatus(OTs.Action)" ng-model="OTs.Action">
+                    <option value="">Action</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Delete</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pull-right plr15">
+            <span class="lbl-small">Filter By</span>
+            <div class="btn-group mt1">
+                <select id="DDLFilterBy" class="form-control" ng-change="OTs.Methods.GetOTSearch(0)" ng-model="OTs.Filter">
+                    <option>All</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+
+            <span class="lbl-small">Page Size</span>
+            <div class="btn-group mt1">
+                <select id="DDLPageSize" class="form-control" ng-change="OTs.Methods.GetOTSearch(0)" ng-model="OTs.PageParams.FetchRecords" ng-options="page.id as page.name for page in OTs.PageSize"></select>
+            </div>
+        </div>
+    </div>
+    <div class="nat-list">
+        <div ng-if="OTs.IsLoading" class="loading-box">
+        </div>
+
+        <div class="nat-list" ng-repeat="item in OTs.OTs" ng-cloak>
+            <div class="listviewDetails row-data mob-row-data">
+                <div class="grid1">
+                    <div class="fold-upblock collapsed">
+                        <div class="namelist" style="margin-top:-25px;">
+                            <div class="rest-info ml5">
+                                <div style="margin-top: 25px;">
+                                    <span id="Name" class="lbl-medium">{{item.OrganizationType}}</span>
+                                </div>
+                                <div>
+                                    <span class="lbl-small"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chk-action">
+                        <input type="checkbox" ng-model="item.Selected">
+                        <input type="hidden" ng-model="OTs.OTID" />
+                    </div>
+                </div>
+                <div class="grid2">
+                    <div class="action-icon">
+                        <input type="checkbox" ng-model="item.IsActive" ng-change="OTs.Methods.SwitchStatus(item.ID,item.IsActive)" bootstrap-switch />
+                        <a ng-click='OTs.Methods.GetOTById(item.ID)' class="fa fa-edit"></a>
+                        <a ng-click='OTs.Methods.OpenDeleteDialog(item.ID)' class="fa fa-trash"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="DivPageNumber" class="pagination_body ">
+                <span id="LBLRecordsShow" class="total_record">Showing {{OTs.PageParams.CurrentStartIndex + 1}} to {{OTs.PageParams.CurrentEndIndex}} of Total {{OTs.PageParams.TotalCount}} Records</span>
+                <div id="DivCustomDataPager" class="page_block">
+                    <a ng-repeat="btn in OTs.Buttons" ng-class='{active : OTs.PageNo == btn.currentindex}' class="paginationbtn" ng-click="OTs.Methods.GetOTSearch(btn.currentindex)">{{btn.currentindex}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/ot-js")
+}   

@@ -1,0 +1,140 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Patient's ePROMs";
+}
+<style>
+    .md-datepicker-input-container.md-datepicker-invalid {
+        border-bottom-color: rgba(0,0,0,0.12);
+    }
+</style>
+<section ng-app="app" ng-controller="PatientEpromController">
+    <form name="frmPatientsEprom">
+        <h3 class="page-title">ePROMs</h3>
+        <div ng-if="PatientEprom.IsLoading" class="loading-box">
+        </div>
+        <div class="inner-wrapper mb15">
+            <div class="row mb15">
+                <div class="col-xs-10" style="width: 100%">
+                    <label><b>Patient</b> : {{PatientEprom.PatientDetail.FirstName}}  {{PatientEprom.PatientDetail.LastName}}  ({{PatientEprom.PatientDetail.DOB | date : "d/M/yyyy" }}), <b>Medicare No :</b> {{PatientEprom.PatientDetail.MedicareNo}} ,  <b> IHI No :</b> {{PatientEprom.PatientDetail.IHINo}}</label>
+                </div>
+                <div class="col-xs-2" style="width: 100%">
+                    <button type="button" class="btn mb15 custom-btn pull-right" ng-click="editMode = true; PatientEprom.Methods.GenerateEpromRow()">Assign New ePROM</button>
+                </div>
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped table-bordered table-hover order-column sample_1">
+                        <thead>
+                            <tr>
+                                <th> ePROM </th>
+                                <th> Start Date </th>
+                                <th> End Date </th>
+                                <th> Status</th>
+                                <th> Activate </th>
+                                <th> Pathway </th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr select-last ng-repeat='item in PatientEprom.Item.surveyList' class="odd gradeX" ng-class="{epromStatus: (!item.IsActive || (item.Status == 'Completed' && item.IsActive)) && item.ID!=undefined && !editMode}">
+                                <td style="width:25%;position:relative;">
+                                    <md-input-container style="width: 100%;" ng-if="item.ID==undefined">
+                                        <md-select aria-label="ePROM" ng-model="item.SurveyID" name=eprom_{{$index}} required>
+                                            <md-option ng-repeat="item in PatientEprom.list_Survey  track by $index" ng-cloak="true" ng-value="item.SurveyID">{{item.ExternalTitle}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <div ng-messages=frmPatientsEprom['eprom_'+$index].$error ng-if="PatientEprom.issubmitted && item.ID==undefined">
+                                        <div ng-message="required" class="required">ePROM is required</div>
+                                    </div>
+
+                                    <div ng-messages=frmPatientsEprom['eprom_'+$index].$error ng-if="PatientEprom.hideMessage && item.ID==undefined">
+                                        <div class="required">ePROM is already Selected</div>
+                                    </div>
+
+                                    <label ng-model="item.SurveyID" ng-show="item.ID!=undefined">{{item.ExternalTitle}}</label>
+                                </td>
+
+                                <td>
+                                    <label ng-show="((item.Status == 'Completed' && item.IsActive) || item.Status == 'Expired'|| isReassign == true )&& !showCancel" ng-model="item.StartDate">{{item.StartDate | date : "d/M/yyyy" }}</label>
+
+                                    <md-datepicker ng-hide="((item.Status == 'Completed' && item.IsActive) ||item.Status == 'Expired'|| isReassign == true )&& !showCancel" ng-model="item.StartDate" md-placeholder="Start Date" required width="100%" ng-change="PatientEprom.Methods.CheckDateValidation(item.StartDate,item.EndDate)" md-open-on-focus md-min-date="item.isnewRow?PatientEprom.TodayDate:''" class="date" name=startdate_{{$index}}></md-datepicker>
+
+                                    <div ng-messages=frmPatientsEprom['startdate_'+$index].$error ng-if="PatientEprom.issubmitted && !((item.Status == 'Completed' && item.IsActive) ||item.Status == 'Expired'|| isReassign == true )&& !showCancel">
+                                        <div ng-message="required" class="required row-validation">Start date is required</div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <label ng-show="((item.Status == 'Completed' && item.IsActive)|| item.Status == 'Expired' || isReassign == true )&& !showCancel" ng-model="item.EndDate">{{item.EndDate | date : "d/M/yyyy" }}</label>
+
+                                    <md-datepicker ng-hide="((item.Status == 'Completed' && item.IsActive) || item.Status == 'Expired' || isReassign == true )&& !showCancel" ng-model="item.EndDate" md-placeholder="End Date" width="100%" md-min-date="item.StartDate" required ng-change="PatientEprom.Methods.CheckDateValidation(item.StartDate,item.EndDate)" md-open-on-focus class="date" name=enddate_{{$index}}></md-datepicker>
+
+                                    <div ng-messages=frmPatientsEprom['enddate_'+$index].$error ng-if="PatientEprom.issubmitted  && !((item.Status == 'Completed' && item.IsActive)|| item.Status == 'Expired' || isReassign == true )&& !showCancel">
+                                        <div ng-message="required" class="required row-validation">End date is required</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span ng-show="item.Status == 'Pending' && item.IsActive && item.ID!=undefined ">
+                                        Activated and Sent to Patient
+                                    </span>
+                                    <span ng-show="item.Status == 'Completed' && item.IsActive && item.ID!=undefined ">
+                                        Completed
+                                    </span>
+                                    <span ng-show="!item.IsActive && item.ID!=undefined && !editMode">
+                                        Not Activated
+                                    </span>
+                                    <span ng-show="item.Status == 'Disabled'">
+                                        Disabled
+                                    </span>
+                                    <span ng-show="item.Status == 'Expired'">
+                                        Expired
+                                    </span>
+                                </td>
+
+                                <td class="center">
+                                    <md-checkbox ng-model="item.IsActive" md-no-ink aria-label="Activate" class="md-primary mt10"></md-checkbox>
+                                </td>
+
+                                <td>
+                                    <md-input-container style="width:100%;">
+                                        <md-select ng-model="item.PathwayID" aria-label="Clinics" placeholder="Pathway">
+                                            <md-option ng-repeat="itm in PatientEprom.PathwayList" ng-value="itm.ID">{{itm.PathwayName}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </td>
+
+                                <td>
+                                    <button type="button" class="md-raised md-primary md-button md-ink-ripple" ng-show="((item.Status == 'Completed' && item.IsActive)|| item.Status == 'Expired' || isReassign == true )&& !showCancel" ng-click="PatientEprom.Methods.ReassignEprom(item); editMode=true; item.isnewRow=true; item.StartDate=null; item.Status='' ; item.IsActive=false; item.EndDate=null; isReassign=true; showCancel=true;">Reassign</button>
+
+                                    <button type="button" class="md-raised md-warn md-button md-ink-ripple" ng-show="showCancel == true" ng-click="editMode=false; PatientEprom.Methods.CancelReassign($index)">Cancel</button>
+
+
+                                    <a href="#" ng-click="showCancel=false; PatientEprom.Methods.CreatePatientSurvey(item, isReassign); isReassign = false; " tooltip="edit" class="icon-size">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                    <a href="#" ng-click="PatientEprom.Methods.DeleteEpromRow(item,$index, item.ID)" tooltip="delete" class="icon-size">
+                                        <i class="fa fa-trash-o "></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 hidden-xs"></div>
+                <div class="col-xs-12 col-sm-3">
+                    <button type="button" class="btn col-xs-12 mb15 custom-btn" ng-click="PatientEprom.Methods.AddEproms()">Available ePROMs</button>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <button type="button" class="btn col-xs-12 mb15 custom-btn" ng-click="PatientEprom.Methods.RedirectToPatient()">Patient List</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/patient-eprom-js")
+}

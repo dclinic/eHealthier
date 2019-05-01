@@ -1,0 +1,225 @@
+﻿@*Organization Practice*@
+
+@{
+    Layout = "~/Views/Shared/OrganizationLayout.cshtml";
+    ViewBag.Title = "My Practice List";
+}
+
+<section ng-app="app" ng-controller="PracticeController">
+    <form name="formPractice">
+        <h3 class="page-sub-title">My Practices</h3>
+        <div ng-if="Practice.IsLoading" class="loading-box">
+        </div>
+        <button type="button" class="btn custom-btn addPatient-btn" onclick="window.location.href='/Practice/Create'">Add Practice</button>
+        <div class="row mb15">
+            <div class="col-xs-12">
+                <div class="table-responsive patient-table" ng-show="Practice.Items.length > 0">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                        <thead>
+                            <tr>
+                                <th class="hidden"></th>
+                                <th> Practice Name</th>
+                                <th class="hide"> Post Code</th>
+                                <th class="hide"> Subrub</th>
+                                <th> Email</th>
+                                <th> Mobile</th>
+                                <th class="hide"> Gender</th>
+                                <th> Active </th>
+                                <th> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX" ng-cloak="true" ng-repeat="item in Practice.Items">
+                                <td class="hidden"></td>
+                                <td>
+                                    {{item.PracticeName}}
+                                </td>
+                                <td class="hide">
+                                    {{item.Address.ZipCode}}
+                                </td>
+                                <td class="hide">
+                                    {{item.Address.Suburb}}
+                                </td>
+                                <td>
+                                    {{item.Contact.EmailPersonal}}
+                                </td>
+                                <td>
+                                    {{item.Contact.Mobile}}
+                                </td>
+                                <td class="hide">
+                                    {{item.User.Gender}}
+                                </td>
+                                <td>
+                                    <span>
+                                        <md-checkbox md-no-ink aria-label="isActive" ng-model="item.IsActive" class="md-primary" disabled></md-checkbox>
+                                    </span>
+                                </td>
+                                <td class="center">
+                                    <button type="button" class="btn custom-btn" ng-click="Practice.Methods.RedirectToPracticeDetail(item.UserId)">View Details</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div ng-show="Practice.Items.length == 0">
+                    There no practice
+                </div>
+            </div>
+        </div>
+
+        <div class="divider hide">
+        </div>
+        <div class="row mb15 submit-login-provider hide">
+            <label class="col-xs-12 col-md-2 control-label">Client File</label>
+            <div class="col-xs-12 col-sm-8 col-md-7">
+                <div class="fileinput fileinput-new" data-provides="fileinput" style="width:100%;">
+                    <div class="form-control uneditable-input input-fixed input-file-box" data-trigger="fileinput">
+                        <i class="fa fa-file"></i>&nbsp;
+                        <span class="fileinput-filename input-file-name"> </span>
+                    </div>
+                    <span class="input-group-addon btn default btn-file input-file-select">
+                        <span class="fileinput-new"> Select file </span>
+                        <span class="fileinput-exists"> Change </span>
+                        <input type="file" id="UploadCsvFile" name="UploadCsvFile">
+                    </span>
+                    <a href="javascript:;" class="input-group-addon btn red fileinput-exists input-file-remove" data-dismiss="fileinput"> <i class="fa fa-close"></i> </a>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3 text-right">
+                <button type="button" class="btn custom-btn" ng-click="Practice.Methods.GetCSVFile()">Upload</button>
+                <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?" style="margin-left:20px;">
+                    <i class="fa fa-question"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="divider hide">
+        </div>
+        <div ng-show="Practice.CSVData.length > 0">
+            <h3 class="page-sub-title">All My Patients</h3>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12" id="csvdata">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column csvfiledetails">
+                            <thead>
+                                <tr>
+                                    <th class="hidden"></th>
+                                    <th> Practice Name </th>
+                                    <th> First Name </th>
+                                    <th> Middle Name </th>
+                                    <th> SurName </th>
+                                    <th> AddressLine1 </th>
+                                    <th> AddressLine2 </th>
+                                    <th> DOB </th>
+                                    <th> Gender </th>
+                                    <th> Suburb </th>
+                                    <th> Postal Code </th>
+                                    <th> State </th>
+                                    <th> Country </th>
+                                    <th> Primary Phone </th>
+                                    <th> Email </th>
+                                    <th> Medicare Number </th>
+                                    <th> UserName </th>
+                                    <th> Password </th>
+                                    <th> Security Question </th>
+                                    <th> Answer </th>
+                                </tr>
+                            </thead>
+                            <tbody id="CSVDataBody">
+                                <tr class="odd gradeX" ng-repeat="item in Practice.CSVData" ng-class="{duplicate: item.isduplicate==true , duplicateMedicareNumber: item.isduplicateMedicareNumber==true, duplicateboth: item.isduplicate==true && item.isduplicateMedicareNumber==true} ">
+                                    <td class="hidden"></td>
+                                    <td>
+                                        <span>{{item.PracticeName}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.FirstName}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.MiddleName}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.SurName}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.AddressLine1}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.AddressLine2}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.DOB | date: "d/M/yyyy" }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.Gender}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.Suburb}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.PostalCode}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.State}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.Country}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.PrimaryPhone}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.Email}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.MedicareNumber}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.UserName}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.Password}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.SecurityQuestion}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{item.Answer}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="indicates-box mt5"> </div>
+
+                    <div class="ml20"> Patient already exists </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="indicates-box-medicare mt5"> </div>
+
+                    <div class="ml20"> Medicare Number already exists </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="indicates-box-both mt5"> </div>
+
+                    <div class="ml20"> Patient and  Medicare Number already exists </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-right">
+                    <button type="button" class="btn custom-btn">Home</button>
+                    <button type="button" class="btn custom-btn" ng-click="Practice.Methods.UploadCsv()">Bulk Upload</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/practice-js")
+}

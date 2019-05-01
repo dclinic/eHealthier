@@ -1,0 +1,2024 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EPROMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Addresses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Line1" Type="nvarchar" MaxLength="500" />
+    <Property Name="Line2" Type="nvarchar" MaxLength="500" />
+    <Property Name="Suburb" Type="nvarchar" MaxLength="500" />
+    <Property Name="StateID" Type="int" />
+    <Property Name="CountryID" Type="smallint" />
+    <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Longitude" Type="nvarchar" MaxLength="10" />
+    <Property Name="Latitude" Type="nvarchar" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="datetime" />
+    <Property Name="ModifiedBy" Type="datetime" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="AvailableEprom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="ProviderID" Type="uniqueidentifier" />
+    <Property Name="PatientID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="CINTScore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ePROMsType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Score" Type="ntext" />
+    <Property Name="SurveyMonkeyID" Type="nvarchar" MaxLength="50" />
+    <Property Name="RespondedID" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="256" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="256" />
+    <Property Name="Mobile2" Type="nvarchar" MaxLength="256" />
+    <Property Name="FAX" Type="nvarchar" MaxLength="256" />
+    <Property Name="Pager" Type="nvarchar" MaxLength="256" />
+    <Property Name="Emergency" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailBusiness" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailPersonal" Type="nvarchar" MaxLength="256" />
+    <Property Name="Skype" Type="nvarchar" MaxLength="256" />
+    <Property Name="LinkedIN" Type="nvarchar" MaxLength="256" />
+    <Property Name="Website" Type="nvarchar" MaxLength="256" />
+    <Property Name="OtherFieldsJSON" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ControlTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="ControlTypeName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" Nullable="false" />
+    <Property Name="ISOCode" Type="char" MaxLength="2" />
+    <Property Name="ISOCode3" Type="char" MaxLength="5" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DialCode" Type="nvarchar" MaxLength="5" />
+    <Property Name="Population" Type="int" />
+    <Property Name="Area" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DefaultDays">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="Days" Type="int" />
+  </EntityType>
+  <EntityType Name="FlagGroups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlagGroupName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="2000" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Indicators">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IndicatorName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogManagement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="InnerMessage" Type="nvarchar(max)" />
+    <Property Name="StackTrace" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Organizations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrganizationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="SalutationID" Type="int" />
+  </EntityType>
+  <EntityType Name="Pathways">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PathwayName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientCategoryName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientIndicators">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IndicatorID" Type="smallint" Nullable="false" />
+    <Property Name="Frequency" Type="int" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goal" Type="nvarchar(max)" />
+    <Property Name="Comments" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientProviders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProviderID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PatientID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" />
+    <Property Name="PracticeID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ContactID" Type="int" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="PatientCategoryID" Type="smallint" />
+    <Property Name="AddressID" Type="bigint" />
+    <Property Name="MedicareNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="Salutation" Type="nvarchar" MaxLength="100" />
+    <Property Name="IHINumber" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PatientSuggestions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Suggestions" Type="text" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="PatientSurveyID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientSurvey_Pathway_PatientSurveyStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PatientSurveyID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PathwayID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PatientSurveyStatusID" Type="uniqueidentifier" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientSurveys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PatientID" Type="uniqueidentifier" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ProviderID" Type="uniqueidentifier" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" />
+    <Property Name="PracticeID" Type="uniqueidentifier" />
+    <Property Name="IsSend" Type="bit" />
+  </EntityType>
+  <EntityType Name="PatientSurveys_Temp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PatientID" Type="uniqueidentifier" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ProviderID" Type="uniqueidentifier" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" />
+    <Property Name="PracticeID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientSurveyStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="PatientSurveyID" Type="uniqueidentifier" />
+    <Property Name="Score" Type="ntext" />
+  </EntityType>
+  <EntityType Name="Practice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PracticeName" Type="nvarchar" MaxLength="256" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="OrganizationId" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="SalutationID" Type="int" />
+  </EntityType>
+  <EntityType Name="PracticeRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" />
+    <Property Name="PracticeId" Type="uniqueidentifier" />
+    <Property Name="OrganizationId" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Properties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PropertyName" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProviderOrganizations">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProviderID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Designation" Type="nvarchar" MaxLength="256" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ProviderPatientThirdPartyApp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ThirdPartyAppID" Type="int" />
+    <Property Name="ProviderID" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="datetime" />
+    <Property Name="ModifiedBy" Type="datetime" />
+    <Property Name="PatientSurveyID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ProviderPractice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProviderId" Type="uniqueidentifier" />
+    <Property Name="PracticeId" Type="uniqueidentifier" />
+    <Property Name="ProviderOrganizationId" Type="uniqueidentifier" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ProviderPracticeRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="ProviderPracticeID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Providers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProviderTypeID" Type="smallint" />
+    <Property Name="MedicareProviderNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="HealthProviderIdentifier" Type="nchar" MaxLength="10" />
+    <Property Name="ContactID" Type="int" />
+    <Property Name="AddressID" Type="bigint" />
+    <Property Name="PHN" Type="nvarchar(max)" />
+    <Property Name="LHD" Type="nvarchar(max)" />
+    <Property Name="LHN" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="SalutationID" Type="int" />
+  </EntityType>
+  <EntityType Name="ProviderTerms">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProviderID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="TermID" Type="smallint" Nullable="false" />
+    <Property Name="TermContent" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifieBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ProviderTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProviderTypeName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nchar" MaxLength="10" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Salutation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalutationName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="SecretQuestions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Questions" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Survey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="256" />
+    <Property Name="ExternalTitle" Type="nvarchar" MaxLength="256" />
+    <Property Name="ExternalID" Type="nvarchar" MaxLength="256" />
+    <Property Name="CollectorID" Type="nvarchar" MaxLength="256" />
+    <Property Name="URL" Type="nvarchar" MaxLength="256" />
+    <Property Name="ContentCode" Type="varchar(max)" />
+    <Property Name="CreatedByUserID" Type="uniqueidentifier" />
+    <Property Name="SurveyCategoryID" Type="smallint" />
+    <Property Name="SurveyTypeID" Type="smallint" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Language" Type="nvarchar" MaxLength="256" />
+    <Property Name="IsPublish" Type="bit" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+    <Property Name="SurveySubCategoryID" Type="smallint" />
+    <Property Name="NormValue" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="SurveyCategories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurvayCategoryName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ParentSurveyCategoryID" Type="smallint" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="SurveyTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurvayTypeName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="SystemFlags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SystemFlagName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FlagGroupID" Type="int" Nullable="false" />
+    <Property Name="DefaultValue" Type="nvarchar(max)" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="DisplayOrder" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Terms">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TermContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ThirdPartyApp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AppName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="datetime" />
+    <Property Name="ModifiedBy" Type="datetime" />
+    <Property Name="SurveyCategoryID" Type="smallint" />
+    <Property Name="SurveySubCategoryID" Type="smallint" />
+    <Property Name="URL" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Tokens">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="Token" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="ExpiryDate" Type="datetime" Nullable="false" />
+    <Property Name="IsUsed" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IsRegister" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="EmailConfirmed" Type="bit" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="256" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="256" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="256" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" />
+    <Property Name="AccessFailedCount" Type="int" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProperties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PropertyID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" />
+    <Property Name="DisplayOrder" Type="smallint" />
+  </EntityType>
+  <EntityType Name="UserSecretQuestions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SecretQuestionID" Type="smallint" Nullable="false" />
+    <Property Name="OtherQuestion" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="UsersInRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSurveys">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="PatientID" Type="uniqueidentifier" />
+    <Property Name="ProviderID" Type="uniqueidentifier" />
+    <Property Name="SurveyID" Type="int" />
+    <Property Name="SurveyDate" Type="datetime" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="EndTime" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="uniqueidentifier" />
+    <Property Name="ModifiedBy" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ProviderUserId" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Organizat__Salut__04E4BC85">
+    <End Role="Salutation" Type="Self.Salutation" Multiplicity="0..1" />
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organizations">
+        <PropertyRef Name="SalutationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientPr__Organ__08B54D69">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="PatientProviders" Type="Self.PatientProviders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProviders">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientPr__Pract__09A971A2">
+    <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+    <End Role="PatientProviders" Type="Self.PatientProviders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProviders">
+        <PropertyRef Name="PracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Organ__14270015">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Organ__151B244E">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Organ__160F4887">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Patie__10566F31">
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="0..1" />
+    <End Role="PatientSuggestions" Type="Self.PatientSuggestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurveys">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSuggestions">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Patie__6EE06CCD">
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="0..1" />
+    <End Role="PatientSurveyStatus" Type="Self.PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurveys">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveyStatus">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Pract__17036CC0">
+    <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="PracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Pract__17F790F9">
+    <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="PracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Pract__18EBB532">
+    <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="PracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Provi__19DFD96B">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Provi__1AD3FDA4">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientSu__Provi__1BC821DD">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Practice__Saluta__2180FB33">
+    <End Role="Salutation" Type="Self.Salutation" Multiplicity="0..1" />
+    <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Practice">
+        <PropertyRef Name="SalutationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProviderP__Patie__29221CFB">
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="0..1" />
+    <End Role="ProviderPatientThirdPartyApp" Type="Self.ProviderPatientThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurveys">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPatientThirdPartyApp">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Providers__Salut__30C33EC3">
+    <End Role="Salutation" Type="Self.Salutation" Multiplicity="0..1" />
+    <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Providers">
+        <PropertyRef Name="SalutationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Survey__SurveySu__367C1819">
+    <End Role="SurveyCategories" Type="Self.SurveyCategories" Multiplicity="0..1" />
+    <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="SurveySubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThirdPart__Surve__3B40CD36">
+    <End Role="SurveyCategories" Type="Self.SurveyCategories" Multiplicity="0..1" />
+    <End Role="ThirdPartyApp" Type="Self.ThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThirdPartyApp">
+        <PropertyRef Name="SurveyCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThirdPart__Surve__3C34F16F">
+    <End Role="SurveyCategories" Type="Self.SurveyCategories" Multiplicity="0..1" />
+    <End Role="ThirdPartyApp" Type="Self.ThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThirdPartyApp">
+        <PropertyRef Name="SurveySubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Addresses_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+    <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Addresses">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Addresses_States">
+    <End Role="States" Type="Self.States" Multiplicity="0..1" />
+    <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="States">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Addresses">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Addresses_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+    <End Role="Addresses" Type="Self.Addresses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Addresses">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacts_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+    <End Role="Contacts" Type="Self.Contacts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contacts">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizations_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organizations">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientIndicators_Indicators">
+    <End Role="Indicators" Type="Self.Indicators" Multiplicity="1" />
+    <End Role="PatientIndicators" Type="Self.PatientIndicators" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicators">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientIndicators">
+        <PropertyRef Name="IndicatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientIndicators_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="PatientIndicators" Type="Self.PatientIndicators" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientIndicators">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientProviders_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="PatientProviders" Type="Self.PatientProviders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProviders">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientProviders_Providers">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+    <End Role="PatientProviders" Type="Self.PatientProviders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProviders">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Addresses">
+    <End Role="Addresses" Type="Self.Addresses" Multiplicity="0..1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Addresses">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Contacts">
+    <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Users">
+    <End Role="PatientCategories" Type="Self.PatientCategories" Multiplicity="0..1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientCategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="PatientCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Users1">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="Patients" Type="Self.Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patients">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways">
+    <End Role="Pathways" Type="Self.Pathways" Multiplicity="1" />
+    <End Role="PatientSurvey_Pathway_PatientSurveyStatus" Type="Self.PatientSurvey_Pathway_PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pathways">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey_Pathway_PatientSurveyStatus">
+        <PropertyRef Name="PathwayID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys">
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="1" />
+    <End Role="PatientSurvey_Pathway_PatientSurveyStatus" Type="Self.PatientSurvey_Pathway_PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurveys">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey_Pathway_PatientSurveyStatus">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus">
+    <End Role="PatientSurveyStatus" Type="Self.PatientSurveyStatus" Multiplicity="0..1" />
+    <End Role="PatientSurvey_Pathway_PatientSurveyStatus" Type="Self.PatientSurvey_Pathway_PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurveyStatus">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey_Pathway_PatientSurveyStatus">
+        <PropertyRef Name="PatientSurveyStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Patients_Temp">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Survey">
+    <End Role="Survey" Type="Self.Survey" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Survey_Temp">
+    <End Role="Survey" Type="Self.Survey" Multiplicity="0..1" />
+    <End Role="PatientSurveys" Type="Self.PatientSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveys">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Practitioner_Practitioner">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Practice">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Practitioner_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+    <End Role="Practice" Type="Self.Practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Practice">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractitionerRole_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="PracticeRole" Type="Self.PracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeRole">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractitionerRole_Practitioner">
+    <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+    <End Role="PracticeRole" Type="Self.PracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeRole">
+        <PropertyRef Name="PracticeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractitionerRole_UserDetails">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+    <End Role="PracticeRole" Type="Self.PracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeRole">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderOrganizations_Organizations">
+    <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+    <End Role="ProviderOrganizations" Type="Self.ProviderOrganizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderOrganizations">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderOrganizations_Providers">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+    <End Role="ProviderOrganizations" Type="Self.ProviderOrganizations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderOrganizations">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPatientThirdPartyApp_Providers">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="ProviderPatientThirdPartyApp" Type="Self.ProviderPatientThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPatientThirdPartyApp">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPatientThirdPartyApp_ThirdPartyApp">
+    <End Role="ThirdPartyApp" Type="Self.ThirdPartyApp" Multiplicity="0..1" />
+    <End Role="ProviderPatientThirdPartyApp" Type="Self.ProviderPatientThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThirdPartyApp">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPatientThirdPartyApp">
+        <PropertyRef Name="ThirdPartyAppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPractice_ProviderOrganizations">
+    <End Role="ProviderOrganizations" Type="Self.ProviderOrganizations" Multiplicity="0..1" />
+    <End Role="ProviderPractice" Type="Self.ProviderPractice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProviderOrganizations">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPractice">
+        <PropertyRef Name="ProviderOrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPracticeRole_PracticeRole">
+    <End Role="PracticeRole" Type="Self.PracticeRole" Multiplicity="0..1" />
+    <End Role="ProviderPracticeRole" Type="Self.ProviderPracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PracticeRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="ProviderPracticeRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPracticeRole_ProviderPractice">
+    <End Role="ProviderPractice" Type="Self.ProviderPractice" Multiplicity="0..1" />
+    <End Role="ProviderPracticeRole" Type="Self.ProviderPracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProviderPractice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPracticeRole">
+        <PropertyRef Name="ProviderPracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPractitioner_Practitioner">
+    <End Role="Practice" Type="Self.Practice" Multiplicity="0..1" />
+    <End Role="ProviderPractice" Type="Self.ProviderPractice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPractice">
+        <PropertyRef Name="PracticeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPractitioner_Providers">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="ProviderPractice" Type="Self.ProviderPractice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPractice">
+        <PropertyRef Name="ProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_Contacts">
+    <End Role="Contacts" Type="Self.Contacts" Multiplicity="0..1" />
+    <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Providers">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_ProviderTypes">
+    <End Role="ProviderTypes" Type="Self.ProviderTypes" Multiplicity="0..1" />
+    <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProviderTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Providers">
+        <PropertyRef Name="ProviderTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_Users">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+    <End Role="Providers" Type="Self.Providers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Providers">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderTerms_Providers">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="1" />
+    <End Role="ProviderTerms" Type="Self.ProviderTerms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderTerms">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderTerms_Terms">
+    <End Role="Terms" Type="Self.Terms" Multiplicity="1" />
+    <End Role="ProviderTerms" Type="Self.ProviderTerms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terms">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderTerms">
+        <PropertyRef Name="TermID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_SurveyCategories">
+    <End Role="SurveyCategories" Type="Self.SurveyCategories" Multiplicity="0..1" />
+    <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategories">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="SurveyCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_SurveyTypes">
+    <End Role="SurveyTypes" Type="Self.SurveyTypes" Multiplicity="0..1" />
+    <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="SurveyTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_Users">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+    <End Role="Survey" Type="Self.Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="CreatedByUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemFlags_FlagGroups">
+    <End Role="FlagGroups" Type="Self.FlagGroups" Multiplicity="1" />
+    <End Role="SystemFlags" Type="Self.SystemFlags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlagGroups">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemFlags">
+        <PropertyRef Name="FlagGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserId">
+    <End Role="UserProfile" Type="Self.UserProfile" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserProfile">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProperties_Properties">
+    <End Role="Properties" Type="Self.Properties" Multiplicity="1" />
+    <End Role="UserProperties" Type="Self.UserProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Properties">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserProperties">
+        <PropertyRef Name="PropertyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProperties_Users">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="UserProperties" Type="Self.UserProperties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserProperties">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecretQuestions_SecretQuestions">
+    <End Role="SecretQuestions" Type="Self.SecretQuestions" Multiplicity="1" />
+    <End Role="UserSecretQuestions" Type="Self.UserSecretQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecretQuestions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSecretQuestions">
+        <PropertyRef Name="SecretQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecretQuestions_Users">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="UserSecretQuestions" Type="Self.UserSecretQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSecretQuestions">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersInRoles_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersInRoles_Users">
+    <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="1" />
+    <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetails">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSurveys_Providers">
+    <End Role="Providers" Type="Self.Providers" Multiplicity="0..1" />
+    <End Role="UserSurveys" Type="Self.UserSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Providers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSurveys">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSurveys_Survey">
+    <End Role="Survey" Type="Self.Survey" Multiplicity="0..1" />
+    <End Role="UserSurveys" Type="Self.UserSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSurveys">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSurveys_UserSurveys">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="0..1" />
+    <End Role="UserSurveys" Type="Self.UserSurveys" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSurveys">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_isCINTExist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrganizationID" Type="nvarchar" Mode="In" />
+    <Parameter Name="PracticeID" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="usp_search_FlagGroupByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_IndicatorsByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_PathwayByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_PatientCategoryByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_SurveyByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_SurveyCategoryByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_SystemFlagByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="usp_search_ThirdPartyAppByFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartIndex" Type="int" Mode="In" />
+    <Parameter Name="EndIndex" Type="int" Mode="In" />
+    <Parameter Name="SearchString" Type="varchar(max)" Mode="In" />
+    <Parameter Name="IsActive" Type="bit" Mode="In" />
+    <Parameter Name="TotalRecords" Type="int" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="EPROMDBModelStoreContainer">
+    <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AvailableEprom" EntityType="Self.AvailableEprom" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CINTScore" EntityType="Self.CINTScore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ControlTypes" EntityType="Self.ControlTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefaultDays" EntityType="Self.DefaultDays" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FlagGroups" EntityType="Self.FlagGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Indicators" EntityType="Self.Indicators" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogManagement" EntityType="Self.LogManagement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pathways" EntityType="Self.Pathways" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientCategories" EntityType="Self.PatientCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientIndicators" EntityType="Self.PatientIndicators" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientProviders" EntityType="Self.PatientProviders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSuggestions" EntityType="Self.PatientSuggestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSurvey_Pathway_PatientSurveyStatus" EntityType="Self.PatientSurvey_Pathway_PatientSurveyStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSurveys" EntityType="Self.PatientSurveys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSurveys_Temp" EntityType="Self.PatientSurveys_Temp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientSurveyStatus" EntityType="Self.PatientSurveyStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Practice" EntityType="Self.Practice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PracticeRole" EntityType="Self.PracticeRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Properties" EntityType="Self.Properties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderOrganizations" EntityType="Self.ProviderOrganizations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderPatientThirdPartyApp" EntityType="Self.ProviderPatientThirdPartyApp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderPractice" EntityType="Self.ProviderPractice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderPracticeRole" EntityType="Self.ProviderPracticeRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderTerms" EntityType="Self.ProviderTerms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProviderTypes" EntityType="Self.ProviderTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salutation" EntityType="Self.Salutation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SecretQuestions" EntityType="Self.SecretQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyCategories" EntityType="Self.SurveyCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyTypes" EntityType="Self.SurveyTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemFlags" EntityType="Self.SystemFlags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Terms" EntityType="Self.Terms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThirdPartyApp" EntityType="Self.ThirdPartyApp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tokens" EntityType="Self.Tokens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProfile" EntityType="Self.UserProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserProperties" EntityType="Self.UserProperties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSecretQuestions" EntityType="Self.UserSecretQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSurveys" EntityType="Self.UserSurveys" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Self.webpages_OAuthMembership" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Organizat__Salut__04E4BC85" Association="Self.FK__Organizat__Salut__04E4BC85">
+      <End Role="Salutation" EntitySet="Salutation" />
+      <End Role="Organizations" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientPr__Organ__08B54D69" Association="Self.FK__PatientPr__Organ__08B54D69">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PatientProviders" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientPr__Pract__09A971A2" Association="Self.FK__PatientPr__Pract__09A971A2">
+      <End Role="Practice" EntitySet="Practice" />
+      <End Role="PatientProviders" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Organ__14270015" Association="Self.FK__PatientSu__Organ__14270015">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Organ__151B244E" Association="Self.FK__PatientSu__Organ__151B244E">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Organ__160F4887" Association="Self.FK__PatientSu__Organ__160F4887">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Patie__10566F31" Association="Self.FK__PatientSu__Patie__10566F31">
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+      <End Role="PatientSuggestions" EntitySet="PatientSuggestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Patie__6EE06CCD" Association="Self.FK__PatientSu__Patie__6EE06CCD">
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+      <End Role="PatientSurveyStatus" EntitySet="PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Pract__17036CC0" Association="Self.FK__PatientSu__Pract__17036CC0">
+      <End Role="Practice" EntitySet="Practice" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Pract__17F790F9" Association="Self.FK__PatientSu__Pract__17F790F9">
+      <End Role="Practice" EntitySet="Practice" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Pract__18EBB532" Association="Self.FK__PatientSu__Pract__18EBB532">
+      <End Role="Practice" EntitySet="Practice" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Provi__19DFD96B" Association="Self.FK__PatientSu__Provi__19DFD96B">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Provi__1AD3FDA4" Association="Self.FK__PatientSu__Provi__1AD3FDA4">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientSu__Provi__1BC821DD" Association="Self.FK__PatientSu__Provi__1BC821DD">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Practice__Saluta__2180FB33" Association="Self.FK__Practice__Saluta__2180FB33">
+      <End Role="Salutation" EntitySet="Salutation" />
+      <End Role="Practice" EntitySet="Practice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProviderP__Patie__29221CFB" Association="Self.FK__ProviderP__Patie__29221CFB">
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+      <End Role="ProviderPatientThirdPartyApp" EntitySet="ProviderPatientThirdPartyApp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Providers__Salut__30C33EC3" Association="Self.FK__Providers__Salut__30C33EC3">
+      <End Role="Salutation" EntitySet="Salutation" />
+      <End Role="Providers" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Survey__SurveySu__367C1819" Association="Self.FK__Survey__SurveySu__367C1819">
+      <End Role="SurveyCategories" EntitySet="SurveyCategories" />
+      <End Role="Survey" EntitySet="Survey" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThirdPart__Surve__3B40CD36" Association="Self.FK__ThirdPart__Surve__3B40CD36">
+      <End Role="SurveyCategories" EntitySet="SurveyCategories" />
+      <End Role="ThirdPartyApp" EntitySet="ThirdPartyApp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThirdPart__Surve__3C34F16F" Association="Self.FK__ThirdPart__Surve__3C34F16F">
+      <End Role="SurveyCategories" EntitySet="SurveyCategories" />
+      <End Role="ThirdPartyApp" EntitySet="ThirdPartyApp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Addresses_Countries" Association="Self.FK_Addresses_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Addresses" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Addresses_States" Association="Self.FK_Addresses_States">
+      <End Role="States" EntitySet="States" />
+      <End Role="Addresses" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Addresses_UserDetails" Association="Self.FK_Addresses_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Addresses" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacts_UserDetails" Association="Self.FK_Contacts_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Contacts" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_UserDetails" Association="Self.FK_Organizations_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Organizations" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientIndicators_Indicators" Association="Self.FK_PatientIndicators_Indicators">
+      <End Role="Indicators" EntitySet="Indicators" />
+      <End Role="PatientIndicators" EntitySet="PatientIndicators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientIndicators_Patients" Association="Self.FK_PatientIndicators_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientIndicators" EntitySet="PatientIndicators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientProviders_Patients" Association="Self.FK_PatientProviders_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientProviders" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientProviders_Providers" Association="Self.FK_PatientProviders_Providers">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="PatientProviders" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Addresses" Association="Self.FK_Patients_Addresses">
+      <End Role="Addresses" EntitySet="Addresses" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Contacts" Association="Self.FK_Patients_Contacts">
+      <End Role="Contacts" EntitySet="Contacts" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Users" Association="Self.FK_Patients_Users">
+      <End Role="PatientCategories" EntitySet="PatientCategories" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Users1" Association="Self.FK_Patients_Users1">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Patients" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways" Association="Self.FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways">
+      <End Role="Pathways" EntitySet="Pathways" />
+      <End Role="PatientSurvey_Pathway_PatientSurveyStatus" EntitySet="PatientSurvey_Pathway_PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys" Association="Self.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys">
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+      <End Role="PatientSurvey_Pathway_PatientSurveyStatus" EntitySet="PatientSurvey_Pathway_PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus" Association="Self.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus">
+      <End Role="PatientSurveyStatus" EntitySet="PatientSurveyStatus" />
+      <End Role="PatientSurvey_Pathway_PatientSurveyStatus" EntitySet="PatientSurvey_Pathway_PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Patients" Association="Self.FK_PatientSurveys_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Patients_Temp" Association="Self.FK_PatientSurveys_Patients_Temp">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Survey" Association="Self.FK_PatientSurveys_Survey">
+      <End Role="Survey" EntitySet="Survey" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Survey_Temp" Association="Self.FK_PatientSurveys_Survey_Temp">
+      <End Role="Survey" EntitySet="Survey" />
+      <End Role="PatientSurveys" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Practitioner_Practitioner" Association="Self.FK_Practitioner_Practitioner">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="Practice" EntitySet="Practice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Practitioner_UserDetails" Association="Self.FK_Practitioner_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Practice" EntitySet="Practice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractitionerRole_Organizations" Association="Self.FK_PractitionerRole_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="PracticeRole" EntitySet="PracticeRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractitionerRole_Practitioner" Association="Self.FK_PractitionerRole_Practitioner">
+      <End Role="Practice" EntitySet="Practice" />
+      <End Role="PracticeRole" EntitySet="PracticeRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractitionerRole_UserDetails" Association="Self.FK_PractitionerRole_UserDetails">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="PracticeRole" EntitySet="PracticeRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderOrganizations_Organizations" Association="Self.FK_ProviderOrganizations_Organizations">
+      <End Role="Organizations" EntitySet="Organizations" />
+      <End Role="ProviderOrganizations" EntitySet="ProviderOrganizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderOrganizations_Providers" Association="Self.FK_ProviderOrganizations_Providers">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="ProviderOrganizations" EntitySet="ProviderOrganizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPatientThirdPartyApp_Providers" Association="Self.FK_ProviderPatientThirdPartyApp_Providers">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="ProviderPatientThirdPartyApp" EntitySet="ProviderPatientThirdPartyApp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPatientThirdPartyApp_ThirdPartyApp" Association="Self.FK_ProviderPatientThirdPartyApp_ThirdPartyApp">
+      <End Role="ThirdPartyApp" EntitySet="ThirdPartyApp" />
+      <End Role="ProviderPatientThirdPartyApp" EntitySet="ProviderPatientThirdPartyApp" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPractice_ProviderOrganizations" Association="Self.FK_ProviderPractice_ProviderOrganizations">
+      <End Role="ProviderOrganizations" EntitySet="ProviderOrganizations" />
+      <End Role="ProviderPractice" EntitySet="ProviderPractice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPracticeRole_PracticeRole" Association="Self.FK_ProviderPracticeRole_PracticeRole">
+      <End Role="PracticeRole" EntitySet="PracticeRole" />
+      <End Role="ProviderPracticeRole" EntitySet="ProviderPracticeRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPracticeRole_ProviderPractice" Association="Self.FK_ProviderPracticeRole_ProviderPractice">
+      <End Role="ProviderPractice" EntitySet="ProviderPractice" />
+      <End Role="ProviderPracticeRole" EntitySet="ProviderPracticeRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPractitioner_Practitioner" Association="Self.FK_ProviderPractitioner_Practitioner">
+      <End Role="Practice" EntitySet="Practice" />
+      <End Role="ProviderPractice" EntitySet="ProviderPractice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPractitioner_Providers" Association="Self.FK_ProviderPractitioner_Providers">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="ProviderPractice" EntitySet="ProviderPractice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_Contacts" Association="Self.FK_Providers_Contacts">
+      <End Role="Contacts" EntitySet="Contacts" />
+      <End Role="Providers" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_ProviderTypes" Association="Self.FK_Providers_ProviderTypes">
+      <End Role="ProviderTypes" EntitySet="ProviderTypes" />
+      <End Role="Providers" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_Users" Association="Self.FK_Providers_Users">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Providers" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderTerms_Providers" Association="Self.FK_ProviderTerms_Providers">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="ProviderTerms" EntitySet="ProviderTerms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderTerms_Terms" Association="Self.FK_ProviderTerms_Terms">
+      <End Role="Terms" EntitySet="Terms" />
+      <End Role="ProviderTerms" EntitySet="ProviderTerms" />
+    </AssociationSet>
+    <AssociationSet Name="fk_RoleId" Association="Self.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_SurveyCategories" Association="Self.FK_Survey_SurveyCategories">
+      <End Role="SurveyCategories" EntitySet="SurveyCategories" />
+      <End Role="Survey" EntitySet="Survey" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_SurveyTypes" Association="Self.FK_Survey_SurveyTypes">
+      <End Role="SurveyTypes" EntitySet="SurveyTypes" />
+      <End Role="Survey" EntitySet="Survey" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_Users" Association="Self.FK_Survey_Users">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="Survey" EntitySet="Survey" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemFlags_FlagGroups" Association="Self.FK_SystemFlags_FlagGroups">
+      <End Role="FlagGroups" EntitySet="FlagGroups" />
+      <End Role="SystemFlags" EntitySet="SystemFlags" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserId" Association="Self.fk_UserId">
+      <End Role="UserProfile" EntitySet="UserProfile" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProperties_Properties" Association="Self.FK_UserProperties_Properties">
+      <End Role="Properties" EntitySet="Properties" />
+      <End Role="UserProperties" EntitySet="UserProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProperties_Users" Association="Self.FK_UserProperties_Users">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="UserProperties" EntitySet="UserProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecretQuestions_SecretQuestions" Association="Self.FK_UserSecretQuestions_SecretQuestions">
+      <End Role="SecretQuestions" EntitySet="SecretQuestions" />
+      <End Role="UserSecretQuestions" EntitySet="UserSecretQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecretQuestions_Users" Association="Self.FK_UserSecretQuestions_Users">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="UserSecretQuestions" EntitySet="UserSecretQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersInRoles_Roles" Association="Self.FK_UsersInRoles_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersInRoles_Users" Association="Self.FK_UsersInRoles_Users">
+      <End Role="UserDetails" EntitySet="UserDetails" />
+      <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSurveys_Providers" Association="Self.FK_UserSurveys_Providers">
+      <End Role="Providers" EntitySet="Providers" />
+      <End Role="UserSurveys" EntitySet="UserSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSurveys_Survey" Association="Self.FK_UserSurveys_Survey">
+      <End Role="Survey" EntitySet="Survey" />
+      <End Role="UserSurveys" EntitySet="UserSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSurveys_UserSurveys" Association="Self.FK_UserSurveys_UserSurveys">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="UserSurveys" EntitySet="UserSurveys" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

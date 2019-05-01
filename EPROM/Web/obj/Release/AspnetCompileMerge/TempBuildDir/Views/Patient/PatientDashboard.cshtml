@@ -1,0 +1,133 @@
+﻿@{
+    Layout = "~/Views/Shared/PatientLayout.cshtml";
+    ViewBag.Title = "My Dashboard Filter";
+    ViewBag.PageTitle = "My Dashboard Filter";
+}
+
+<section ng-app="app" ng-controller="DashboardController">
+    <div class="row">
+        <div ng-if="Dashboard.IsLoading" class="loading-box">
+        </div>
+        <div class="col-md-12">
+            <div class="sub-group-block mb40">
+                <md-content>
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="ePROMs" ng-click="Dashboard.Methods.setTabValue('1')">
+                            <md-content class="md-padding">
+                                <div class="tab-pane" id="tab1">
+                                    <div class="table-responsive patient-table" ng-show="Dashboard.Item.surveyList.length > 0">
+                                        <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                                            <thead>
+                                                <tr>
+                                                    <th> ePROM </th>
+                                                    <th> Provider</th>
+                                                    <th> Organization</th>
+                                                    <th> Practice</th>
+                                                    <th> Score</th>
+                                                    <th> Completed Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX" ng-cloak="true" ng-repeat="item in Dashboard.Item.surveyList">
+                                                    <td style="max-width: 270px;">
+                                                        <md-radio-group ng-model="Dashboard.Item.PatientSurveyID" ng-change="Dashboard.Methods.CollectIdFromSelectedEprom(item.ID,item.SurveyID,item.ProviderID, item.OrganizationID, item.PracticeID, true)">
+                                                            <md-radio-button ng-value=item.ID+'_'+item.PatientSurveyStatusID class="md-primary eprom-review">{{item.ExternalTitle}}</md-radio-button>
+                                                        </md-radio-group>
+                                                    </td>
+                                                    <td>
+                                                        {{item.ProviderName}}
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.OrganizationName}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.PracticeName}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.Score}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.CreatedDate | date : "d/M/yyyy" }}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </md-content>
+                        </md-tab>
+
+                        <md-tab label="Archived ePROMs" ng-click="Dashboard.Methods.setTabValue('2')">
+                            <md-content class="md-padding">
+                                <div class="tab-pane" id="tab2">
+                                    <div class="table-responsive patient-table" ng-show="Dashboard.Item.surveyList.length > 0">
+                                        <table class="table table-striped table-bordered table-hover table-checkable order-column sample_2">
+                                            <thead>
+                                                <tr>
+                                                    <th> ePROM </th>
+                                                    <th> Provider</th>
+                                                    <th> Organization</th>
+                                                    <th> Practice</th>
+                                                    <th> Score</th>
+                                                    <th> Completed Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX" ng-cloak="true" ng-repeat="item in Dashboard.Item.surveyList">
+                                                    <td style="max-width: 270px;">
+                                                        <md-radio-group ng-model="Dashboard.Item.PatientSurveyID" ng-change="Dashboard.Methods.CollectIdFromSelectedEprom(item.ID,item.SurveyID,item.ProviderID, item.OrganizationID, item.PracticeID, true)">
+                                                            <md-radio-button ng-value=item.ID+'_'+item.PatientSurveyStatusID class="md-primary eprom-review">{{item.ExternalTitle}}</md-radio-button>
+                                                        </md-radio-group>
+                                                    </td>
+                                                    <td>
+                                                        {{item.ProviderName}}
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.OrganizationName}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.PracticeName}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.Score}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{item.CreatedDate | date : "d/M/yyyy" }}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+        </div>
+    </div>
+    <div class="row mb15">
+        <div class="col-xs-12 col-sm-6">
+            <md-content class="from-date">
+                <div class="pull-left">
+                    <label class="eprom-date-label">From Date :</label>
+                </div>
+                <div class="pull-left">
+                    <md-datepicker class="eprom-datepicker" ng-model="Dashboard.FromDate" md-placeholder="From Date" md-open-on-focus></md-datepicker>
+                </div>
+            </md-content>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text-center">
+            <button type="button" class="btn custom-btn mt15 mb40" ng-click="Dashboard.Methods.RedirecttoMyPatientDashboard()">Show Dashboard</button>
+            <button type="button" class="btn custom-btn mt15 mb40 ml20" onclick="window.location.href = '/Patient/PatientEprom'">My ePROMs</button>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/dashboard-js")
+}

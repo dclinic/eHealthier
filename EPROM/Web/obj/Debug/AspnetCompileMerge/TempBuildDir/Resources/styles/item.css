@@ -1,0 +1,21 @@
+﻿.filter-wrapper > div:nth-last-of-type(2) { margin-top: 5px; }
+
+.variant-block:first-child, .filter-wrapper > div:last-of-type { margin-top: 0px; }
+
+.variant-block { margin-top: 10px; border: 1px solid #E1E1E1; position: relative; background-color: #fff; }
+
+.variant-link { background-color: #EFEFEF; cursor: pointer; display: block; padding: 7px 5px; overflow: hidden; position: relative; }
+
+.variant-block .clear { color: #777; position: absolute; right: 20px; top: 12px; font-size: 11px; margin: 0 10px 0 5px; text-transform: uppercase; cursor: pointer; }
+
+.variant-link .variant-title { color: #404040; float: left; font-size: 14px; font-weight: bold; max-width: 148px; overflow: hidden; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+
+.variant-link .fa fa-minus-sign { color: #404040; float: right; font-size: 18px; }
+
+.variant-list li > label { cursor: pointer; display: block; line-height: 25px; padding: 0 5px; overflow: hidden; }
+
+    .variant-list li > label > .chkbtn { float: left; margin: 5px 5px 0 0; }
+
+    .variant-list li > label .title { font-weight: normal; color: #404040; font-size: 12px; vertical-align: top; }
+
+    .variant-list li > label .count { font-weight: normal; color: #606060; font-size: 11px; vertical-align: top; margin-left: 4px; }

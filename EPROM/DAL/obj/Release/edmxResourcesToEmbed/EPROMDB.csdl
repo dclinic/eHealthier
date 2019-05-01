@@ -1,0 +1,2157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EPROMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="EPROMDBEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="usp_search_FlagGroupByFilter" ReturnType="Collection(EPROMDBModel.usp_search_FlagGroupByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_search_SystemFlagByFilter" ReturnType="Collection(EPROMDBModel.usp_search_SystemFlagByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(EPROMDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(EPROMDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="usp_search_SurveyCategoryByFilter" ReturnType="Collection(EPROMDBModel.usp_search_SurveyCategoryByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_search_SurveyByFilter" ReturnType="Collection(EPROMDBModel.usp_search_SurveyByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_search_PatientCategoryByFilter" ReturnType="Collection(EPROMDBModel.usp_search_PatientCategoryByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_search_IndicatorsByFilter" ReturnType="Collection(EPROMDBModel.usp_search_IndicatorsByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_InsertUserData" />
+    <EntitySet Name="Addresses" EntityType="EPROMDBModel.Address" />
+    <EntitySet Name="Contacts" EntityType="EPROMDBModel.Contact" />
+    <EntitySet Name="ControlTypes" EntityType="EPROMDBModel.ControlType" />
+    <EntitySet Name="Countries" EntityType="EPROMDBModel.Country" />
+    <EntitySet Name="FlagGroups" EntityType="EPROMDBModel.FlagGroup" />
+    <EntitySet Name="Indicators" EntityType="EPROMDBModel.Indicator" />
+    <EntitySet Name="Organizations" EntityType="EPROMDBModel.Organization" />
+    <EntitySet Name="PatientCategories" EntityType="EPROMDBModel.PatientCategory" />
+    <EntitySet Name="PatientIndicators" EntityType="EPROMDBModel.PatientIndicator" />
+    <EntitySet Name="PatientProviders" EntityType="EPROMDBModel.PatientProvider" />
+    <EntitySet Name="Patients" EntityType="EPROMDBModel.Patient" />
+    <EntitySet Name="PatientSuggestions" EntityType="EPROMDBModel.PatientSuggestion" />
+    <EntitySet Name="PatientSurveys" EntityType="EPROMDBModel.PatientSurvey" />
+    <EntitySet Name="PatientSurveyStatus" EntityType="EPROMDBModel.PatientSurveyStatu" />
+    <EntitySet Name="Practices" EntityType="EPROMDBModel.Practice" />
+    <EntitySet Name="PracticeRoles" EntityType="EPROMDBModel.PracticeRole" />
+    <EntitySet Name="Properties" EntityType="EPROMDBModel.Property" />
+    <EntitySet Name="ProviderOrganizations" EntityType="EPROMDBModel.ProviderOrganization" />
+    <EntitySet Name="ProviderPatientThirdPartyApps" EntityType="EPROMDBModel.ProviderPatientThirdPartyApp" />
+    <EntitySet Name="ProviderPractices" EntityType="EPROMDBModel.ProviderPractice" />
+    <EntitySet Name="ProviderPracticeRoles" EntityType="EPROMDBModel.ProviderPracticeRole" />
+    <EntitySet Name="Providers" EntityType="EPROMDBModel.Provider" />
+    <EntitySet Name="ProviderTerms" EntityType="EPROMDBModel.ProviderTerm" />
+    <EntitySet Name="ProviderTypes" EntityType="EPROMDBModel.ProviderType" />
+    <EntitySet Name="Roles" EntityType="EPROMDBModel.Role" />
+    <EntitySet Name="Salutations" EntityType="EPROMDBModel.Salutation" />
+    <EntitySet Name="SecretQuestions" EntityType="EPROMDBModel.SecretQuestion" />
+    <EntitySet Name="States" EntityType="EPROMDBModel.State" />
+    <EntitySet Name="Surveys" EntityType="EPROMDBModel.Survey" />
+    <EntitySet Name="SurveyCategories" EntityType="EPROMDBModel.SurveyCategory" />
+    <EntitySet Name="SurveyTypes" EntityType="EPROMDBModel.SurveyType" />
+    <EntitySet Name="SystemFlags" EntityType="EPROMDBModel.SystemFlag" />
+    <EntitySet Name="Terms" EntityType="EPROMDBModel.Term" />
+    <EntitySet Name="ThirdPartyApps" EntityType="EPROMDBModel.ThirdPartyApp" />
+    <EntitySet Name="Tokens" EntityType="EPROMDBModel.Token" />
+    <EntitySet Name="UserDetails" EntityType="EPROMDBModel.UserDetail" />
+    <EntitySet Name="UserProfiles" EntityType="EPROMDBModel.UserProfile" />
+    <EntitySet Name="UserProperties" EntityType="EPROMDBModel.UserProperty" />
+    <EntitySet Name="UserSecretQuestions" EntityType="EPROMDBModel.UserSecretQuestion" />
+    <EntitySet Name="UsersInRoles" EntityType="EPROMDBModel.UsersInRole" />
+    <EntitySet Name="UserSurveys" EntityType="EPROMDBModel.UserSurvey" />
+    <EntitySet Name="webpages_Membership" EntityType="EPROMDBModel.webpages_Membership" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="EPROMDBModel.webpages_OAuthMembership" />
+    <EntitySet Name="webpages_Roles" EntityType="EPROMDBModel.webpages_Roles" />
+    <AssociationSet Name="FK_Addresses_Countries" Association="EPROMDBModel.FK_Addresses_Countries">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Addresses_States" Association="EPROMDBModel.FK_Addresses_States">
+      <End Role="State" EntitySet="States" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Addresses_UserDetails" Association="EPROMDBModel.FK_Addresses_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Addresses" Association="EPROMDBModel.FK_Patients_Addresses">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacts_UserDetails" Association="EPROMDBModel.FK_Contacts_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Contacts" Association="EPROMDBModel.FK_Patients_Contacts">
+      <End Role="Contact" EntitySet="Contacts" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_Contacts" Association="EPROMDBModel.FK_Providers_Contacts">
+      <End Role="Contact" EntitySet="Contacts" />
+      <End Role="Provider" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemFlags_FlagGroups" Association="EPROMDBModel.FK_SystemFlags_FlagGroups">
+      <End Role="FlagGroup" EntitySet="FlagGroups" />
+      <End Role="SystemFlag" EntitySet="SystemFlags" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientIndicators_Indicators" Association="EPROMDBModel.FK_PatientIndicators_Indicators">
+      <End Role="Indicator" EntitySet="Indicators" />
+      <End Role="PatientIndicator" EntitySet="PatientIndicators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_Salutation" Association="EPROMDBModel.FK_Organizations_Salutation">
+      <End Role="Salutation" EntitySet="Salutations" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizations_UserDetails" Association="EPROMDBModel.FK_Organizations_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Organization" EntitySet="Organizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientProviders_Organizations" Association="EPROMDBModel.FK_PatientProviders_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="PatientProvider" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Organizations" Association="EPROMDBModel.FK_PatientSurveys_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Practitioner_Practitioner" Association="EPROMDBModel.FK_Practitioner_Practitioner">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="Practice" EntitySet="Practices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractitionerRole_Organizations" Association="EPROMDBModel.FK_PractitionerRole_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="PracticeRole" EntitySet="PracticeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderOrganizations_Organizations" Association="EPROMDBModel.FK_ProviderOrganizations_Organizations">
+      <End Role="Organization" EntitySet="Organizations" />
+      <End Role="ProviderOrganization" EntitySet="ProviderOrganizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Users" Association="EPROMDBModel.FK_Patients_Users">
+      <End Role="PatientCategory" EntitySet="PatientCategories" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientIndicators_Patients" Association="EPROMDBModel.FK_PatientIndicators_Patients">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PatientIndicator" EntitySet="PatientIndicators" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientProviders_Patients" Association="EPROMDBModel.FK_PatientProviders_Patients">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PatientProvider" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientProviders_Practice" Association="EPROMDBModel.FK_PatientProviders_Practice">
+      <End Role="Practice" EntitySet="Practices" />
+      <End Role="PatientProvider" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientProviders_Providers" Association="EPROMDBModel.FK_PatientProviders_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="PatientProvider" EntitySet="PatientProviders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patients_Users1" Association="EPROMDBModel.FK_Patients_Users1">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Patients" Association="EPROMDBModel.FK_PatientSurveys_Patients">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSurveys_UserSurveys" Association="EPROMDBModel.FK_UserSurveys_UserSurveys">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="UserSurvey" EntitySet="UserSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSuggestions_PatientSurveys" Association="EPROMDBModel.FK_PatientSuggestions_PatientSurveys">
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+      <End Role="PatientSuggestion" EntitySet="PatientSuggestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Practice" Association="EPROMDBModel.FK_PatientSurveys_Practice">
+      <End Role="Practice" EntitySet="Practices" />
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Providers" Association="EPROMDBModel.FK_PatientSurveys_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveys_Survey" Association="EPROMDBModel.FK_PatientSurveys_Survey">
+      <End Role="Survey" EntitySet="Surveys" />
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurveyStatus_PatientSurveys" Association="EPROMDBModel.FK_PatientSurveyStatus_PatientSurveys">
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+      <End Role="PatientSurveyStatu" EntitySet="PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPatientThirdPartyApp_PatientSurveys" Association="EPROMDBModel.FK_ProviderPatientThirdPartyApp_PatientSurveys">
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+      <End Role="ProviderPatientThirdPartyApp" EntitySet="ProviderPatientThirdPartyApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Practice_Salutation" Association="EPROMDBModel.FK_Practice_Salutation">
+      <End Role="Salutation" EntitySet="Salutations" />
+      <End Role="Practice" EntitySet="Practices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Practitioner_UserDetails" Association="EPROMDBModel.FK_Practitioner_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Practice" EntitySet="Practices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractitionerRole_Practitioner" Association="EPROMDBModel.FK_PractitionerRole_Practitioner">
+      <End Role="Practice" EntitySet="Practices" />
+      <End Role="PracticeRole" EntitySet="PracticeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPractitioner_Practitioner" Association="EPROMDBModel.FK_ProviderPractitioner_Practitioner">
+      <End Role="Practice" EntitySet="Practices" />
+      <End Role="ProviderPractice" EntitySet="ProviderPractices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PractitionerRole_UserDetails" Association="EPROMDBModel.FK_PractitionerRole_UserDetails">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="PracticeRole" EntitySet="PracticeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPracticeRole_PracticeRole" Association="EPROMDBModel.FK_ProviderPracticeRole_PracticeRole">
+      <End Role="PracticeRole" EntitySet="PracticeRoles" />
+      <End Role="ProviderPracticeRole" EntitySet="ProviderPracticeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProperties_Properties" Association="EPROMDBModel.FK_UserProperties_Properties">
+      <End Role="Property" EntitySet="Properties" />
+      <End Role="UserProperty" EntitySet="UserProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderOrganizations_Providers" Association="EPROMDBModel.FK_ProviderOrganizations_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="ProviderOrganization" EntitySet="ProviderOrganizations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPractice_ProviderOrganizations" Association="EPROMDBModel.FK_ProviderPractice_ProviderOrganizations">
+      <End Role="ProviderOrganization" EntitySet="ProviderOrganizations" />
+      <End Role="ProviderPractice" EntitySet="ProviderPractices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPatientThirdPartyApp_Providers" Association="EPROMDBModel.FK_ProviderPatientThirdPartyApp_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="ProviderPatientThirdPartyApp" EntitySet="ProviderPatientThirdPartyApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPatientThirdPartyApp_ThirdPartyApp" Association="EPROMDBModel.FK_ProviderPatientThirdPartyApp_ThirdPartyApp">
+      <End Role="ThirdPartyApp" EntitySet="ThirdPartyApps" />
+      <End Role="ProviderPatientThirdPartyApp" EntitySet="ProviderPatientThirdPartyApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPracticeRole_ProviderPractice" Association="EPROMDBModel.FK_ProviderPracticeRole_ProviderPractice">
+      <End Role="ProviderPractice" EntitySet="ProviderPractices" />
+      <End Role="ProviderPracticeRole" EntitySet="ProviderPracticeRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderPractitioner_Providers" Association="EPROMDBModel.FK_ProviderPractitioner_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="ProviderPractice" EntitySet="ProviderPractices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_ProviderTypes" Association="EPROMDBModel.FK_Providers_ProviderTypes">
+      <End Role="ProviderType" EntitySet="ProviderTypes" />
+      <End Role="Provider" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_Salutation" Association="EPROMDBModel.FK_Providers_Salutation">
+      <End Role="Salutation" EntitySet="Salutations" />
+      <End Role="Provider" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Providers_Users" Association="EPROMDBModel.FK_Providers_Users">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Provider" EntitySet="Providers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderTerms_Providers" Association="EPROMDBModel.FK_ProviderTerms_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="ProviderTerm" EntitySet="ProviderTerms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSurveys_Providers" Association="EPROMDBModel.FK_UserSurveys_Providers">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="UserSurvey" EntitySet="UserSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProviderTerms_Terms" Association="EPROMDBModel.FK_ProviderTerms_Terms">
+      <End Role="Term" EntitySet="Terms" />
+      <End Role="ProviderTerm" EntitySet="ProviderTerms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersInRoles_Roles" Association="EPROMDBModel.FK_UsersInRoles_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UsersInRole" EntitySet="UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecretQuestions_SecretQuestions" Association="EPROMDBModel.FK_UserSecretQuestions_SecretQuestions">
+      <End Role="SecretQuestion" EntitySet="SecretQuestions" />
+      <End Role="UserSecretQuestion" EntitySet="UserSecretQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_SurveyCategories" Association="EPROMDBModel.FK_Survey_SurveyCategories">
+      <End Role="SurveyCategory" EntitySet="SurveyCategories" />
+      <End Role="Survey" EntitySet="Surveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_SurveyCategories1" Association="EPROMDBModel.FK_Survey_SurveyCategories1">
+      <End Role="SurveyCategory" EntitySet="SurveyCategories" />
+      <End Role="Survey" EntitySet="Surveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_SurveyTypes" Association="EPROMDBModel.FK_Survey_SurveyTypes">
+      <End Role="SurveyType" EntitySet="SurveyTypes" />
+      <End Role="Survey" EntitySet="Surveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Survey_Users" Association="EPROMDBModel.FK_Survey_Users">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Survey" EntitySet="Surveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSurveys_Survey" Association="EPROMDBModel.FK_UserSurveys_Survey">
+      <End Role="Survey" EntitySet="Surveys" />
+      <End Role="UserSurvey" EntitySet="UserSurveys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThirdPartyApp_SurveyCategories" Association="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories">
+      <End Role="SurveyCategory" EntitySet="SurveyCategories" />
+      <End Role="ThirdPartyApp" EntitySet="ThirdPartyApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThirdPartyApp_SurveyCategories1" Association="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories1">
+      <End Role="SurveyCategory" EntitySet="SurveyCategories" />
+      <End Role="ThirdPartyApp" EntitySet="ThirdPartyApps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserProperties_Users" Association="EPROMDBModel.FK_UserProperties_Users">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="UserProperty" EntitySet="UserProperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserSecretQuestions_Users" Association="EPROMDBModel.FK_UserSecretQuestions_Users">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="UserSecretQuestion" EntitySet="UserSecretQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsersInRoles_Users" Association="EPROMDBModel.FK_UsersInRoles_Users">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="UsersInRole" EntitySet="UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="webpages_UsersInRoles" Association="EPROMDBModel.webpages_UsersInRoles">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="UserProfile" EntitySet="UserProfiles" />
+    </AssociationSet>
+    <FunctionImport Name="usp_search_ThirdPartyAppByFilter" ReturnType="Collection(EPROMDBModel.usp_search_ThirdPartyAppByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Pathways" EntityType="EPROMDBModel.Pathway" />
+    <EntitySet Name="PatientSurvey_Pathway_PatientSurveyStatus" EntityType="EPROMDBModel.PatientSurvey_Pathway_PatientSurveyStatus" />
+    <AssociationSet Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways" Association="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways">
+      <End Role="Pathway" EntitySet="Pathways" />
+      <End Role="PatientSurvey_Pathway_PatientSurveyStatus" EntitySet="PatientSurvey_Pathway_PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys" Association="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys">
+      <End Role="PatientSurvey" EntitySet="PatientSurveys" />
+      <End Role="PatientSurvey_Pathway_PatientSurveyStatus" EntitySet="PatientSurvey_Pathway_PatientSurveyStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus" Association="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus">
+      <End Role="PatientSurveyStatu" EntitySet="PatientSurveyStatus" />
+      <End Role="PatientSurvey_Pathway_PatientSurveyStatus" EntitySet="PatientSurvey_Pathway_PatientSurveyStatus" />
+    </AssociationSet>
+    <FunctionImport Name="usp_search_PathwayByFilter" ReturnType="Collection(EPROMDBModel.usp_search_PathwayByFilter_Result)">
+      <Parameter Name="StartIndex" Mode="In" Type="Int32" />
+      <Parameter Name="EndIndex" Mode="In" Type="Int32" />
+      <Parameter Name="SearchString" Mode="In" Type="String" />
+      <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+      <Parameter Name="TotalRecords" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="AvailableEproms" EntityType="EPROMDBModel.AvailableEprom" />
+    <EntitySet Name="DefaultDays" EntityType="EPROMDBModel.DefaultDay" />
+    <EntitySet Name="PatientSurveys_Temp" EntityType="EPROMDBModel.PatientSurveys_Temp" />
+    <EntitySet Name="LogManagements" EntityType="EPROMDBModel.LogManagement" />
+    <FunctionImport Name="sp_isCINTExist" ReturnType="Collection(EPROMDBModel.sp_isCINTExist_Result)">
+      <Parameter Name="UserID" Mode="In" Type="String" />
+      <Parameter Name="OrganizationID" Mode="In" Type="String" />
+      <Parameter Name="PracticeID" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CINTScores" EntityType="EPROMDBModel.CINTScore" />
+  </EntityContainer>
+  <ComplexType Name="usp_search_FlagGroupByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="FlagGroupName" Nullable="false" MaxLength="500" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="2000" />
+    <Property Type="Int32" Name="DisplayOrder" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDelete" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="usp_search_SystemFlagByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="SystemFlagName" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="FlagGroupID" Nullable="false" />
+    <Property Type="String" Name="DefaultValue" Nullable="true" />
+    <Property Type="String" Name="Value" Nullable="true" />
+    <Property Type="Int32" Name="DisplayOrder" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="usp_search_SurveyCategoryByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int16" Name="ID" Nullable="false" />
+    <Property Type="String" Name="SurvayCategoryName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Int16" Name="ParentSurveyCategoryID" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="true" />
+    <Property Type="Guid" Name="ModifiedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_search_SurveyByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ExternalTitle" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="ExternalID" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="CollectorID" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="URL" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="ContentCode" Nullable="true" />
+    <Property Type="Guid" Name="CreatedByUserID" Nullable="true" />
+    <Property Type="Int16" Name="SurveyCategoryID" Nullable="true" />
+    <Property Type="Int16" Name="SurveyTypeID" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Language" Nullable="true" MaxLength="256" />
+    <Property Type="Boolean" Name="IsPublish" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="true" />
+    <Property Type="Guid" Name="ModifiedBy" Nullable="true" />
+    <Property Type="String" Name="SurvayCategoryName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="SurvayTypeName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="usp_search_PatientCategoryByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int16" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PatientCategoryName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="true" />
+    <Property Type="Guid" Name="ModifiedBy" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_search_IndicatorsByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int16" Name="ID" Nullable="false" />
+    <Property Type="String" Name="IndicatorName" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Line1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Line2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Suburb" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CountryID" Type="Int16" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="DateTime" Precision="3" />
+    <Property Name="UserId" Type="Guid" />
+    <NavigationProperty Name="Country" Relationship="EPROMDBModel.FK_Addresses_Countries" FromRole="Address" ToRole="Country" />
+    <NavigationProperty Name="State" Relationship="EPROMDBModel.FK_Addresses_States" FromRole="Address" ToRole="State" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Addresses_UserDetails" FromRole="Address" ToRole="UserDetail" />
+    <NavigationProperty Name="Patients" Relationship="EPROMDBModel.FK_Patients_Addresses" FromRole="Address" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile2" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FAX" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Pager" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Emergency" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailBusiness" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailPersonal" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Skype" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LinkedIN" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OtherFieldsJSON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <Property Name="UserId" Type="Guid" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Contacts_UserDetails" FromRole="Contact" ToRole="UserDetail" />
+    <NavigationProperty Name="Patients" Relationship="EPROMDBModel.FK_Patients_Contacts" FromRole="Contact" ToRole="Patient" />
+    <NavigationProperty Name="Providers" Relationship="EPROMDBModel.FK_Providers_Contacts" FromRole="Contact" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="ControlType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="ControlTypeName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="ISOCode" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="ISOCode3" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="CountryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DialCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Population" Type="Int32" />
+    <Property Name="Area" Type="Decimal" Precision="18" Scale="3" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Addresses" Relationship="EPROMDBModel.FK_Addresses_Countries" FromRole="Country" ToRole="Address" />
+  </EntityType>
+  <EntityType Name="FlagGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FlagGroupName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SystemFlags" Relationship="EPROMDBModel.FK_SystemFlags_FlagGroups" FromRole="FlagGroup" ToRole="SystemFlag" />
+  </EntityType>
+  <EntityType Name="Indicator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IndicatorName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PatientIndicators" Relationship="EPROMDBModel.FK_PatientIndicators_Indicators" FromRole="Indicator" ToRole="PatientIndicator" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="SalutationID" Type="Int32" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Salutation" Relationship="EPROMDBModel.FK_Organizations_Salutation" FromRole="Organization" ToRole="Salutation" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Organizations_UserDetails" FromRole="Organization" ToRole="UserDetail" />
+    <NavigationProperty Name="PatientProviders" Relationship="EPROMDBModel.FK_PatientProviders_Organizations" FromRole="Organization" ToRole="PatientProvider" />
+    <NavigationProperty Name="PatientSurveys" Relationship="EPROMDBModel.FK_PatientSurveys_Organizations" FromRole="Organization" ToRole="PatientSurvey" />
+    <NavigationProperty Name="Practices" Relationship="EPROMDBModel.FK_Practitioner_Practitioner" FromRole="Organization" ToRole="Practice" />
+    <NavigationProperty Name="PracticeRoles" Relationship="EPROMDBModel.FK_PractitionerRole_Organizations" FromRole="Organization" ToRole="PracticeRole" />
+    <NavigationProperty Name="ProviderOrganizations" Relationship="EPROMDBModel.FK_ProviderOrganizations_Organizations" FromRole="Organization" ToRole="ProviderOrganization" />
+  </EntityType>
+  <EntityType Name="PatientCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientCategoryName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Patients" Relationship="EPROMDBModel.FK_Patients_Users" FromRole="PatientCategory" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="PatientIndicator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientID" Type="Guid" Nullable="false" />
+    <Property Name="IndicatorID" Type="Int16" Nullable="false" />
+    <Property Name="Frequency" Type="Int32" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Indicator" Relationship="EPROMDBModel.FK_PatientIndicators_Indicators" FromRole="PatientIndicator" ToRole="Indicator" />
+    <NavigationProperty Name="Patient" Relationship="EPROMDBModel.FK_PatientIndicators_Patients" FromRole="PatientIndicator" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="PatientProvider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ProviderID" Type="Guid" Nullable="false" />
+    <Property Name="PatientID" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationID" Type="Guid" />
+    <Property Name="PracticeID" Type="Guid" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Organization" Relationship="EPROMDBModel.FK_PatientProviders_Organizations" FromRole="PatientProvider" ToRole="Organization" />
+    <NavigationProperty Name="Patient" Relationship="EPROMDBModel.FK_PatientProviders_Patients" FromRole="PatientProvider" ToRole="Patient" />
+    <NavigationProperty Name="Practice" Relationship="EPROMDBModel.FK_PatientProviders_Practice" FromRole="PatientProvider" ToRole="Practice" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_PatientProviders_Providers" FromRole="PatientProvider" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="IHINumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MedicareNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactID" Type="Int32" />
+    <Property Name="PatientCategoryID" Type="Int16" />
+    <Property Name="AddressID" Type="Int64" />
+    <Property Name="Salutation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Address" Relationship="EPROMDBModel.FK_Patients_Addresses" FromRole="Patient" ToRole="Address" />
+    <NavigationProperty Name="Contact" Relationship="EPROMDBModel.FK_Patients_Contacts" FromRole="Patient" ToRole="Contact" />
+    <NavigationProperty Name="PatientCategory" Relationship="EPROMDBModel.FK_Patients_Users" FromRole="Patient" ToRole="PatientCategory" />
+    <NavigationProperty Name="PatientIndicators" Relationship="EPROMDBModel.FK_PatientIndicators_Patients" FromRole="Patient" ToRole="PatientIndicator" />
+    <NavigationProperty Name="PatientProviders" Relationship="EPROMDBModel.FK_PatientProviders_Patients" FromRole="Patient" ToRole="PatientProvider" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Patients_Users1" FromRole="Patient" ToRole="UserDetail" />
+    <NavigationProperty Name="PatientSurveys" Relationship="EPROMDBModel.FK_PatientSurveys_Patients" FromRole="Patient" ToRole="PatientSurvey" />
+    <NavigationProperty Name="UserSurveys" Relationship="EPROMDBModel.FK_UserSurveys_UserSurveys" FromRole="Patient" ToRole="UserSurvey" />
+  </EntityType>
+  <EntityType Name="PatientSuggestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Suggestions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PatientSurveyID" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="PatientSurvey" Relationship="EPROMDBModel.FK_PatientSuggestions_PatientSurveys" FromRole="PatientSuggestion" ToRole="PatientSurvey" />
+  </EntityType>
+  <EntityType Name="PatientSurvey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PatientID" Type="Guid" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="OrganizationID" Type="Guid" />
+    <Property Name="PracticeID" Type="Guid" />
+    <Property Name="ProviderID" Type="Guid" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Organization" Relationship="EPROMDBModel.FK_PatientSurveys_Organizations" FromRole="PatientSurvey" ToRole="Organization" />
+    <NavigationProperty Name="Patient" Relationship="EPROMDBModel.FK_PatientSurveys_Patients" FromRole="PatientSurvey" ToRole="Patient" />
+    <NavigationProperty Name="PatientSuggestions" Relationship="EPROMDBModel.FK_PatientSuggestions_PatientSurveys" FromRole="PatientSurvey" ToRole="PatientSuggestion" />
+    <NavigationProperty Name="Practice" Relationship="EPROMDBModel.FK_PatientSurveys_Practice" FromRole="PatientSurvey" ToRole="Practice" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_PatientSurveys_Providers" FromRole="PatientSurvey" ToRole="Provider" />
+    <NavigationProperty Name="Survey" Relationship="EPROMDBModel.FK_PatientSurveys_Survey" FromRole="PatientSurvey" ToRole="Survey" />
+    <NavigationProperty Name="PatientSurveyStatus" Relationship="EPROMDBModel.FK_PatientSurveyStatus_PatientSurveys" FromRole="PatientSurvey" ToRole="PatientSurveyStatu" />
+    <NavigationProperty Name="ProviderPatientThirdPartyApps" Relationship="EPROMDBModel.FK_ProviderPatientThirdPartyApp_PatientSurveys" FromRole="PatientSurvey" ToRole="ProviderPatientThirdPartyApp" />
+    <NavigationProperty Name="PatientSurvey_Pathway_PatientSurveyStatus" Relationship="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys" FromRole="PatientSurvey" ToRole="PatientSurvey_Pathway_PatientSurveyStatus" />
+    <Property Name="IsSend" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PatientSurveyStatu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PatientSurveyID" Type="Guid" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Score" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PatientSurvey" Relationship="EPROMDBModel.FK_PatientSurveyStatus_PatientSurveys" FromRole="PatientSurveyStatu" ToRole="PatientSurvey" />
+    <NavigationProperty Name="PatientSurvey_Pathway_PatientSurveyStatus" Relationship="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus" FromRole="PatientSurveyStatu" ToRole="PatientSurvey_Pathway_PatientSurveyStatus" />
+  </EntityType>
+  <EntityType Name="Practice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PracticeName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Guid" />
+    <Property Name="OrganizationId" Type="Guid" />
+    <Property Name="SalutationID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Organization" Relationship="EPROMDBModel.FK_Practitioner_Practitioner" FromRole="Practice" ToRole="Organization" />
+    <NavigationProperty Name="PatientProviders" Relationship="EPROMDBModel.FK_PatientProviders_Practice" FromRole="Practice" ToRole="PatientProvider" />
+    <NavigationProperty Name="PatientSurveys" Relationship="EPROMDBModel.FK_PatientSurveys_Practice" FromRole="Practice" ToRole="PatientSurvey" />
+    <NavigationProperty Name="Salutation" Relationship="EPROMDBModel.FK_Practice_Salutation" FromRole="Practice" ToRole="Salutation" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Practitioner_UserDetails" FromRole="Practice" ToRole="UserDetail" />
+    <NavigationProperty Name="PracticeRoles" Relationship="EPROMDBModel.FK_PractitionerRole_Practitioner" FromRole="Practice" ToRole="PracticeRole" />
+    <NavigationProperty Name="ProviderPractices" Relationship="EPROMDBModel.FK_ProviderPractitioner_Practitioner" FromRole="Practice" ToRole="ProviderPractice" />
+  </EntityType>
+  <EntityType Name="PracticeRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PracticeId" Type="Guid" />
+    <Property Name="OrganizationId" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <NavigationProperty Name="Organization" Relationship="EPROMDBModel.FK_PractitionerRole_Organizations" FromRole="PracticeRole" ToRole="Organization" />
+    <NavigationProperty Name="Practice" Relationship="EPROMDBModel.FK_PractitionerRole_Practitioner" FromRole="PracticeRole" ToRole="Practice" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_PractitionerRole_UserDetails" FromRole="PracticeRole" ToRole="UserDetail" />
+    <NavigationProperty Name="ProviderPracticeRoles" Relationship="EPROMDBModel.FK_ProviderPracticeRole_PracticeRole" FromRole="PracticeRole" ToRole="ProviderPracticeRole" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PropertyName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserProperties" Relationship="EPROMDBModel.FK_UserProperties_Properties" FromRole="Property" ToRole="UserProperty" />
+  </EntityType>
+  <EntityType Name="ProviderOrganization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ProviderID" Type="Guid" Nullable="false" />
+    <Property Name="OrganizationID" Type="Guid" />
+    <Property Name="Designation" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Organization" Relationship="EPROMDBModel.FK_ProviderOrganizations_Organizations" FromRole="ProviderOrganization" ToRole="Organization" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_ProviderOrganizations_Providers" FromRole="ProviderOrganization" ToRole="Provider" />
+    <NavigationProperty Name="ProviderPractices" Relationship="EPROMDBModel.FK_ProviderPractice_ProviderOrganizations" FromRole="ProviderOrganization" ToRole="ProviderPractice" />
+  </EntityType>
+  <EntityType Name="ProviderPatientThirdPartyApp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThirdPartyAppID" Type="Int32" />
+    <Property Name="ProviderID" Type="Guid" />
+    <Property Name="PatientSurveyID" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PatientSurvey" Relationship="EPROMDBModel.FK_ProviderPatientThirdPartyApp_PatientSurveys" FromRole="ProviderPatientThirdPartyApp" ToRole="PatientSurvey" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_ProviderPatientThirdPartyApp_Providers" FromRole="ProviderPatientThirdPartyApp" ToRole="Provider" />
+    <NavigationProperty Name="ThirdPartyApp" Relationship="EPROMDBModel.FK_ProviderPatientThirdPartyApp_ThirdPartyApp" FromRole="ProviderPatientThirdPartyApp" ToRole="ThirdPartyApp" />
+  </EntityType>
+  <EntityType Name="ProviderPractice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ProviderId" Type="Guid" />
+    <Property Name="PracticeId" Type="Guid" />
+    <Property Name="ProviderOrganizationId" Type="Guid" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Practice" Relationship="EPROMDBModel.FK_ProviderPractitioner_Practitioner" FromRole="ProviderPractice" ToRole="Practice" />
+    <NavigationProperty Name="ProviderOrganization" Relationship="EPROMDBModel.FK_ProviderPractice_ProviderOrganizations" FromRole="ProviderPractice" ToRole="ProviderOrganization" />
+    <NavigationProperty Name="ProviderPracticeRoles" Relationship="EPROMDBModel.FK_ProviderPracticeRole_ProviderPractice" FromRole="ProviderPractice" ToRole="ProviderPracticeRole" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_ProviderPractitioner_Providers" FromRole="ProviderPractice" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="ProviderPracticeRole">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="ProviderPracticeID" Type="Guid" />
+    <NavigationProperty Name="PracticeRole" Relationship="EPROMDBModel.FK_ProviderPracticeRole_PracticeRole" FromRole="ProviderPracticeRole" ToRole="PracticeRole" />
+    <NavigationProperty Name="ProviderPractice" Relationship="EPROMDBModel.FK_ProviderPracticeRole_ProviderPractice" FromRole="ProviderPracticeRole" ToRole="ProviderPractice" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderTypeID" Type="Int16" />
+    <Property Name="SalutationID" Type="Int32" />
+    <Property Name="MedicareProviderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HealthProviderIdentifier" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ContactID" Type="Int32" />
+    <Property Name="AddressID" Type="Int64" />
+    <Property Name="PHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LHD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Contact" Relationship="EPROMDBModel.FK_Providers_Contacts" FromRole="Provider" ToRole="Contact" />
+    <NavigationProperty Name="PatientProviders" Relationship="EPROMDBModel.FK_PatientProviders_Providers" FromRole="Provider" ToRole="PatientProvider" />
+    <NavigationProperty Name="PatientSurveys" Relationship="EPROMDBModel.FK_PatientSurveys_Providers" FromRole="Provider" ToRole="PatientSurvey" />
+    <NavigationProperty Name="ProviderOrganizations" Relationship="EPROMDBModel.FK_ProviderOrganizations_Providers" FromRole="Provider" ToRole="ProviderOrganization" />
+    <NavigationProperty Name="ProviderPatientThirdPartyApps" Relationship="EPROMDBModel.FK_ProviderPatientThirdPartyApp_Providers" FromRole="Provider" ToRole="ProviderPatientThirdPartyApp" />
+    <NavigationProperty Name="ProviderPractices" Relationship="EPROMDBModel.FK_ProviderPractitioner_Providers" FromRole="Provider" ToRole="ProviderPractice" />
+    <NavigationProperty Name="ProviderType" Relationship="EPROMDBModel.FK_Providers_ProviderTypes" FromRole="Provider" ToRole="ProviderType" />
+    <NavigationProperty Name="Salutation" Relationship="EPROMDBModel.FK_Providers_Salutation" FromRole="Provider" ToRole="Salutation" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Providers_Users" FromRole="Provider" ToRole="UserDetail" />
+    <NavigationProperty Name="ProviderTerms" Relationship="EPROMDBModel.FK_ProviderTerms_Providers" FromRole="Provider" ToRole="ProviderTerm" />
+    <NavigationProperty Name="UserSurveys" Relationship="EPROMDBModel.FK_UserSurveys_Providers" FromRole="Provider" ToRole="UserSurvey" />
+  </EntityType>
+  <EntityType Name="ProviderTerm">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="ProviderID" Type="Guid" Nullable="false" />
+    <Property Name="TermID" Type="Int16" Nullable="false" />
+    <Property Name="TermContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifieBy" Type="Guid" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_ProviderTerms_Providers" FromRole="ProviderTerm" ToRole="Provider" />
+    <NavigationProperty Name="Term" Relationship="EPROMDBModel.FK_ProviderTerms_Terms" FromRole="ProviderTerm" ToRole="Term" />
+  </EntityType>
+  <EntityType Name="ProviderType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProviderTypeName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Providers" Relationship="EPROMDBModel.FK_Providers_ProviderTypes" FromRole="ProviderType" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="UsersInRoles" Relationship="EPROMDBModel.FK_UsersInRoles_Roles" FromRole="Role" ToRole="UsersInRole" />
+  </EntityType>
+  <EntityType Name="Salutation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalutationName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Organizations" Relationship="EPROMDBModel.FK_Organizations_Salutation" FromRole="Salutation" ToRole="Organization" />
+    <NavigationProperty Name="Practices" Relationship="EPROMDBModel.FK_Practice_Salutation" FromRole="Salutation" ToRole="Practice" />
+    <NavigationProperty Name="Providers" Relationship="EPROMDBModel.FK_Providers_Salutation" FromRole="Salutation" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="SecretQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Questions" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="UserSecretQuestions" Relationship="EPROMDBModel.FK_UserSecretQuestions_SecretQuestions" FromRole="SecretQuestion" ToRole="UserSecretQuestion" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StateName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Addresses" Relationship="EPROMDBModel.FK_Addresses_States" FromRole="State" ToRole="Address" />
+  </EntityType>
+  <EntityType Name="Survey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ExternalTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ExternalID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CollectorID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ContentCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedByUserID" Type="Guid" />
+    <Property Name="SurveyCategoryID" Type="Int16" />
+    <Property Name="SurveySubCategoryID" Type="Int16" />
+    <Property Name="SurveyTypeID" Type="Int16" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Language" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="IsPublish" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="PatientSurveys" Relationship="EPROMDBModel.FK_PatientSurveys_Survey" FromRole="Survey" ToRole="PatientSurvey" />
+    <NavigationProperty Name="SurveyCategory" Relationship="EPROMDBModel.FK_Survey_SurveyCategories" FromRole="Survey" ToRole="SurveyCategory" />
+    <NavigationProperty Name="SurveyCategory1" Relationship="EPROMDBModel.FK_Survey_SurveyCategories1" FromRole="Survey" ToRole="SurveyCategory" />
+    <NavigationProperty Name="SurveyType" Relationship="EPROMDBModel.FK_Survey_SurveyTypes" FromRole="Survey" ToRole="SurveyType" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_Survey_Users" FromRole="Survey" ToRole="UserDetail" />
+    <NavigationProperty Name="UserSurveys" Relationship="EPROMDBModel.FK_UserSurveys_Survey" FromRole="Survey" ToRole="UserSurvey" />
+    <Property Name="NormValue" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="SurveyCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SurvayCategoryName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ParentSurveyCategoryID" Type="Int16" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Surveys" Relationship="EPROMDBModel.FK_Survey_SurveyCategories" FromRole="SurveyCategory" ToRole="Survey" />
+    <NavigationProperty Name="Surveys1" Relationship="EPROMDBModel.FK_Survey_SurveyCategories1" FromRole="SurveyCategory" ToRole="Survey" />
+    <NavigationProperty Name="ThirdPartyApps" Relationship="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories" FromRole="SurveyCategory" ToRole="ThirdPartyApp" />
+    <NavigationProperty Name="ThirdPartyApps1" Relationship="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories1" FromRole="SurveyCategory" ToRole="ThirdPartyApp" />
+  </EntityType>
+  <EntityType Name="SurveyType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SurvayTypeName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Surveys" Relationship="EPROMDBModel.FK_Survey_SurveyTypes" FromRole="SurveyType" ToRole="Survey" />
+  </EntityType>
+  <EntityType Name="SystemFlag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SystemFlagName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FlagGroupID" Type="Int32" Nullable="false" />
+    <Property Name="DefaultValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FlagGroup" Relationship="EPROMDBModel.FK_SystemFlags_FlagGroups" FromRole="SystemFlag" ToRole="FlagGroup" />
+  </EntityType>
+  <EntityType Name="Term">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TermContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ProviderTerms" Relationship="EPROMDBModel.FK_ProviderTerms_Terms" FromRole="Term" ToRole="ProviderTerm" />
+  </EntityType>
+  <EntityType Name="ThirdPartyApp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AppName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SurveyCategoryID" Type="Int16" />
+    <Property Name="SurveySubCategoryID" Type="Int16" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ProviderPatientThirdPartyApps" Relationship="EPROMDBModel.FK_ProviderPatientThirdPartyApp_ThirdPartyApp" FromRole="ThirdPartyApp" ToRole="ProviderPatientThirdPartyApp" />
+    <NavigationProperty Name="SurveyCategory" Relationship="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories" FromRole="ThirdPartyApp" ToRole="SurveyCategory" />
+    <NavigationProperty Name="SurveyCategory1" Relationship="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories1" FromRole="ThirdPartyApp" ToRole="SurveyCategory" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Token1" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsUsed" Type="Boolean" Nullable="false" />
+    <Property Name="IsRegister" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" />
+    <Property Name="AccessFailedCount" Type="Int32" />
+    <NavigationProperty Name="Addresses" Relationship="EPROMDBModel.FK_Addresses_UserDetails" FromRole="UserDetail" ToRole="Address" />
+    <NavigationProperty Name="Contacts" Relationship="EPROMDBModel.FK_Contacts_UserDetails" FromRole="UserDetail" ToRole="Contact" />
+    <NavigationProperty Name="Organizations" Relationship="EPROMDBModel.FK_Organizations_UserDetails" FromRole="UserDetail" ToRole="Organization" />
+    <NavigationProperty Name="Patients" Relationship="EPROMDBModel.FK_Patients_Users1" FromRole="UserDetail" ToRole="Patient" />
+    <NavigationProperty Name="Practices" Relationship="EPROMDBModel.FK_Practitioner_UserDetails" FromRole="UserDetail" ToRole="Practice" />
+    <NavigationProperty Name="PracticeRoles" Relationship="EPROMDBModel.FK_PractitionerRole_UserDetails" FromRole="UserDetail" ToRole="PracticeRole" />
+    <NavigationProperty Name="Providers" Relationship="EPROMDBModel.FK_Providers_Users" FromRole="UserDetail" ToRole="Provider" />
+    <NavigationProperty Name="Surveys" Relationship="EPROMDBModel.FK_Survey_Users" FromRole="UserDetail" ToRole="Survey" />
+    <NavigationProperty Name="UserProperties" Relationship="EPROMDBModel.FK_UserProperties_Users" FromRole="UserDetail" ToRole="UserProperty" />
+    <NavigationProperty Name="UserSecretQuestions" Relationship="EPROMDBModel.FK_UserSecretQuestions_Users" FromRole="UserDetail" ToRole="UserSecretQuestion" />
+    <NavigationProperty Name="UsersInRoles" Relationship="EPROMDBModel.FK_UsersInRoles_Users" FromRole="UserDetail" ToRole="UsersInRole" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="webpages_Roles" Relationship="EPROMDBModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+  </EntityType>
+  <EntityType Name="UserProperty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="PropertyID" Type="Guid" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int16" />
+    <NavigationProperty Name="Property" Relationship="EPROMDBModel.FK_UserProperties_Properties" FromRole="UserProperty" ToRole="Property" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_UserProperties_Users" FromRole="UserProperty" ToRole="UserDetail" />
+  </EntityType>
+  <EntityType Name="UserSecretQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="SecretQuestionID" Type="Int16" Nullable="false" />
+    <Property Name="OtherQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="SecretQuestion" Relationship="EPROMDBModel.FK_UserSecretQuestions_SecretQuestions" FromRole="UserSecretQuestion" ToRole="SecretQuestion" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_UserSecretQuestions_Users" FromRole="UserSecretQuestion" ToRole="UserDetail" />
+  </EntityType>
+  <EntityType Name="UsersInRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="EPROMDBModel.FK_UsersInRoles_Roles" FromRole="UsersInRole" ToRole="Role" />
+    <NavigationProperty Name="UserDetail" Relationship="EPROMDBModel.FK_UsersInRoles_Users" FromRole="UsersInRole" ToRole="UserDetail" />
+  </EntityType>
+  <EntityType Name="UserSurvey">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="PatientID" Type="Guid" />
+    <Property Name="ProviderID" Type="Guid" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="SurveyDate" Type="DateTime" Precision="3" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="EndTime" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="ModifiedBy" Type="Guid" />
+    <NavigationProperty Name="Patient" Relationship="EPROMDBModel.FK_UserSurveys_UserSurveys" FromRole="UserSurvey" ToRole="Patient" />
+    <NavigationProperty Name="Provider" Relationship="EPROMDBModel.FK_UserSurveys_Providers" FromRole="UserSurvey" ToRole="Provider" />
+    <NavigationProperty Name="Survey" Relationship="EPROMDBModel.FK_UserSurveys_Survey" FromRole="UserSurvey" ToRole="Survey" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserProfiles" Relationship="EPROMDBModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+  </EntityType>
+  <Association Name="FK_Addresses_Countries">
+    <End Type="EPROMDBModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Addresses_States">
+    <End Type="EPROMDBModel.State" Role="State" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Addresses_UserDetails">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Addresses">
+    <End Type="EPROMDBModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="AddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacts_UserDetails">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Contact" Role="Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Contacts">
+    <End Type="EPROMDBModel.Contact" Role="Contact" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_Contacts">
+    <End Type="EPROMDBModel.Contact" Role="Contact" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Provider">
+        <PropertyRef Name="ContactID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemFlags_FlagGroups">
+    <End Type="EPROMDBModel.FlagGroup" Role="FlagGroup" Multiplicity="1" />
+    <End Type="EPROMDBModel.SystemFlag" Role="SystemFlag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlagGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SystemFlag">
+        <PropertyRef Name="FlagGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientIndicators_Indicators">
+    <End Type="EPROMDBModel.Indicator" Role="Indicator" Multiplicity="1" />
+    <End Type="EPROMDBModel.PatientIndicator" Role="PatientIndicator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Indicator">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientIndicator">
+        <PropertyRef Name="IndicatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizations_Salutation">
+    <End Type="EPROMDBModel.Salutation" Role="Salutation" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="SalutationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizations_UserDetails">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organization">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientProviders_Organizations">
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientProvider" Role="PatientProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProvider">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Organizations">
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Practitioner_Practitioner">
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Practice">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractitionerRole_Organizations">
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PracticeRole" Role="PracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeRole">
+        <PropertyRef Name="OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderOrganizations_Organizations">
+    <End Type="EPROMDBModel.Organization" Role="Organization" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderOrganization" Role="ProviderOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderOrganization">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Users">
+    <End Type="EPROMDBModel.PatientCategory" Role="PatientCategory" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="PatientCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientIndicators_Patients">
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="EPROMDBModel.PatientIndicator" Role="PatientIndicator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientIndicator">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientProviders_Patients">
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="EPROMDBModel.PatientProvider" Role="PatientProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProvider">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientProviders_Practice">
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientProvider" Role="PatientProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProvider">
+        <PropertyRef Name="PracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientProviders_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="1" />
+    <End Type="EPROMDBModel.PatientProvider" Role="PatientProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientProvider">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patients_Users1">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Patients">
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSurveys_UserSurveys">
+    <End Type="EPROMDBModel.Patient" Role="Patient" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.UserSurvey" Role="UserSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSurvey">
+        <PropertyRef Name="PatientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSuggestions_PatientSurveys">
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSuggestion" Role="PatientSuggestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurvey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSuggestion">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Practice">
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey">
+        <PropertyRef Name="PracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveys_Survey">
+    <End Type="EPROMDBModel.Survey" Role="Survey" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurveyStatus_PatientSurveys">
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurveyStatu" Role="PatientSurveyStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurvey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurveyStatu">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPatientThirdPartyApp_PatientSurveys">
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPatientThirdPartyApp" Role="ProviderPatientThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurvey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPatientThirdPartyApp">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Practice_Salutation">
+    <End Type="EPROMDBModel.Salutation" Role="Salutation" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Practice">
+        <PropertyRef Name="SalutationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Practitioner_UserDetails">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Practice">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractitionerRole_Practitioner">
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PracticeRole" Role="PracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeRole">
+        <PropertyRef Name="PracticeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPractitioner_Practitioner">
+    <End Type="EPROMDBModel.Practice" Role="Practice" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPractice" Role="ProviderPractice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Practice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPractice">
+        <PropertyRef Name="PracticeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PractitionerRole_UserDetails">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PracticeRole" Role="PracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PracticeRole">
+        <PropertyRef Name="CreatedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPracticeRole_PracticeRole">
+    <End Type="EPROMDBModel.PracticeRole" Role="PracticeRole" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPracticeRole" Role="ProviderPracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PracticeRole">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="ProviderPracticeRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProperties_Properties">
+    <End Type="EPROMDBModel.Property" Role="Property" Multiplicity="1" />
+    <End Type="EPROMDBModel.UserProperty" Role="UserProperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserProperty">
+        <PropertyRef Name="PropertyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderOrganizations_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="1" />
+    <End Type="EPROMDBModel.ProviderOrganization" Role="ProviderOrganization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderOrganization">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPractice_ProviderOrganizations">
+    <End Type="EPROMDBModel.ProviderOrganization" Role="ProviderOrganization" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPractice" Role="ProviderPractice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProviderOrganization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPractice">
+        <PropertyRef Name="ProviderOrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPatientThirdPartyApp_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPatientThirdPartyApp" Role="ProviderPatientThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPatientThirdPartyApp">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPatientThirdPartyApp_ThirdPartyApp">
+    <End Type="EPROMDBModel.ThirdPartyApp" Role="ThirdPartyApp" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPatientThirdPartyApp" Role="ProviderPatientThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThirdPartyApp">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPatientThirdPartyApp">
+        <PropertyRef Name="ThirdPartyAppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPracticeRole_ProviderPractice">
+    <End Type="EPROMDBModel.ProviderPractice" Role="ProviderPractice" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPracticeRole" Role="ProviderPracticeRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProviderPractice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPracticeRole">
+        <PropertyRef Name="ProviderPracticeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderPractitioner_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ProviderPractice" Role="ProviderPractice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderPractice">
+        <PropertyRef Name="ProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_ProviderTypes">
+    <End Type="EPROMDBModel.ProviderType" Role="ProviderType" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProviderType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Provider">
+        <PropertyRef Name="ProviderTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_Salutation">
+    <End Type="EPROMDBModel.Salutation" Role="Salutation" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salutation">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Provider">
+        <PropertyRef Name="SalutationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Providers_Users">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Provider">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderTerms_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="1" />
+    <End Type="EPROMDBModel.ProviderTerm" Role="ProviderTerm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderTerm">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSurveys_Providers">
+    <End Type="EPROMDBModel.Provider" Role="Provider" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.UserSurvey" Role="UserSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSurvey">
+        <PropertyRef Name="ProviderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProviderTerms_Terms">
+    <End Type="EPROMDBModel.Term" Role="Term" Multiplicity="1" />
+    <End Type="EPROMDBModel.ProviderTerm" Role="ProviderTerm" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Term">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProviderTerm">
+        <PropertyRef Name="TermID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersInRoles_Roles">
+    <End Type="EPROMDBModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="EPROMDBModel.UsersInRole" Role="UsersInRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersInRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecretQuestions_SecretQuestions">
+    <End Type="EPROMDBModel.SecretQuestion" Role="SecretQuestion" Multiplicity="1" />
+    <End Type="EPROMDBModel.UserSecretQuestion" Role="UserSecretQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecretQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSecretQuestion">
+        <PropertyRef Name="SecretQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_SurveyCategories">
+    <End Type="EPROMDBModel.SurveyCategory" Role="SurveyCategory" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Survey" Role="Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="SurveyCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_SurveyCategories1">
+    <End Type="EPROMDBModel.SurveyCategory" Role="SurveyCategory" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Survey" Role="Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="SurveySubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_SurveyTypes">
+    <End Type="EPROMDBModel.SurveyType" Role="SurveyType" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Survey" Role="Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="SurveyTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Survey_Users">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.Survey" Role="Survey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Survey">
+        <PropertyRef Name="CreatedByUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSurveys_Survey">
+    <End Type="EPROMDBModel.Survey" Role="Survey" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.UserSurvey" Role="UserSurvey" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Survey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSurvey">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThirdPartyApp_SurveyCategories">
+    <End Type="EPROMDBModel.SurveyCategory" Role="SurveyCategory" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ThirdPartyApp" Role="ThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThirdPartyApp">
+        <PropertyRef Name="SurveyCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThirdPartyApp_SurveyCategories1">
+    <End Type="EPROMDBModel.SurveyCategory" Role="SurveyCategory" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.ThirdPartyApp" Role="ThirdPartyApp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThirdPartyApp">
+        <PropertyRef Name="SurveySubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserProperties_Users">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="EPROMDBModel.UserProperty" Role="UserProperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserProperty">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserSecretQuestions_Users">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="EPROMDBModel.UserSecretQuestion" Role="UserSecretQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserSecretQuestion">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsersInRoles_Users">
+    <End Type="EPROMDBModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="EPROMDBModel.UsersInRole" Role="UsersInRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UsersInRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="webpages_UsersInRoles">
+    <End Type="EPROMDBModel.webpages_Roles" Role="webpages_Roles" Multiplicity="*" />
+    <End Type="EPROMDBModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="usp_search_ThirdPartyAppByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="AppName" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="URL" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="50" />
+    <Property Type="Int16" Name="SurveyCategoryID" Nullable="true" />
+    <Property Type="Int16" Name="SurveySubCategoryID" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="CreatedBy" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedBy" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="Pathway">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PathwayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Guid" />
+    <NavigationProperty Name="PatientSurvey_Pathway_PatientSurveyStatus" Relationship="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways" FromRole="Pathway" ToRole="PatientSurvey_Pathway_PatientSurveyStatus" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PatientSurvey_Pathway_PatientSurveyStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PatientSurveyID" Type="Guid" Nullable="false" />
+    <Property Name="PathwayID" Type="Guid" Nullable="false" />
+    <Property Name="PatientSurveyStatusID" Type="Guid" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Guid" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Guid" />
+    <NavigationProperty Name="Pathway" Relationship="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways" FromRole="PatientSurvey_Pathway_PatientSurveyStatus" ToRole="Pathway" />
+    <NavigationProperty Name="PatientSurvey" Relationship="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys" FromRole="PatientSurvey_Pathway_PatientSurveyStatus" ToRole="PatientSurvey" />
+    <NavigationProperty Name="PatientSurveyStatu" Relationship="EPROMDBModel.FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus" FromRole="PatientSurvey_Pathway_PatientSurveyStatus" ToRole="PatientSurveyStatu" />
+  </EntityType>
+  <Association Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_Pathways">
+    <End Type="EPROMDBModel.Pathway" Role="Pathway" Multiplicity="1" />
+    <End Type="EPROMDBModel.PatientSurvey_Pathway_PatientSurveyStatus" Role="PatientSurvey_Pathway_PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pathway">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey_Pathway_PatientSurveyStatus">
+        <PropertyRef Name="PathwayID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveys">
+    <End Type="EPROMDBModel.PatientSurvey" Role="PatientSurvey" Multiplicity="1" />
+    <End Type="EPROMDBModel.PatientSurvey_Pathway_PatientSurveyStatus" Role="PatientSurvey_Pathway_PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurvey">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey_Pathway_PatientSurveyStatus">
+        <PropertyRef Name="PatientSurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientSurvey_Pathway_PatientSurveyStatus_PatientSurveyStatus">
+    <End Type="EPROMDBModel.PatientSurveyStatu" Role="PatientSurveyStatu" Multiplicity="0..1" />
+    <End Type="EPROMDBModel.PatientSurvey_Pathway_PatientSurveyStatus" Role="PatientSurvey_Pathway_PatientSurveyStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientSurveyStatu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientSurvey_Pathway_PatientSurveyStatus">
+        <PropertyRef Name="PatientSurveyStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="usp_search_PathwayByFilter_Result">
+    <Property Type="Int64" Name="RowNo" Nullable="true" />
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="String" Name="PathwayName" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="UpdatedOn" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="UpdatedBy" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="AvailableEprom">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="PatientID" Type="Guid" />
+    <Property Name="ProviderID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="DefaultDay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="Days" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PatientSurveys_Temp">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="PatientID" Type="Guid" />
+    <Property Name="SurveyID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ProviderID" Type="Guid" />
+    <Property Name="OrganizationID" Type="Guid" />
+    <Property Name="PracticeID" Type="Guid" />
+  </EntityType>
+  <EntityType Name="LogManagement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InnerMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_isCINTExist_Result">
+    <Property Type="Guid" Name="ID" Nullable="false" />
+    <Property Type="Guid" Name="ProviderID" Nullable="false" />
+    <Property Type="Guid" Name="PatientID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Guid" Name="CreatedBy" Nullable="true" />
+    <Property Type="Guid" Name="ModifiedBy" Nullable="true" />
+    <Property Type="Guid" Name="OrganizationID" Nullable="true" />
+    <Property Type="Guid" Name="PracticeID" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="CINTScore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ePROMsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Score" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SurveyMonkeyID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RespondedID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

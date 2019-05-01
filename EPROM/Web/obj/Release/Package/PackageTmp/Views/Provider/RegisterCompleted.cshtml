@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Provider Details Completed";
+    ViewBag.PageTitle = "Registration Completed";
+}
+
+<section ng-app="app" ng-controller="providerController">
+    <div class="row mb15">
+        <h4 class="text-center" ng-cloak="false">
+            <br /> Email Notification sent to <span class="font-green-sharp"> {{Provider.Item.User.UserName}} </span>
+        </h4>
+    </div>
+    <div class="row mb15">
+        <div class="col-md-12 text-center">
+            <label id="lblMessage" class="email-success" ng-show="Provider.isEmailVerified">Please verify your account through email notification link sent on your register email address</label>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/select-js")
+    @Scripts.Render("~/bundles/datepicker-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/provider-js")
+}

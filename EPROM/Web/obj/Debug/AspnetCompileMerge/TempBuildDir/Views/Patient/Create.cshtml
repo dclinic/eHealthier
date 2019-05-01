@@ -1,0 +1,233 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Add Patient";
+    ViewBag.PageTitle = "Add Patient";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="patientController">
+    <div ng-if="Patient.IsLoading" class="loading-box"> </div>
+
+    <div class="set-border-margin">
+        <form name="formAddPatient">
+            @*<div class="row">
+                    <div class="col-md-4">
+                        <label>IHI Number:</label>
+                        <input type="text" id="txtIHINo" name="IHINo" ng-model="Patient.IHINo" class="form-control" />
+                        <label style="color:red" ng-show="Patient.IsEmpty">IHI Number is required.</label>
+                        <label style="color:red" ng-show="Patient.IsNotAllow">Allow only 16 digits.</label>
+                        <label style="color:red" ng-show="Patient.IsNotRegister">This IHI Number is not registered.</label>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 2%">
+                        <button type="button" class="btn custom-btn" ng-click="Patient.Methods.getPatientDetail()">Find</button>
+                    </div>
+                </div>*@
+            <div class="row">
+                <div class="col-sm-8">
+                    <md-input-container style="width: 100%;">
+                        <label>Title</label>
+                        <input type="text" ng-model="Patient.Item.Salutation" name="salutation" tabindex="1" />
+                    </md-input-container>
+                </div>
+                <div class="col-sm-4 mt12">
+                    <label>Registered Since</label>
+                    <md-datepicker ng-model="Patient.RegisteredSince" md-placeholder="Registered Since" width="100%" tabindex="5" md-open-on-focus></md-datepicker>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>First Name</label>
+                        <input ng-model="Patient.Item.User.FirstName" name="fname" tabindex="2" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.fname.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">First Name is required</div>
+                    </div>
+                </div>
+                <div class="col-sm-4 mt12">
+                    <label>DOB</label>
+                    <select name="day" id="day" ng-model="Patient.day" ng-options="d for d in Patient.days" style="margin-left: 3%;width: 15%;" tabindex="6" required></select> <b> - </b>
+                    <select name="month" id="month" ng-model="Patient.month" ng-options="m for m in Patient.months" style="margin-left: 1%;width: 20%;" tabindex="7" required></select> <b> - </b>
+                    <select name="year" id="year" ng-model="Patient.year" ng-options="y for y in Patient.years" style="margin-left: 1%;width: 25%;" tabindex="8" required></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Middle Name</label>
+                        <input ng-model="Patient.Item.User.MiddleName" name="mname" tabindex="3" />
+                    </md-input-container>
+                </div>
+                <div class="col-sm-4">
+                    <md-radio-group ng-model="Patient.Item.User.Gender">
+                        <div class="col-sm-6">
+                            <md-radio-button value="Male" class="md-primary" tabindex="9">Male</md-radio-button>
+                            <md-radio-button value="Female" class="md-primary" tabindex="10"> Female </md-radio-button>
+                        </div>
+                        <div class="col-sm-6">
+                            <md-radio-button value="Other" class="md-primary" tabindex="11"> Other </md-radio-button>
+                            <md-radio-button value="NA" class="md-primary" tabindex="12"> Rather not say </md-radio-button>
+                        </div>
+                    </md-radio-group>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Surname</label>
+                        <input ng-model="Patient.Item.User.LastName" name="surname" tabindex="4" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.surname.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Surname is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="orgprac">
+                <div class="col-sm-6">
+                    <md-input-container style="width:100%;">
+                        <md-select ng-model="Patient.Item.OrganizationID" aria-label="Clinics" placeholder="Organization" name="organizationName" ng-change="Patient.Methods.GetPracticeListByOrgID(Patient.Item.OrganizationID)" tabindex="13" disabled="disabled" required>
+                            <md-option ng-repeat="item in Patient.OrganizationList" ng-value="item.ID">{{item.OrganizationName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <div ng-messages="formAddPatient.organizationName.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Select Organization</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <md-select ng-model="Patient.Item.PracticeID" aria-label="Clinics" placeholder="Select Practice" required name="practice" tabindex="14" disabled="disabled">
+                        <md-option ng-if="item.ID" ng-repeat="item in Patient.PracticeList" ng-value="item.ID">{{item.PracticeName}}</md-option>
+                    </md-select>
+
+                    <div ng-messages="formAddPatient.practice.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Select Practice</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Address Line 1</label>
+                        <input ng-model="Patient.Item.Address.Line1" name="address" tabindex="15" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.address.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Address is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Address Line 2</label>
+                        <input ng-model="Patient.Item.Address.Line2" tabindex="16" />
+                    </md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Suburb</label>
+                        <input ng-model="Patient.Item.Address.Suburb" name="suburb" tabindex="17" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.suburb.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Suburb is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Postcode</label>
+                        <input ng-model="Patient.Item.Address.ZipCode" name="zipcode" tabindex="18" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.zipcode.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">ZipCode is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container style="width: 100%;">
+                        <label>State</label>
+                        <md-select aria-label="State" ng-model="Patient.Item.Address.StateID" name="state" tabindex="19" required>
+                            <md-option ng-repeat="item in Patient.Item.States" ng-if="item.StateName != ''" ng-cloak="true" ng-value="item.ID">{{item.StateName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.state.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Please Select State</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container style="width: 100%;">
+                        <label>Country</label>
+                        <md-select aria-label="Country" ng-model="Patient.Item.Address.CountryID" name="country" tabindex="20" required>
+                            <md-option ng-repeat="item in Patient.Item.Countries" ng-if="item.CountryName != ''" ng-cloak="true" ng-value="item.ID">{{item.CountryName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.country.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Please Select Country</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block phone-mask" flex-gt-sm><label>Primary Phone</label><input ng-model="Patient.Item.Contact.Mobile" tabindex="21" /></md-input-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input ng-model="Patient.Item.Contact.EmailPersonal" name="email" type="email" ng-change="Patient.Methods.CheckExistingUser(Patient.Item.Contact.EmailPersonal)" tabindex="22" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPatient.email.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Email is required</div>
+                    </div>
+                    <div ng-messages="formAddPatient.email.$error" ng-if="Patient.isUserExist">
+                        <div class="required" style="margin-top:-15px;">Email already exists.</div>
+                    </div>
+
+                    <div class="required" ng-show="formAddPatient.email.$invalid && !formAddPatient.email.$pristine">Invalid email address.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <md-input-container class="md-block phone-mask" flex-gt-sm><label>IHI Number</label><input ng-model="Patient.Item.IHINumber" name="IHINumber" required ng-change="Patient.Methods.CheckExistingIHINumber(Patient.Item.IHINumber)" tabindex="23" /></md-input-container>
+
+                    <div ng-messages="formAddPatient.IHINumber.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">IHI Number is required</div>
+                    </div>
+                    <div ng-messages="formAddPatient.IHINumber.$error" ng-if="Patient.isIHINumber">
+                        <div class="required" style="margin-top:-15px;">IHI Number already exists.</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <md-input-container class="md-block phone-mask" flex-gt-sm><label>Medicare Number</label><input ng-model="Patient.Item.MedicareNumber" name="MedicareNumber" required ng-change="Patient.Methods.CheckExistingMedicure(Patient.Item.MedicareNumber)" tabindex="24" /></md-input-container>
+
+                    <div ng-messages="formAddPatient.MedicareNumber.$error" ng-if="Patient.issubmitted">
+                        <div ng-message="required" class="required">Medicare Number is required</div>
+                    </div>
+                    <div ng-messages="formAddPatient.MedicareNumber.$error" ng-if="Patient.isMedicureExist">
+                        <div class="required" style="margin-top:-15px;">Medicare Number already exists.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <a href="javascript:;" class="col-xs-2 btn btn-circle-black" data-toggle="tooltip" title="Questions?">
+                        <i class="fa fa-question"></i>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <button type="button" class="btn col-xs-12 btn-blue" ng-click="Patient.Methods.Register()" tabindex="25">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/patient-js")
+}

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ShEhrDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="GetConsumerDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IHINumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetConsumerDetailAddr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ShEhrDbModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ShEhrDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ShEhrDbEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="GetConsumerDetail" ReturnType="Collection(ShEhrDbModel.GetConsumerDetail_Result)">
+            <Parameter Name="IHINumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetConsumerDetailAddr" ReturnType="Collection(ShEhrDbModel.GetConsumerDetailAddr_Result)">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetConsumerDetail_Result">
+          <Property Type="String" Name="Firstname" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Middlename" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Lastname" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Line1" Nullable="true" />
+          <Property Type="String" Name="Line2" Nullable="true" />
+          <Property Type="String" Name="Suburb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StateID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="IHI" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="HCID" Nullable="true" MaxLength="20" />
+          <Property Type="Int64" Name="ContactID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetConsumerDetailAddr_Result">
+          <Property Type="Int64" Name="addressId" Nullable="false" />
+          <Property Type="Int64" Name="contactId" Nullable="false" />
+          <Property Type="String" Name="type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="street" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="suburb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="state" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="postcode" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="country" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="telecom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="nodeId" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="typeCodeString" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="typeTerminologyId" Nullable="true" MaxLength="20" />
+          <Property Type="Binary" Name="detailsInstance" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShEhrDbModelStoreContainer" CdmEntityContainer="ShEhrDbEntities" >
+          <FunctionImportMapping FunctionImportName="GetConsumerDetail" FunctionName="ShEhrDbModel.Store.GetConsumerDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShEhrDbModel.GetConsumerDetail_Result">
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Line1" ColumnName="Line1" />
+                <ScalarProperty Name="Line2" ColumnName="Line2" />
+                <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IHI" ColumnName="IHI" />
+                <ScalarProperty Name="HCID" ColumnName="HCID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetConsumerDetailAddr" FunctionName="ShEhrDbModel.Store.GetConsumerDetailAddr">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShEhrDbModel.GetConsumerDetailAddr_Result">
+                <ScalarProperty Name="addressId" ColumnName="addressId" />
+                <ScalarProperty Name="contactId" ColumnName="contactId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="suburb" ColumnName="suburb" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="telecom" ColumnName="telecom" />
+                <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+                <ScalarProperty Name="typeCodeString" ColumnName="typeCodeString" />
+                <ScalarProperty Name="typeTerminologyId" ColumnName="typeTerminologyId" />
+                <ScalarProperty Name="detailsInstance" ColumnName="detailsInstance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Patient's ePROM";
+    ViewBag.PageTitle = "Available ePROMs";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="PatientEpromController">
+    <div class="set-border-margin">
+        <form name="frmAddPatientsEprom">
+            <div class="portlet-body custom-form">
+                <label style="margin-bottom:2%"><b>Patient</b> : {{PatientEprom.PatientDetail.FirstName}}  {{PatientEprom.PatientDetail.LastName}}  ({{PatientEprom.PatientDetail.DOB | date : "d/M/yyyy" }}), <b>Medicare No :</b> {{PatientEprom.PatientDetail.MedicareNo}} ,  <b> IHI No :</b> {{PatientEprom.PatientDetail.IHINo}}</label>
+                <md-content>
+                    <md-tabs md-selected="0" md-dynamic-height md-border-bottom>
+                        <md-tab ng-repeat="item in PatientEprom.Items.CategoryList" ng-click="PatientEprom.Methods.getEpromListByCategoryId(item.ID, 0)" label="{{item.SurvayCategoryName}}">
+                            <md-content class="md-padding" ng-class="{blockborder:item.SubCategoryList.length > 0}">
+                                <div class="tab-pane" id="tab1">
+                                    <div class="row mb15">
+                                        <div class="col-xs-12">
+                                            <div ng-repeat="epromitem in PatientEprom.Items.EpromList" ng-model="PatientEprom.list_Survey">
+                                                <md-checkbox md-no-ink aria-label="epromitem.Title" class="md-primary" ng-checked="PatientEprom.Methods.Exists(epromitem, PatientEprom.list_Survey)" ng-click="PatientEprom.Methods.Toggle(epromitem, PatientEprom.list_Survey)">{{epromitem.ExternalTitle}}</md-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </md-content>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3 hidden-xs"></div>
+                <div class="col-xs-12 col-sm-3"></div>
+                <div class="col-xs-12 col-sm-3">
+                    <button type="button" class="btn col-xs-12 btn-blue" ng-click="PatientEprom.Methods.CreatePatientSurveyList()">Select ePROMs</button>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <button type="button" class="btn col-xs-12 btn-black" ng-click="PatientEprom.Methods.RedirectToPatientEprom()">Back</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/patient-eprom-js")
+}

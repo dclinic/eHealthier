@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "UnAuthorized";
+}
+
+<div class="col-xs-12" style="text-align:center; min-height:300px;">
+    <div style="color:red; font-size:48px; font-weight:700">
+        Unauthorized!
+    </div>
+    <div class="mt30 mb15" style="color:black; font-size:18px; font-weight:600">
+        You have attempted to access a system for which you are not authorized.
+    </div>
+    <div class="col-xs-12 mt30 hide" style="text-align:center">
+        @if (ViewBag.UserRole == "admin")
+        {
+            <a href="~/Default/Index" class="btn custom-btn">Dashboard</a>
+        }
+        else if (ViewBag.UserRole == "provider")
+        {
+            <a href="~/Provider/Dashboard" class="btn custom-btn">Dashboard</a>
+        }
+        else if (ViewBag.UserRole == "patient")
+        {
+            <a href="~/Patient/Dashboard" class="btn custom-btn">Dashboard</a>
+        }
+    </div>
+</div>
+<script>
+    $(".user-nav").hide();
+</script>

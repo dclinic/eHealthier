@@ -1,0 +1,120 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Flag Group";
+}
+<div class="box_modify" ng-controller="FlagGroupController">
+
+    <div class="fix-head-line">
+        <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+            <a href="/Admin/Home">
+                <i class="fa fa-home"></i>
+            </a>
+            <i class="fa fa-angle-right"></i>
+            <span>Flag Group</span>
+        </div>
+        <div class="shotcut-btn">
+            <div class="btn-group pb6">
+                <a id="AddFlagGroup" class="AccessAdd head-btn" ng-click="FlagGroup.Methods.RedirecttoCreate()">
+                    <i class="fa fa-plus"></i>
+                    <span class="pl5">Add</span>
+                </a>
+            </div>
+            <div class="btn-group mob-search-block">
+                <div class="input-append searchdropdown">
+                    <input type="text" placeholder="Search" ng-model="FlagGroup.Search" class="search-bar mt0">
+                    <a class="add-on btn-search icon-search" ng-click="FlagGroup.Methods.GetFlagGroupSearch(0)">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fix-body-line">
+        <div class="action-block">
+            <div class="btn-group allcheck">
+                <input type="checkbox" ng-model="FlagGroup.Methods.allSelected" ng-model-options="{getterSetter: true}" />
+            </div>
+            <div class="btn-group mt-1">
+                <select id="DDLAction" class="form-control" ng-change="FlagGroup.Methods.UpdateIsActiveStatus(FlagGroup.Action)" ng-model="FlagGroup.Action">
+                    <option value="">Action</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Delete</option>
+                </select>
+            </div>
+        </div>
+        <div class="pull-right plr15">
+            <span class="lbl-small">Filter By</span>
+            <div class="btn-group mt1">
+                <select id="DDLFilterBy" class="form-control" ng-change="FlagGroup.Methods.GetFlagGroupSearch(0)" ng-model="FlagGroup.Filter">
+                    <option>All</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+
+            <span class="lbl-small">Page Size</span>
+            <div class="btn-group mt1">
+                <select id="DDLPageSize" class="form-control" ng-change="FlagGroup.Methods.GetFlagGroupSearch(0)" ng-model="FlagGroup.PageParams.FetchRecords" ng-options="page.id as page.name for page in FlagGroup.PageSize"></select>
+            </div>
+        </div>
+    </div>
+    <div ng-if="FlagGroup.IsLoading" class="loading-box">
+    </div>
+
+    <div class="nat-list" ng-repeat="item in FlagGroup.FlagGroup">
+        <div class="listviewDetails row-data mob-row-data">
+            <div class="grid1">
+                <div class="chk-action">
+                    <input type="checkbox" ng-model="item.Selected">
+                    <input type="hidden" ng-model="FlagGroup.FlagGroupID" />
+                </div>
+                <div class="fold-upblock collapsed" data-toggle="collapse" data-target="{{ '#ItemSubList-' + item.ID }}">
+                    <div class="iconplus">
+                        <a title=""><span class="arrowplus"></span></a>
+                    </div>
+                    <div class="namelist" style="margin-top: -28px;">
+                        <div class="rest-info">
+                            <div>
+                                <span id="Name" class="lbl-medium">{{item.FlagGroupName}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid2">
+                <div class="action-icon">
+                    <input type="checkbox" ng-model="item.IsActive" ng-change="FlagGroup.Methods.SwitchStatus(item.ID,item.IsActive)" bootstrap-switch />
+                    <a href="#" ng-click='FlagGroup.Methods.GetFlagGroupById(item.ID)' class="fa fa-edit"></a>
+                    <a href="#" ng-click='FlagGroup.Methods.OpenDeleteDialog(item.ID)' class="fa fa-trash"></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="{{ 'ItemSubList-' + item.ID }}" class="collapse">
+            <div class="nat-sublist">
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">FlagGroup Items</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+
+                    <div ng-repeat="restitem in item.FlagGroupItemList">
+                        <div class="grid2"><span id="itemname" class="lbl-small"> {{$index + 1}} ) {{restitem.ItemName}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="DivPageNumber" class="pagination_body ">
+            <span id="LBLRecordsShow" class="total_record">Showing {{FlagGroup.PageParams.CurrentStartIndex + 1}} to {{FlagGroup.PageParams.CurrentEndIndex}} of Total {{FlagGroup.PageParams.TotalCount}} Records</span>
+            <div id="DivCustomDataPager" class="page_block">
+                <a ng-repeat="btn in FlagGroup.Buttons" ng-class='{active : FlagGroup.PageNo == btn.currentindex}' class="paginationbtn" ng-click="FlagGroup.Methods.GetFlagGroup(btn.currentindex)">{{btn.currentindex}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/flag-group-js")
+} 

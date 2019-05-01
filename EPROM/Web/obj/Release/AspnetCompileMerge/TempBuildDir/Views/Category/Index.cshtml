@@ -1,0 +1,131 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Category";
+}
+<div class="box_modify" ng-controller="CategoryController">
+    <div class="fix-head-line">
+        <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+            <a href="/Admin/Home">
+                <i class="fa fa-home"></i>
+            </a><i class="fa fa-angle-right"></i>
+            <span>Category</span>
+        </div>
+
+        <div class="shotcut-btn">
+            <div class="btn-group pb6">
+                <a id="AddCategory" class="AccessAdd head-btn" ng-click="Category.Methods.RedirecttoCreate()">
+                    <i class="fa fa-plus"></i>
+                    <span class="pl5">Add</span>
+                </a>
+            </div>
+            <div class="btn-group mob-search-block">
+                <div class="input-append searchdropdown">
+                    <input type="text" placeholder="Search" ng-model="Category.Search" class="search-bar mt0">
+                    <a class="add-on btn-search icon-search" ng-click="Category.Methods.GetCategorySearch(0)">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fix-body-line">
+        <div class="action-block">
+            <div class="btn-group allcheck">
+                <input type="checkbox" ng-model="Category.Methods.allSelected" ng-model-options="{getterSetter: true}" />
+            </div>
+            <div class="btn-group mt-1">
+                <select id="DDLAction" class="form-control" ng-change="Category.Methods.UpdateIsActiveStatus(Category.Action)" ng-model="Category.Action">
+                    <option value="">Action</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Delete</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pull-right plr15">
+            <span class="lbl-small">Filter By</span>
+            <div class="btn-group mt1">
+                <select id="DDLFilterBy" class="form-control" ng-change="Category.Methods.GetCategorySearch(0)" ng-model="Category.Filter">
+                    <option>All</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+            <span class="lbl-small">Page Size</span>
+            <div class="btn-group mt1">
+                <select id="DDLPageSize" class="form-control" ng-change="Category.Methods.GetCategorySearch(0)" ng-model="Category.PageParams.FetchRecords" ng-options="page.id as page.name for page in Category.PageSize"></select>
+            </div>
+        </div>
+    </div>
+    <div class="nat-list">
+        <div ng-if="Category.IsLoading" class="loading-box">
+        </div>
+
+        <div class="nat-list" ng-repeat="item in Category.Category" ng-cloak>
+            <div class="listviewDetails row-data mob-row-data">
+                <div class="grid1">
+                    <div class="fold-upblock collapsed" data-toggle="collapse" data-target="{{ '#ItemSubList-' + item.ID }}">
+                        <div class="iconplus hide">
+                            <a title=""><span class="arrowplus" ng-click="Category.Methods.GetSubCategoryById(item.ID)"></span></a>
+                        </div>
+                        <div class="namelist">
+                            <div class="rest-info ml5">
+                                <div>
+                                    <span id="Name" class="lbl-medium">{{item.SurvayCategoryName}}</span>
+                                </div>
+                                <div>
+                                    <span class="lbl-small">{{item.Description}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chk-action">
+                        <input type="checkbox" ng-model="item.Selected">
+                        <input type="hidden" ng-model="Category.CategoryID" />
+                    </div>
+                </div>
+                <div class="grid2">
+                    <div class="action-icon">
+                        <input type="checkbox" ng-model="item.IsActive" ng-change="Category.Methods.SwitchStatus(item.ID,item.IsActive)" bootstrap-switch />
+                        <a ng-click='Category.Methods.GetCategoryById(item.ID)' class="fa fa-edit"></a>
+                        <a ng-click='Category.Methods.OpenDeleteDialog(item.ID)' class="fa fa-trash"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="{{ 'ItemSubList-' + item.ID }}" class="collapse">
+                <div class="nat-sublist" ng-repeat="subitem in Category.SubCategoryList">
+                    <div class="row-data">
+                        <div class="grid1">
+                            <span class="list-sub-title">Sub Category </span>
+                            <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                        </div>
+                        <div class="grid2"><span id="SurvayCategoryName" class="lbl-small">{{subitem.SurvayCategoryName}}</span></div>
+                    </div>
+
+                    <div class="row-data">
+                        <div class="grid1">
+                            <span class="list-sub-title">Description</span>
+                            <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                        </div>
+                        <div class="grid2">
+                            <span id="Description" class="lbl-small">{{subitem.Description}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="DivPageNumber" class="pagination_body ">
+                <span id="LBLRecordsShow" class="total_record">Showing {{Category.PageParams.CurrentStartIndex + 1}} to {{Category.PageParams.CurrentEndIndex}} of Total {{Category.PageParams.TotalCount}} Records</span>
+                <div id="DivCustomDataPager" class="page_block">
+                    <a ng-repeat="btn in Category.Buttons" ng-class='{active : Category.PageNo == btn.currentindex}' class="paginationbtn" ng-click="Category.Methods.GetCategorySearch(btn.currentindex)">{{btn.currentindex}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/category-js")
+}   

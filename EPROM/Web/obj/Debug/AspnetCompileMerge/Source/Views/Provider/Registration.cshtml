@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = "Choose Role";
+    ViewBag.PageTitle = "Choose Role";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="providerController">
+    <div class="set-border-margin">
+        <form name="frmRegistration">
+            <div class="">
+                <div class="form-group"><md-input-container style="width: 100%;"><label>I am a</label><md-select ng-model="Provider.Item.RoleName" name="iam" required><md-option ng-repeat="item in Provider.Items.RoleList" ng-value="item.RoleName">{{item.RoleName | capital}}</md-option></md-select></md-input-container></div>
+
+                <div ng-messages="frmRegistration.iam.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Role selection is required</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button type="button" class="btn btn-blue" ng-click="Provider.Methods.CreateRole()">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/select-js")
+    @Scripts.Render("~/bundles/datepicker-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/provider-js")
+}

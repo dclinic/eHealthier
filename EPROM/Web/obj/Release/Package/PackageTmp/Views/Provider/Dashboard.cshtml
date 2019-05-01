@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Dashboard";
+    ViewBag.PageTitle = "Dashboard";
+}
+
+<section ng-app="app" ng-controller="patientController">
+    <div class="row mb15">
+        <div class="loading-box" ng-if="Patient.IsLoading">
+        </div>
+        <div style="margin-bottom: 3%; width: 20%; float:right" class="reswidth">
+            <input type="text" ng-model="Patient.patientname" ng-keypress="Patient.Methods.getPatientsName()" class="form-control" placeholder="Enter patient name" />
+        </div>
+        <label class="col-md-2 control-label">My Patients</label>
+        <div class="col-md-10">
+            <md-input-container style="width:100%;">
+                <md-select aria-label="ePROM" ng-model="Patient.Item.PatientID" required ng-change="Patient.Methods.GetSurveyByPatient_Provider_Org_Practice_IDs()">
+                    <md-option ng-repeat="item in Patient.Items" ng-cloak="true" ng-value="item.PatientID">{{item.Patients.User.FirstName}} {{item.Patients.User.LastName}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-10">
+            <div class="sub-group-block">
+                <h3 class="page-sub-title">ePROMs</h3>
+                <div flex-xs flex-gt-sm="50" layout="column">
+                    <md-radio-group ng-model="Patient.PatientSurveyID">
+                        <md-radio-button ng-repeat="item in Patient.Item.surveyList | unique: 'ID'" ng-value="item.ID" class="md-primary" ng-click="Patient.Methods.CollectIdFromSelectedEprom(item.ID,item.SurveyID,item.ProviderID, item.OrganizationID, item.PracticeID)" style="outline: none;">{{item.ExternalTitle}}</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb15">
+        <md-content class="from-date">
+            <div class="col-md-2">
+                <h4>From Date</h4>
+            </div>
+            <div class="col-md-5">
+                <md-datepicker ng-model="Patient.FromDate" md-placeholder="From Date" md-open-on-focus></md-datepicker>
+            </div>
+        </md-content>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 hidden-xs hidden-sm"></div>
+        <div class="col-xs-12 col-sm-6 col-md-5">
+            <button type="button" class="btn col-xs-12 mb15 custom-btn" onclick="
+                    window.location.href='/Dashboard/Population' ">
+                Population Dashboard
+            </button>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-5 text-right">
+            <button type="button" class="btn col-xs-12 mb15 custom-btn" ng-click="Patient.Methods.RedirecttoMyPatientDashboard()">My Patient's Dashboard</button>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/patient-js")
+}

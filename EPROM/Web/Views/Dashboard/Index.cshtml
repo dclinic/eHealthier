@@ -1,0 +1,283 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "My Dashboard";
+    ViewBag.PageTitle = "My Dashboard";
+}
+
+<section>
+    <h3 class="page-sub-title">Mr James Benjamin (PROMIS PH and PROMIS MH)</h3>
+    <div class="row mb15">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                <thead>
+                    <tr>
+                        <th class="hidden"></th>
+                        <th>ePROM</th>
+                        <th>Norm</th>
+                        <th>06/01/2016</th>
+                        <th>06/02/2016</th>
+                        <th>06/03/2016</th>
+                        <th>etc...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd gradeX">
+                        <td class="hidden"></td>
+                        <td>
+                            <span class="text-uppercase">PROMIS PH</span>
+                        </td>
+                        <td>
+                            <span>50-52</span>
+                        </td>
+                        <td>
+                            <span>42</span>
+                        </td>
+                        <td>
+                            <span>43</span>
+                        </td>
+                        <td>
+                            <span>45</span>
+                        </td>
+                        <td>
+                            <span>...</span>
+                        </td>
+                    </tr>
+                    <tr class="odd gradeX">
+                        <td class="hidden"></td>
+                        <td>
+                            <span class="text-uppercase">PROMIS MH</span>
+                        </td>
+                        <td>
+                            <span>50-52</span>
+                        </td>
+                        <td>
+                            <span>42</span>
+                        </td>
+                        <td>
+                            <span>43</span>
+                        </td>
+                        <td>
+                            <span>45</span>
+                        </td>
+                        <td>
+                            <span>...</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3 class="page-sub-title">Interpretations based on population data</h3>
+    <div class="row mb15">
+        <div class="col-xs-12">
+            <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                <thead>
+                    <tr>
+                        <th class="hidden"></th>
+                        <th>score</th>
+                        <th>%</th>
+                        <th>Observations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="odd gradeX">
+                        <td class="hidden"></td>
+                        <td>
+                            <span>43</span>
+                        </td>
+                        <td>
+                            <span>3%</span>
+                        </td>
+                        <td>
+                            <span>Risk of admission to hospital wthin 6 months</span>
+                        </td>
+                    </tr>
+                    <tr class="odd gradeX">
+                        <td class="hidden"></td>
+                        <td>
+                            <span>46</span>
+                        </td>
+                        <td>
+                            <span>3%</span>
+                        </td>
+                        <td>
+                            <span>Risk of admission to hospital wthin 6 months</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="sub-group-block">
+                <h3 class="page-sub-title">ePROMs Suggested Goal</h3>
+                <div class="form-md-checkboxes mb15">
+                    <div class="md-checkbox-list">
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox1" class="md-check">
+                            <label for="checkbox1">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> PROMIS Physical Health
+                            </label>
+                        </div>
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox2" class="md-check" checked>
+                            <label for="checkbox2">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> PROMIS Mental Health
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb15">
+                    <label class="col-md-2 control-label">Suggested Score/Goal</label>
+                    <div class="col-md-4">
+                        <input class="form-control" placeholder="50" type="text" disabled>
+                    </div>
+                    <label class="col-md-1 control-label">By</label>
+                    <div class="col-md-5">
+                        <div class="input-group date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                            <input type="text" class="form-control" readonly disabled>
+                            <span class="input-group-btn">
+                                <button class="btn default" type="button" style="height:43px;border:1px solid #ccc;">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb15">
+                    <div class="col-xs-12">
+                        <div class="modified-chart">
+                            <div class="row">
+                                <div class="col-md-10 mb15">
+                                    <div id="suggested-score" class=""></div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <button type="button" class="btn custom-btn">Refresh</button>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb15">
+                    <div class="col-xs-12">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column sample_1">
+                            <thead>
+                                <tr>
+                                    <th class="hidden"></th>
+                                    <th>Indicator</th>
+                                    <th>Status</th>
+                                    <th>Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX">
+                                    <td class="hidden"></td>
+                                    <td>
+                                        <span>Smoker</span>
+                                    </td>
+                                    <td>
+                                        <span>Yes</span>
+                                    </td>
+                                    <td>
+                                        <span>Is a heavy</span>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="hidden"></td>
+                                    <td>
+                                        <span>Exercise</span>
+                                    </td>
+                                    <td>
+                                        <span>Yes</span>
+                                    </td>
+                                    <td>
+                                        <span>Light</span>
+                                    </td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td class="hidden"></td>
+                                    <td>
+                                        <span>BMI</span>
+                                    </td>
+                                    <td>
+                                        <span>etc..</span>
+                                    </td>
+                                    <td>
+                                        <span>...</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row mb15">
+                    <div class="col-xs-12">
+                        <h3 class="page-title text-center">My Doctor's Suggestions and Comments</h3>
+                    </div>
+                    <div class="col-xs-12">
+                        <textarea class="form-control" style="height:100px;">should you get a score of 47 by 01/11/2016, your chances of hospitalization in the next 6 months reduces from 8% to 6%...If you achieve a physical health score of 60 then you have dramatically reduced the chances of hospitalization to...</textarea>
+                    </div>
+                </div>
+                <div class="row mb15">
+                    <div class="col-xs-12">
+                        <div class="form-md-checkboxes mb15">
+                            <div class="md-checkbox-list">
+                                <div class="md-checkbox">
+                                    <input id="checkbox3" class="md-check" type="checkbox">
+                                    <label for="checkbox3">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>Need to see my doctor
+                                    </label>
+                                </div>
+                                <div class="md-checkbox">
+                                    <input id="checkbox4" class="md-check" type="checkbox">
+                                    <label for="checkbox4">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> Notify my doctor I have seen advice
+                                    </label>
+                                </div>
+                                <div class="md-checkbox">
+                                    <input id="checkbox5" class="md-check" checked="" type="checkbox">
+                                    <label for="checkbox5">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span>My Insurer can see
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 text-right">
+                        <button type="button" class="btn custom-btn">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb15 submit-login-provider">
+        <div class="col-xs-12 text-center">
+            <button type="button" class="btn custom-btn">My Dashboard</button>
+            <button type="button" class="btn custom-btn">Print</button>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/select-js")
+    @Scripts.Render("~/bundles/datepicker-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/angular-js")
+}

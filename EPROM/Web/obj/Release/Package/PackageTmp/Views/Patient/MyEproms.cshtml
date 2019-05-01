@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/PatientLayout.cshtml";
+    ViewBag.Title = "ePROMs";
+    ViewBag.PageTitle = "ePROMs";
+}
+
+<style>
+    html, body { height: 100%; min-height: 100%; }
+    #content-object { height: 100vh; width: 100%; overflow: hidden; }
+    object .survey-footer { display: none !important; }
+</style>
+<section ng-app="app" ng-controller="PatientEpromController">
+    <div id="loader" class="loading-box" style="display:none;">
+    </div>
+
+    <div class="inner-wrapper inner-ifram mb15">
+        <div class="row mb15">
+            <div class="col-xs-12" style="text-align:center;">
+                <iframe id="content-object"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/patient-eprom-js")
+}

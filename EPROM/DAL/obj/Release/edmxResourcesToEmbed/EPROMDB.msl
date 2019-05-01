@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EPROMDBModelStoreContainer" CdmEntityContainer="EPROMDBEntities">
+    <FunctionImportMapping FunctionImportName="usp_search_FlagGroupByFilter" FunctionName="EPROMDBModel.Store.usp_search_FlagGroupByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_FlagGroupByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FlagGroupName" ColumnName="FlagGroupName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_SystemFlagByFilter" FunctionName="EPROMDBModel.Store.usp_search_SystemFlagByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_SystemFlagByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SystemFlagName" ColumnName="SystemFlagName" />
+          <ScalarProperty Name="FlagGroupID" ColumnName="FlagGroupID" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_SurveyCategoryByFilter" FunctionName="EPROMDBModel.Store.usp_search_SurveyCategoryByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_SurveyCategoryByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SurvayCategoryName" ColumnName="SurvayCategoryName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ParentSurveyCategoryID" ColumnName="ParentSurveyCategoryID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_SurveyByFilter" FunctionName="EPROMDBModel.Store.usp_search_SurveyByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_SurveyByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ExternalTitle" ColumnName="ExternalTitle" />
+          <ScalarProperty Name="ContentCode" ColumnName="ContentCode" />
+          <ScalarProperty Name="ExternalID" ColumnName="ExternalID" />
+          <ScalarProperty Name="CollectorID" ColumnName="CollectorID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="SurveyCategoryID" ColumnName="SurveyCategoryID" />
+          <ScalarProperty Name="SurveyTypeID" ColumnName="SurveyTypeID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="SurvayCategoryName" ColumnName="SurvayCategoryName" />
+          <ScalarProperty Name="SurvayTypeName" ColumnName="SurvayTypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_PatientCategoryByFilter" FunctionName="EPROMDBModel.Store.usp_search_PatientCategoryByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_PatientCategoryByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientCategoryName" ColumnName="PatientCategoryName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_IndicatorsByFilter" FunctionName="EPROMDBModel.Store.usp_search_IndicatorsByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_IndicatorsByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IndicatorName" ColumnName="IndicatorName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="EPROMDBModel.Address">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="Suburb" ColumnName="Suburb" />
+          <ScalarProperty Name="Line2" ColumnName="Line2" />
+          <ScalarProperty Name="Line1" ColumnName="Line1" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="EPROMDBModel.Contact">
+        <MappingFragment StoreEntitySet="Contacts">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OtherFieldsJSON" ColumnName="OtherFieldsJSON" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="LinkedIN" ColumnName="LinkedIN" />
+          <ScalarProperty Name="Skype" ColumnName="Skype" />
+          <ScalarProperty Name="EmailPersonal" ColumnName="EmailPersonal" />
+          <ScalarProperty Name="EmailBusiness" ColumnName="EmailBusiness" />
+          <ScalarProperty Name="Emergency" ColumnName="Emergency" />
+          <ScalarProperty Name="Pager" ColumnName="Pager" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ControlTypes">
+      <EntityTypeMapping TypeName="EPROMDBModel.ControlType">
+        <MappingFragment StoreEntitySet="ControlTypes">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ControlTypeName" ColumnName="ControlTypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="EPROMDBModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Population" ColumnName="Population" />
+          <ScalarProperty Name="DialCode" ColumnName="DialCode" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="ISOCode3" ColumnName="ISOCode3" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlagGroups">
+      <EntityTypeMapping TypeName="EPROMDBModel.FlagGroup">
+        <MappingFragment StoreEntitySet="FlagGroups">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FlagGroupName" ColumnName="FlagGroupName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Indicators">
+      <EntityTypeMapping TypeName="EPROMDBModel.Indicator">
+        <MappingFragment StoreEntitySet="Indicators">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IndicatorName" ColumnName="IndicatorName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizations">
+      <EntityTypeMapping TypeName="EPROMDBModel.Organization">
+        <MappingFragment StoreEntitySet="Organizations">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="SalutationID" ColumnName="SalutationID" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientCategories">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientCategory">
+        <MappingFragment StoreEntitySet="PatientCategories">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PatientCategoryName" ColumnName="PatientCategoryName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientIndicators">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientIndicator">
+        <MappingFragment StoreEntitySet="PatientIndicators">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Goal" ColumnName="Goal" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+          <ScalarProperty Name="IndicatorID" ColumnName="IndicatorID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientProviders">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientProvider">
+        <MappingFragment StoreEntitySet="PatientProviders">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="EPROMDBModel.Patient">
+        <MappingFragment StoreEntitySet="Patients">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="PatientCategoryID" ColumnName="PatientCategoryID" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="MedicareNumber" ColumnName="MedicareNumber" />
+          <ScalarProperty Name="IHINumber" ColumnName="IHINumber" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSuggestions">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientSuggestion">
+        <MappingFragment StoreEntitySet="PatientSuggestions">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PatientSurveyID" ColumnName="PatientSurveyID" />
+          <ScalarProperty Name="Suggestions" ColumnName="Suggestions" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSurveys">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientSurvey">
+        <MappingFragment StoreEntitySet="PatientSurveys">
+          <ScalarProperty Name="IsSend" ColumnName="IsSend" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSurveyStatus">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientSurveyStatu">
+        <MappingFragment StoreEntitySet="PatientSurveyStatus">
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PatientSurveyID" ColumnName="PatientSurveyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Practices">
+      <EntityTypeMapping TypeName="EPROMDBModel.Practice">
+        <MappingFragment StoreEntitySet="Practice">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SalutationID" ColumnName="SalutationID" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PracticeName" ColumnName="PracticeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PracticeRoles">
+      <EntityTypeMapping TypeName="EPROMDBModel.PracticeRole">
+        <MappingFragment StoreEntitySet="PracticeRole">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="PracticeId" ColumnName="PracticeId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Properties">
+      <EntityTypeMapping TypeName="EPROMDBModel.Property">
+        <MappingFragment StoreEntitySet="Properties">
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderOrganizations">
+      <EntityTypeMapping TypeName="EPROMDBModel.ProviderOrganization">
+        <MappingFragment StoreEntitySet="ProviderOrganizations">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderPatientThirdPartyApps">
+      <EntityTypeMapping TypeName="EPROMDBModel.ProviderPatientThirdPartyApp">
+        <MappingFragment StoreEntitySet="ProviderPatientThirdPartyApp">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PatientSurveyID" ColumnName="PatientSurveyID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="ThirdPartyAppID" ColumnName="ThirdPartyAppID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderPractices">
+      <EntityTypeMapping TypeName="EPROMDBModel.ProviderPractice">
+        <MappingFragment StoreEntitySet="ProviderPractice">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ProviderOrganizationId" ColumnName="ProviderOrganizationId" />
+          <ScalarProperty Name="PracticeId" ColumnName="PracticeId" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderPracticeRoles">
+      <EntityTypeMapping TypeName="EPROMDBModel.ProviderPracticeRole">
+        <MappingFragment StoreEntitySet="ProviderPracticeRole">
+          <ScalarProperty Name="ProviderPracticeID" ColumnName="ProviderPracticeID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Providers">
+      <EntityTypeMapping TypeName="EPROMDBModel.Provider">
+        <MappingFragment StoreEntitySet="Providers">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LHN" ColumnName="LHN" />
+          <ScalarProperty Name="LHD" ColumnName="LHD" />
+          <ScalarProperty Name="PHN" ColumnName="PHN" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="HealthProviderIdentifier" ColumnName="HealthProviderIdentifier" />
+          <ScalarProperty Name="MedicareProviderNumber" ColumnName="MedicareProviderNumber" />
+          <ScalarProperty Name="SalutationID" ColumnName="SalutationID" />
+          <ScalarProperty Name="ProviderTypeID" ColumnName="ProviderTypeID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderTerms">
+      <EntityTypeMapping TypeName="EPROMDBModel.ProviderTerm">
+        <MappingFragment StoreEntitySet="ProviderTerms">
+          <ScalarProperty Name="ModifieBy" ColumnName="ModifieBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TermContent" ColumnName="TermContent" />
+          <ScalarProperty Name="TermID" ColumnName="TermID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProviderTypes">
+      <EntityTypeMapping TypeName="EPROMDBModel.ProviderType">
+        <MappingFragment StoreEntitySet="ProviderTypes">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProviderTypeName" ColumnName="ProviderTypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="EPROMDBModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salutations">
+      <EntityTypeMapping TypeName="EPROMDBModel.Salutation">
+        <MappingFragment StoreEntitySet="Salutation">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SalutationName" ColumnName="SalutationName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SecretQuestions">
+      <EntityTypeMapping TypeName="EPROMDBModel.SecretQuestion">
+        <MappingFragment StoreEntitySet="SecretQuestions">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Questions" ColumnName="Questions" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="EPROMDBModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Surveys">
+      <EntityTypeMapping TypeName="EPROMDBModel.Survey">
+        <MappingFragment StoreEntitySet="Survey">
+          <ScalarProperty Name="NormValue" ColumnName="NormValue" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsPublish" ColumnName="IsPublish" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="SurveyTypeID" ColumnName="SurveyTypeID" />
+          <ScalarProperty Name="SurveySubCategoryID" ColumnName="SurveySubCategoryID" />
+          <ScalarProperty Name="SurveyCategoryID" ColumnName="SurveyCategoryID" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="ContentCode" ColumnName="ContentCode" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="CollectorID" ColumnName="CollectorID" />
+          <ScalarProperty Name="ExternalID" ColumnName="ExternalID" />
+          <ScalarProperty Name="ExternalTitle" ColumnName="ExternalTitle" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyCategories">
+      <EntityTypeMapping TypeName="EPROMDBModel.SurveyCategory">
+        <MappingFragment StoreEntitySet="SurveyCategories">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ParentSurveyCategoryID" ColumnName="ParentSurveyCategoryID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SurvayCategoryName" ColumnName="SurvayCategoryName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyTypes">
+      <EntityTypeMapping TypeName="EPROMDBModel.SurveyType">
+        <MappingFragment StoreEntitySet="SurveyTypes">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SurvayTypeName" ColumnName="SurvayTypeName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemFlags">
+      <EntityTypeMapping TypeName="EPROMDBModel.SystemFlag">
+        <MappingFragment StoreEntitySet="SystemFlags">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="FlagGroupID" ColumnName="FlagGroupID" />
+          <ScalarProperty Name="SystemFlagName" ColumnName="SystemFlagName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Terms">
+      <EntityTypeMapping TypeName="EPROMDBModel.Term">
+        <MappingFragment StoreEntitySet="Terms">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="TermContent" ColumnName="TermContent" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThirdPartyApps">
+      <EntityTypeMapping TypeName="EPROMDBModel.ThirdPartyApp">
+        <MappingFragment StoreEntitySet="ThirdPartyApp">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SurveySubCategoryID" ColumnName="SurveySubCategoryID" />
+          <ScalarProperty Name="SurveyCategoryID" ColumnName="SurveyCategoryID" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tokens">
+      <EntityTypeMapping TypeName="EPROMDBModel.Token">
+        <MappingFragment StoreEntitySet="Tokens">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsRegister" ColumnName="IsRegister" />
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="Token1" ColumnName="Token" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="EPROMDBModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProfiles">
+      <EntityTypeMapping TypeName="EPROMDBModel.UserProfile">
+        <MappingFragment StoreEntitySet="UserProfile">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProperties">
+      <EntityTypeMapping TypeName="EPROMDBModel.UserProperty">
+        <MappingFragment StoreEntitySet="UserProperties">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSecretQuestions">
+      <EntityTypeMapping TypeName="EPROMDBModel.UserSecretQuestion">
+        <MappingFragment StoreEntitySet="UserSecretQuestions">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="OtherQuestion" ColumnName="OtherQuestion" />
+          <ScalarProperty Name="SecretQuestionID" ColumnName="SecretQuestionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersInRoles">
+      <EntityTypeMapping TypeName="EPROMDBModel.UsersInRole">
+        <MappingFragment StoreEntitySet="UsersInRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSurveys">
+      <EntityTypeMapping TypeName="EPROMDBModel.UserSurvey">
+        <MappingFragment StoreEntitySet="UserSurveys">
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="SurveyDate" ColumnName="SurveyDate" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Membership">
+      <EntityTypeMapping TypeName="EPROMDBModel.webpages_Membership">
+        <MappingFragment StoreEntitySet="webpages_Membership">
+          <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+          <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+          <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_OAuthMembership">
+      <EntityTypeMapping TypeName="EPROMDBModel.webpages_OAuthMembership">
+        <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webpages_Roles">
+      <EntityTypeMapping TypeName="EPROMDBModel.webpages_Roles">
+        <MappingFragment StoreEntitySet="webpages_Roles">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="EPROMDBModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+      <EndProperty Name="UserProfile">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="webpages_Roles">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_ThirdPartyAppByFilter" FunctionName="EPROMDBModel.Store.usp_search_ThirdPartyAppByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_ThirdPartyAppByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="SurveyCategoryID" ColumnName="SurveyCategoryID" />
+          <ScalarProperty Name="SurveySubCategoryID" ColumnName="SurveySubCategoryID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Pathways">
+      <EntityTypeMapping TypeName="EPROMDBModel.Pathway">
+        <MappingFragment StoreEntitySet="Pathways">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PathwayName" ColumnName="PathwayName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSurvey_Pathway_PatientSurveyStatus">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientSurvey_Pathway_PatientSurveyStatus">
+        <MappingFragment StoreEntitySet="PatientSurvey_Pathway_PatientSurveyStatus">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="PatientSurveyStatusID" ColumnName="PatientSurveyStatusID" />
+          <ScalarProperty Name="PathwayID" ColumnName="PathwayID" />
+          <ScalarProperty Name="PatientSurveyID" ColumnName="PatientSurveyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_search_PathwayByFilter" FunctionName="EPROMDBModel.Store.usp_search_PathwayByFilter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.usp_search_PathwayByFilter_Result">
+          <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PathwayName" ColumnName="PathwayName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AvailableEproms">
+      <EntityTypeMapping TypeName="EPROMDBModel.AvailableEprom">
+        <MappingFragment StoreEntitySet="AvailableEprom">
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DefaultDays">
+      <EntityTypeMapping TypeName="EPROMDBModel.DefaultDay">
+        <MappingFragment StoreEntitySet="DefaultDays">
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientSurveys_Temp">
+      <EntityTypeMapping TypeName="EPROMDBModel.PatientSurveys_Temp">
+        <MappingFragment StoreEntitySet="PatientSurveys_Temp">
+          <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogManagements">
+      <EntityTypeMapping TypeName="EPROMDBModel.LogManagement">
+        <MappingFragment StoreEntitySet="LogManagement">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="InnerMessage" ColumnName="InnerMessage" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_isCINTExist" FunctionName="EPROMDBModel.Store.sp_isCINTExist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EPROMDBModel.sp_isCINTExist_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+          <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="PracticeID" ColumnName="PracticeID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CINTScores">
+      <EntityTypeMapping TypeName="EPROMDBModel.CINTScore">
+        <MappingFragment StoreEntitySet="CINTScore">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="RespondedID" ColumnName="RespondedID" />
+          <ScalarProperty Name="SurveyMonkeyID" ColumnName="SurveyMonkeyID" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="IDValue" ColumnName="IDValue" />
+          <ScalarProperty Name="IDName" ColumnName="IDName" />
+          <ScalarProperty Name="ePROMsType" ColumnName="ePROMsType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

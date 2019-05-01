@@ -1,0 +1,62 @@
+﻿@model ePRom.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<section>
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="verticalcenter verticalcenter-loginpage login-shadow">
+
+
+            <div class="reg-page">
+                <img class="login-logo" src="/Resources/Images/ePROMS-new-logo.png">
+                <div class="reg-header">
+                    <h2>Login to your account</h2>
+                </div>
+                <div class="input-group">
+                    <div>
+                        @Html.ValidationSummary(true)
+                    </div>
+                </div>
+                <br />
+                <div class="txt-prepend input-group">
+                    <span class="add-on">
+                        <i class="fa fa-user"></i>
+                    </span>
+
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "input-reg admin-userlogin" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+                <div class="txt-prepend input-group">
+                    <span class="add-on">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                    @Html.PasswordFor(m => m.Password, new { @class = "input-reg admin-userlogin " })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+
+                @*@Html.CheckBoxFor(m => m.RememberMe)
+                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })*@
+
+                <div class="input-group">
+                    <div class="pull-left">                        
+                        <a href='@Url.Action("ForgotPassword", "Account", "ForgotPassword")' class="error-msg color-green">Forgot Password?</a>
+                    </div>
+                    <div class="pull-right">
+                        <input type="submit" value="Log in" class="btn login-button" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/login-js")
+}

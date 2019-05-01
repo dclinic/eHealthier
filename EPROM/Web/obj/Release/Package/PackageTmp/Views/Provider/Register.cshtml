@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    ViewBag.pageTitle = "Registration";
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+}
+<script>
+    $(".user-nav").hide();
+</script>
+<section ng-app="app" ng-controller="providerController">
+    <div class="loading-box" ng-if="Provider.IsLoading">
+    </div>
+
+    <div class="loading-box" style="opacity:0.8 !important;" ng-if="Provider.IsStartLoading">
+    </div>
+
+    <form name="frmRegister">
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm><label>Login Name</label><input ng-model="Provider.Item.email" type="email" name="loginname" required ng-change="Provider.Methods.CheckExistingUser(Provider.Item.email)" /></md-input-container>
+                <span class="help-block hidden"> A block of help text. </span>
+                <div ng-messages="frmRegister.loginname.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Login Name is required</div>
+                </div>
+                <div ng-messages="frmRegister.loginname.$error" ng-if="Provider.isUserExist">
+                    <div class="required" style="margin-top:-15px;">User already exists.</div>
+                </div>
+                <div class="required" ng-show="frmRegister.loginname.$invalid && !frmRegister.loginname.$pristine">Invalid email address.</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <md-input-container class="md-block" flex-gt-sm><label>Password</label><input ng-model="Provider.Item.Password" type="password" name="password" ng-change="Provider.Methods.comparePassword()" required /></md-input-container>
+
+                <div ng-messages="frmRegister.password.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Password is required</div>
+                </div>
+            </div>
+            <div class="col-sm-6 password-status" style="display:none">
+                <span>Weak</span>
+                <div class="progress" style="display:inline-block;margin-bottom:0;width:55%;vertical-align:middle;">
+                    <div class="progress-bar progress-bar-danger" style="width: 35%">
+                        <span class="sr-only"> 35% Complete (success) </span>
+                    </div>
+                    <div class="progress-bar progress-bar-warning" style="width: 33%">
+                        <span class="sr-only"> 20% Complete (warning) </span>
+                    </div>
+                    <div class="progress-bar progress-bar-success" style="width: 32%">
+                        <span class="sr-only"> 10% Complete (danger) </span>
+                    </div>
+                </div>
+                <span>Strong</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <md-input-container class="md-block" flex-gt-sm><label>Confirm Password</label><input ng-model="Provider.Item.confirmPassword" type="password" name="confirmPassword" ng-change="Provider.Methods.comparePassword()" required /></md-input-container>
+                <span class="help-block hidden"> A block of help text. </span>
+
+                <div ng-messages="frmRegister.confirmPassword.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Reconfirm password is required</div>
+                </div>
+                <div ng-show="Provider.IspasswordMatch">
+                    <div class="required">Password and confirm password not match</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-md-2 control-label">Secret Question</label>
+            <div class="col-md-10">
+                <md-radio-group ng-model="Provider.Item.SecretQuestionID">
+                    <md-radio-button value="1" class="md-primary" selected="true">My Pet's Name</md-radio-button>
+                    <md-radio-button value="2" class="md-primary"> My Favourite Holiday </md-radio-button>
+                    <md-radio-button value="3" class="md-primary">My Favourite Food</md-radio-button>
+                </md-radio-group>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm><label>Answer</label><input ng-model="Provider.Item.Answer" name="answer" required /></md-input-container>
+                <span class="help-block hidden"> A block of help text. </span>
+                <div ng-messages="frmRegister.answer.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Answer is required</div>
+                </div>               
+            </div>
+        </div>
+
+        <div class="row mb15 submit-login-provider">
+            <div class="col-md-12 text-right">
+                <a href="/Login" class="mr15">
+                    Back to Login
+                </a>
+                <a class="btn custom-btn" ng-click="Provider.Methods.Register()">Register</a>
+            </div>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/select-js")
+    @Scripts.Render("~/bundles/datepicker-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/provider-js")
+}

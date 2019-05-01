@@ -1,0 +1,166 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "Practice Details";
+    ViewBag.PageTitle = "Practice Details";
+}
+
+<section ng-app="app" ng-controller="ProviderOrganizationController">
+    <div class="loading-box" ng-if="Organization.IsLoading">
+    </div>
+
+    <div class="tab-pane" id="tab5">
+        <form name="formOrganization">
+            <div class="add-org">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <md-input-container class="designation-container" style="width:100%;">
+                            <md-select ng-model="Organization.Item.Organization.OrganizationID" aria-label="Clinics" placeholder="Organization" required name="organization">
+                                <md-option ng-repeat="item in Organization.OrganizationList" ng-value="item.ID">{{item.OrganizationName}}</md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <div ng-messages="formOrganization.organization.$error" ng-if="Organization.issubmitted">
+                            <div ng-message="required" class="required">Organization is required</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6">
+                        <md-input-container class="md-block designation-container" flex-gt-sm><input ng-model="Organization.Item.Organization.Designation" placeholder="Designation" type="text" name="designation" required /></md-input-container>
+
+                        <div ng-messages="formOrganization.designation.$error" ng-if="Organization.issubmitted">
+                            <div ng-message="required" class="required">Designation is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <md-input-container class="md-block" flex-gt-sm><label>Description</label><textarea ng-model="Organization.Item.Organization.Description" maxlength="50"></textarea></md-input-container>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 mt18 mb18">
+                        <md-datepicker class="org-date" ng-model="Organization.Item.Organization.StartDate" md-placeholder="Start Date" width="100%" required name="startdate" md-open-on-focus></md-datepicker>
+
+                        <div ng-messages="formOrganization.startdate.$error" ng-if="Organization.issubmitted">
+                            <div ng-message="required" class="required">Start Date is required</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 mt18 mb18">
+                        <md-datepicker class="org-date" ng-model="Organization.Item.Organization.EndDate" md-min-date="Organization.Item.Organization.StartDate" md-placeholder="End Date" width="100%" md-open-on-focus required name="enddate"></md-datepicker>
+
+                        <div ng-messages="formOrganization.enddate.$error" ng-if="Organization.issubmitted">
+                            <div ng-message="required" class="required">End Date is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-2 pull-right">
+                        <md-button class="md-raised md-primary" ng-click="Organization.Methods.CreateProviderOrganization()">Add</md-button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb15 mt15" ng-if="Organization.ProviderOrganizationList.length > 0">
+                <div class="col-md-12 table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th> OrganizationName </th>
+                                <th> Designation </th>
+                                <th> Description </th>
+                                <th> StartDate </th>
+                                <th> EndDate </th>
+                                <th> Remove </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd gradeX" ng-repeat="item in Organization.ProviderOrganizationList">
+                                <td style="width:25%;position:relative;">
+                                    {{item.OrganizationName}}
+                                </td>
+                                <td>
+                                    {{item.Designation}}
+                                </td>
+                                <td>
+                                    {{item.Description}}
+                                </td>
+                                <td>
+                                    {{item.StartDate | date : "d/M/yyyy" }}
+                                </td>
+                                <td class="center">
+                                    {{item.EndDate | date : "d/M/yyyy" }}
+                                </td>
+                                <td class="center">
+                                    <md-button class="md-raised md-warn" ng-click="Organization.Methods.DeleteProviderOrganization(item.ID, item.OrganizationID)">Delete</md-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- END EXAMPLE TABLE PORTLET-->
+                </div>
+            </div>
+        </form>
+        @*Start: Provider Practice*@
+        <form name="formPracticeOrg">
+            <div class="row mb15 mt15" ng-if="Organization.ProviderOrganizationList.length > 0">
+                <div class="col-md-12">
+                    <div ng-if="item.PracticeList.length > 0 || item.ProviderPracticeList.length>0 " class="odd gradeX organization1" ng-repeat="item in Organization.ProviderOrganizationList">
+                        <h2 class="organization1-header">{{item.OrganizationName}}</h2>
+                        <div class="organization1-content row">
+                            <div class="col-xs-12 col-sm-4 col-md-3">
+
+                                <md-select class="oraganization-select" ng-model="Organization.PracticeId" aria-label="Clinics" placeholder="Select Practice" required name="practice_{{$index}}">
+                                    <md-option ng-if="Practice.ID" ng-repeat="Practice in item.PracticeList" ng-value="Practice.ID">{{Practice.PracticeName}}</md-option>
+                                </md-select>
+
+                                <div ng-messages="formPracticeOrg['practice_'+$index].$error" ng-if="Organization.isPracticeSubmitted && formPracticeOrg['practice_'+$index].$invalid && formPracticeOrg['practice_'+$index].$dirty">
+                                    <div ng-message="required" class="required">Select Practice</div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-2 col-md-2">
+                                <md-button class="md-raised md-primary" ng-click="Organization.Methods.CreateProviderPractice(item.ID,$index)">Add</md-button>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" ng-if="item.ProviderPracticeList.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th> Practice </th>
+                                        <th> Assign Role </th>
+                                        <th style="width: 25%;"> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd gradeX" ng-repeat="ProviderPractice in item.ProviderPracticeList">
+                                        <td>
+                                            {{ProviderPractice.PracticeName}}
+                                        </td>
+                                        <td>
+                                            <div ng-repeat="itemRole in ProviderPractice.PracticeRoleList" ng-model=ProviderPractice.ProviderPracticeRoleList>
+                                                <md-checkbox md-no-ink aria-label="itemRole.RoleName" class="md-primary rolechk"
+                                                             ng-checked="Organization.Methods.Exists(itemRole, ProviderPractice.ProviderPracticeRoleList)"
+                                                             ng-click="Organization.Methods.Toggle(itemRole,ProviderPractice.Id, ProviderPractice.ProviderPracticeRoleList)">{{itemRole.RoleName}}</md-checkbox>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <md-button class="md-raised md-primary" ng-click="Organization.Methods.SaveRole(ProviderPractice.ProviderPracticeRoleList, ProviderPractice.Id)">Save</md-button>
+                                            <md-button class="md-raised md-warn" ng-click="Organization.Methods.DeleteProviderPractice(ProviderPractice.Id, ProviderPractice.PracticeId)">Delete</md-button>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        @*End: Provider Practice*@
+    </div>
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/ProviderOrganization-js")
+}

@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "My Dashboard Filter";
+    ViewBag.PageTitle = "My Dashboard";
+}
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sub-group-block">
+                <h3 class="page-sub-title">ePROMs</h3>
+                <div class="form-md-checkboxes multiple-scroll-checkboxes">
+                    <div class="md-checkbox-list">
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox7" class="md-check">
+                            <label for="checkbox7">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> PROMIS Global 10 (PH and MH)
+                            </label>
+                        </div>
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox8" class="md-check" checked>
+                            <label for="checkbox8">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span> quickDASH (Upper Limb)
+                            </label>
+                        </div>
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox9" class="md-check">
+                            <label for="checkbox9">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span>KOOS (Knee)
+                            </label>
+                        </div>
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox10" class="md-check">
+                            <label for="checkbox10">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span>Preventive (Risk Factors)
+                            </label>
+                        </div>
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox11" class="md-check">
+                            <label for="checkbox11">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span>Etc...
+                            </label>
+                        </div>
+                        <div class="md-checkbox">
+                            <input type="checkbox" id="checkbox12" class="md-check">
+                            <label for="checkbox12">
+                                <span></span>
+                                <span class="check"></span>
+                                <span class="box"></span>Etc..
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mb15">
+        <label class="col-md-2 control-label">From Date</label>
+        <div class="col-md-10">
+            <div class="input-group date date-picker" data-date="12-02-2012" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                <input type="text" class="form-control" readonly>
+                <span class="input-group-btn">
+                    <button class="btn default" type="button" style="height:43px;border:1px solid #ccc;">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <button type="button" class="btn mb15 custom-btn">My Dashboard</button>
+        </div>
+    </div>
+</div>

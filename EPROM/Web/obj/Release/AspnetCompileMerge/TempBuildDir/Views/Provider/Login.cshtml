@@ -1,0 +1,184 @@
+﻿@model ePRom.Models.LoginModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm(new { Token = string.IsNullOrEmpty(Url.RequestContext.HttpContext.Request.QueryString["Token"]) ? "" : Url.RequestContext.HttpContext.Request.QueryString["Token"] }))
+{
+    @Html.AntiForgeryToken()
+
+    <section>
+        <div ng-app="app" ng-controller="ClearController"></div>
+        <div id="divloader" class="loading-box" style="display:none;">
+        </div>
+
+        <div class="row has-success mb15">
+            <label class="col-md-2 control-label">Login</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control input-reg" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+        </div>
+
+        <div class="row mb15">
+            <label class="col-md-2 control-label">Password</label>
+            <div class="col-md-7">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control input-reg" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="col-md-3 text-right">
+                <button id="btnlogin" type="submit" class="btn custom-btn login-btn">Login</button>
+            </div>
+        </div>
+        <div class="row mb15">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-10">
+                <div>
+                    @Html.ValidationSummary(true)
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb15">
+            <div class="col-md-6 centertext">
+                <a class="custom-link" onclick="forgotPassword()">Forgot Password?</a>
+            </div>
+            <div class="col-md-6 mrgright34">
+                <a id="btnRegister" href="/Register" class="custom-link pull-right">Register</a>
+            </div>
+        </div>
+        <div id="forgotpassword" class="forgot-password" style="display:none;">
+            <div class="row mb15">
+                <label class="col-md-2 control-label">Secret Question</label>
+
+                <div class="col-md-10">
+                    <select id="questionList" class="form-control" data-width="100%">
+                        <option value="1">My Pet's Name</option>
+                        <option value="2"> My Favourite Holiday</option>
+                        <option value="3">My Favourite Food</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb15">
+                <label class="col-md-2 control-label">Answer</label>
+                <div class="col-md-10">
+                    <input id="txtanswer" class="form-control phone-mask" placeholder="" type="text">
+                </div>
+            </div>
+
+            <div class="row mb15">
+                <label class="col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                    <input id="email" class="form-control phone-mask" placeholder="" type="email">
+                </div>
+            </div>
+
+            <div class="row mb15">
+                <div class="col-md-12 text-right">
+                    <button type="button" class="btn custom-btn" onclick="SubmitForgotPassword()">Send me an Email </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb15">
+            <label id="lblMsg"></label>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            if (window.location.href.indexOf("Token") == -1) {
+                if ("@Session["isConfirmed"]" == "False") {
+                    showToasterMessage("Please Check your registered email to verify ePROMs account", "info");
+                }
+            }
+            function showToasterMessage(msg, msgType) {
+                $.toast({
+                    heading: msgType,
+                    loaderBg: '#097b9c',
+                    text: [
+                        msg
+                    ],
+                    icon: msgType
+                })
+            }
+        });
+
+
+        $("#UserName").keyup(function () {
+            if ($(this).val() != null && $(this).val() != "") {
+                $(".eprom-username").hide();
+            }
+        });
+
+        $("#Password").keyup(function () {
+            if ($(this).val() != null && $(this).val() != "") {
+                $(".eprom-password").hide();
+            }
+        });
+
+        function forgotPassword() {
+            $("#forgotpassword").toggle();
+            $("#lblMsg").html('');
+            if ($("#forgotpassword")[0].style.display == "block" || $("#forgotpassword")[0].style.display == "")
+                $('#btnlogin').prop('disabled', true);
+            else
+                $('#btnlogin').prop('disabled', false);
+
+        }
+
+        function SubmitForgotPassword() {
+            $("#divloader").show();
+            var email = $("#email").val();
+            var answer = $("#txtanswer").val();
+            var questionId = $('#questionList').find(":selected").val();
+
+            if (email != null && email != "" && answer != null && answer != "" && questionId != null && questionId != "") {
+                $.get("/api/Provider/CheckSecretQuestionAnswer?UserName=" + email + "&QuestionId=" + questionId + "&answer=" + answer, function (data, status) {
+                    if (data != null && data != "") {
+                        $("#divloader").hide();
+                        $("#lblMsg").addClass("required");
+                        $("#lblMsg").html(data);
+                    }
+                    else {
+                        $.get("/api/Email/ForgotPasswordEmail?ToAddress=" + email + "&URL=" + '@ViewBag.EmailURL', function (data, status) {
+                            $("#divloader").hide();
+
+                            if (data == "1") {
+                                $("#lblMsg").addClass("success");
+                                $("#forgotpassword").hide();
+                                $("#email").val('');
+                                $("#txtanswer").val('');
+                                $('#btnlogin').prop('disabled', false);
+                                $("#lblMsg").html('Please Check your Email to get Password');
+                            }
+                            else {
+                                $("#lblMsg").addClass("required");
+                                $("#lblMsg").html('There is some issue. Please try again.');
+                            }
+                        });
+                    }
+                });
+            }
+            else {
+                $("#divloader").hide();
+                $("#lblMsg").addClass("required");
+
+                if (questionId == null || questionId == "")
+                    $("#lblMsg").html('Select Question');
+                else if (answer == null || answer == "")
+                    $("#lblMsg").html('Answer is required');
+                else if (email == null || email == "")
+                    $("#lblMsg").html('Email is required');
+            }
+        }
+    </script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/select-js")
+        @Scripts.Render("~/bundles/clear-js")
+    }
+}

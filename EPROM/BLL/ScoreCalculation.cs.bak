@@ -1,0 +1,1093 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using DAL;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using BAL;
+using Common;
+using System.Data;
+
+namespace BLL
+{
+    public class ScoreCalculation
+    {
+        Score objScore = null;
+
+        public static DataSet dsStatic = new DataSet();
+
+        public DataSet ReadXmlFile(string FilePath)
+        {
+            dsStatic.ReadXml(FilePath);
+            return dsStatic;
+        }
+
+        public string GetEpromScore(ResponseCustomClass response)
+        {
+            if (response.Eprom_title.Trim() == "PROMIS Global 10")
+            {
+                return Create_PROMISG10_ScoreTable(response);
+            }
+            else if (response.Eprom_title.Trim() == "KOOS-Physical Function Shortform (KOOS-PS)")
+            {
+                return Calculate_KOOS_Score(response);
+            }
+            else if (response.Eprom_title.Trim() == "Hip disability and Osteoarthritis Outcome Score (HOOS)")
+            {
+                return Calculate_HOOS_Score(response);
+            }
+            else if (response.Eprom_title.Trim() == "Orebro Musculoskeletal Pain Questionnaire")
+            {
+                return Calculate_OMPQ_Score(response);
+            }
+            else if (response.Eprom_title.Trim() == "Neck Disability Index - Vernon and Mior Cervical Spine Questionnaire")
+            {
+                return Calculate_NeckPain_Score(response);
+            }
+            else if (response.Eprom_title.Trim() == "Kessler Psychological Distress Scale (K10)")
+            {
+                return Calculate_K10_Score(response);
+            }
+            else if (response.Eprom_title.Trim() == "QuickDASH Questionnaire")
+            {
+                return Calculate_QDASH_Score(response);
+            }
+            else if (response.Eprom_title.Trim() == "Modified Oswestry Low Back Disability Questionnaire")
+            {
+                return Calculate_Oswestry_Score(response);
+            }
+            return "";
+        }
+
+        #region PROMISG10
+
+        public string Create_PROMISG10_ScoreTable(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scorehealth = 0, scoreQuality = 0, scorePhysicalHealth = 0, scoreMentalHealth = 0, scoreSatisfaction = 0, scoreDepressed = 0, scoreFatigue = 0, scorePainAverage = 0, globalMentalScore = 0, globalPhysicalScore = 0;
+
+                double PhysicalAdjustedScore = 0.0, MentalAdjustedScore = 0.0;
+
+                for (int i = 0; i < List.Count; i++)
+                {
+                    if (List[i].question_title == "In general, would you say your health is:")
+                    {
+                        scorehealth = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "In general, would you say your quality of life is:")
+                    {
+                        scoreQuality = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "In general, how would you rate your physical health?")
+                    {
+                        scorePhysicalHealth = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "In general, how would you rate your mental health, including your mood and your ability to<br>think?")
+                    {
+                        scoreMentalHealth = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "In general, how would you rate your satisfaction with your social activities and relationships?")
+                    {
+                        scoreSatisfaction = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "In the past 7 days, How often have you been bothered by emotional problems such as feeling anxious  <br>depressed or irritable?")
+                    {
+                        scoreDepressed = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "How would you rate your fatigue on average?")
+                    {
+                        scoreFatigue = GetScore_PROMISG10(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "On a scale of 0 to 10 (where 0 is No Pain, and 10 is Worst Pain Imaginable) how would you rate your pain on average?")
+                    {
+                        scorePainAverage = GetPainAVGScore_PROMISG10(List[i].answer_text);
+                    }
+                }
+
+                globalPhysicalScore = scorehealth + scoreQuality + scorePhysicalHealth + scoreFatigue + scorePainAverage;
+
+                globalMentalScore = scoreQuality + scoreMentalHealth + scoreSatisfaction + scoreDepressed;
+
+                #region GlobalPhysicalAdjustedScore
+
+                PhysicalAdjustedScore = GetPROMISG10_GlobalPhysicalScore(globalPhysicalScore);
+
+                #endregion GlobalPhysicalAdjustedScore
+
+                #region GlobalMentalAdjustedScore
+
+                MentalAdjustedScore = GetPROMISG10_GlobalMentalScore(globalMentalScore);
+
+                #endregion GlobalMentalAdjustedScore
+
+                List<Score> list = new List<Score>();
+
+                objScore = new Score();
+                objScore.Title = "Global Physical Health Adjusted Score";
+                objScore.Value = PhysicalAdjustedScore;
+                list.Add(objScore);
+
+                objScore = new Score();
+                objScore.Title = "Global Mental Health Adjusted Score";
+                objScore.Value = MentalAdjustedScore;
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_PROMISG10(string strTitle)
+        {
+            int ScorePROMISG10 = 0;
+            DataTable dtStatic = dsStatic.Tables["PROMISG10"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScorePROMISG10 = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScorePROMISG10;
+        }
+
+        public int GetPainAVGScore_PROMISG10(string strTitle)
+        {
+            int ScorePROMISG10 = 0;
+            DataTable dtStatic = dsStatic.Tables["PROMISG10Score"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScorePROMISG10 = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScorePROMISG10;
+        }
+
+        public double GetPROMISG10_GlobalPhysicalScore(int Title)
+        {
+            double ScorePhysical = 0;
+            DataTable dtStatic = dsStatic.Tables["PROMISG10_GlobalPhysicalScore"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (Title.ToString() == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScorePhysical = Convert.ToDouble(staticValue);
+                    }
+                }
+                else if (Title > 20 && staticText == "20")
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScorePhysical = Convert.ToDouble(staticValue);
+                    }
+                }
+            }
+            return ScorePhysical;
+        }
+
+        public double GetPROMISG10_GlobalMentalScore(int Title)
+        {
+            double ScoreMental = 0;
+            DataTable dtStatic = dsStatic.Tables["PROMISG10_GlobalMentalScore"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (Title.ToString() == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreMental = Convert.ToDouble(staticValue);
+                    }
+                }
+                else if (Title > 20 && staticText == "20")
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreMental = Convert.ToDouble(staticValue);
+                    }
+                }
+            }
+            return ScoreMental;
+        }
+
+        #endregion PROMISG10
+
+        #region KOOS       
+
+        public string Calculate_KOOS_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scoreRising = 0, scoreStockings = 0, scoreSitting = 0, scoreBending = 0, scoreTwisting = 0, scoreKneeling = 0, scoreSquatting = 0, KoosScore = 0;
+                double TotalKOOSScore = 0;
+                if (List != null)
+                {
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        if (List[i].question_title == "Rising from bed")
+                        {
+                            scoreRising = GetScore_KOOS(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Putting on socks/stockings")
+                        {
+                            scoreStockings = GetScore_KOOS(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Rising from sitting")
+                        {
+                            scoreSitting = GetScore_KOOS(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Bending to floor")
+                        {
+                            scoreBending = GetScore_KOOS(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Twisting/pivoting on your injured knee")
+                        {
+                            scoreTwisting = GetScore_KOOS(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Kneeling")
+                        {
+                            scoreKneeling = GetScore_KOOS(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Squatting")
+                        {
+                            scoreSquatting = GetScore_KOOS(List[i].answer_text);
+                        }
+                    }
+                }
+
+                #region KOOSScore      
+
+                KoosScore = scoreRising + scoreStockings + scoreSitting + scoreBending + scoreTwisting + scoreKneeling + scoreSquatting;
+
+                TotalKOOSScore = GetLevelValue_KOOS(KoosScore);
+
+                #endregion KOOSScore
+
+                objScore = new Score();
+                objScore.Title = "KOOS Score";
+                objScore.Value = TotalKOOSScore;
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_KOOS(string strTitle)
+        {
+            int ScoreKOOS = 0;
+            DataTable dtStatic = dsStatic.Tables["KOOS"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreKOOS = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreKOOS;
+        }
+
+        public double GetLevelValue_KOOS(int Score)
+        {
+            double ScoreKOOS = 0;
+            DataTable dtStatic = dsStatic.Tables["KoosLevelScore"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                var staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (Score.ToString() == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreKOOS = Convert.ToDouble(staticValue);
+                    }
+                }
+                else if (Score > 20 && staticText == "20")
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreKOOS = Convert.ToDouble(staticValue);
+                    }
+                }
+            }
+            return ScoreKOOS;
+        }
+
+        #endregion KOOS
+
+        #region HOOS  
+
+        public string Calculate_HOOS_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scorestairs = 0, scoreShower = 0, scoreSitting = 0, scoreRunning = 0, scoreTwisting = 0, HoosScore = 0;
+                double TotalHOOSScore = 0;
+
+                for (int i = 0; i < List.Count; i++)
+                {
+                    if (List[i].question_title == "Descending stairs")
+                    {
+                        scorestairs = GetScore_HOOS(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "Getting in/out of bath or shower")
+                    {
+                        scoreShower = GetScore_HOOS(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "Sitting")
+                    {
+                        scoreSitting = GetScore_HOOS(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "Running")
+                    {
+                        scoreRunning = GetScore_HOOS(List[i].answer_text);
+                    }
+                    else if (List[i].question_title == "Twisting/pivoting on your loaded leg")
+                    {
+                        scoreTwisting = GetScore_HOOS(List[i].answer_text);
+                    }
+                }
+
+                HoosScore = scorestairs + scoreShower + scoreSitting + scoreRunning + scoreTwisting;
+                TotalHOOSScore = GetLevelValue_HOOS(HoosScore);
+
+                objScore = new Score();
+                objScore.Title = "HOOS Score";
+                objScore.Value = TotalHOOSScore;
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_HOOS(string strTitle)
+        {
+            int ScoreHOOS = 0;
+            DataTable dtStatic = dsStatic.Tables["HOOS"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreHOOS = Convert.ToInt32(staticValue);
+                    }
+                }
+                else if (strTitle == "")
+                {
+                    ScoreHOOS = int.MinValue;
+                }
+            }
+            return ScoreHOOS;
+        }
+
+        public double GetLevelValue_HOOS(int Title)
+        {
+            double ScoreHOOS = 0;
+            DataTable dtStatic = dsStatic.Tables["HOOSLevelScore"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                var staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (Title.ToString() == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreHOOS = Convert.ToDouble(staticValue);
+                    }
+                }
+                else if (Title > 20 && staticText == "20")
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreHOOS = Convert.ToDouble(staticValue);
+                    }
+                }
+            }
+            return ScoreHOOS;
+        }
+        #endregion HOOS
+
+        #region OMPQ
+
+        public string Calculate_OMPQ_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scoreNeck = 0, scoreShoulder = 0, scoreArm = 0, scoreUpperBack = 0, scoreLowerBack = 0, scoreLeg = 0, scoreOther = 0, TotalInjury = 0, scoreDaysOfWork = 0, scoreCurrentPain = 0, scoreMonotonous = 0, scorePainRate = 0, scorePainScale = 0, scorePainExperienced = 0, scorePainDecrease = 0, scoreJobSatisfied = 0, scoreTense = 0, scoreDepressed = 0, scorePainPersistent = 0, scoreWorkChance = 0, scorePhysicalActivity = 0, scorePainIndication = 0, scorePresentPain = 0, scoreLightWork = 0, scoreWalk = 0, scoreOrdinaryHousehold = 0, scoreShopping = 0, scoreSleep = 0, TotalOMPQScore = 0, EmailScore = 0;
+
+                if (List != null)
+                {
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        string strTitle = List[i].question_title;
+
+                        if (strTitle == "Where do you have pain? Place a tick for all appropriate sites.")
+                        {
+                            if (List[i].answer_text.Contains("Neck"))
+                                scoreNeck = 1;
+
+                            if (List[i].answer_text.Contains("Shoulder"))
+                                scoreShoulder = 1;
+
+                            if (List[i].answer_text.Contains("Arm"))
+                                scoreArm = 1;
+
+                            if (List[i].answer_text.Contains("Upper Back"))
+                                scoreUpperBack = 1;
+
+                            if (List[i].answer_text.Contains("Lower Back"))
+                                scoreLowerBack = 1;
+
+                            if (List[i].answer_text.Contains("Leg"))
+                                scoreLeg = 1;
+
+
+                            if (List[i].answer_text.Contains("Other (state)"))
+                                scoreOther = 1;
+
+                        }
+                        else if (strTitle == "How many days of work have you missed because of pain during the past 18 months? Tick  one.")
+                        {
+                            scoreDaysOfWork = GetScore_OMPQ(List[i].answer_text);
+                        }
+                        else if (strTitle == "How long have you had your current pain problem? Tick  one.")
+                        {
+                            scoreCurrentPain = GetScore_OMPQ(List[i].answer_text);
+                        }
+                        else if (strTitle == "Is your work heavy or monotonous? -")
+                        {
+                            scoreMonotonous = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "How would you rate the pain that you have had during the past week? -")
+                        {
+                            scorePainRate = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "In the past three months, on average, how bad was your pain on a 0-10 scale? Select one. -")
+                        {
+                            scorePainScale = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "How often would you say that you have experienced pain episodes, on average, during the past three<br>months? Select one. -")
+                        {
+                            scorePainExperienced = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "Based on all things you do to cope, or deal with your pain, on an average day, how much are you<br>able to decrease it? Select one. -")
+                        {
+                            scorePainDecrease = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "If you take into consideration your work routines, management, salary, promotion possibilities and<br>work mates, how satisfied are you with your job? Select one. -")
+                        {
+                            scoreJobSatisfied = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "How tense or anxious have you felt in the past week? Select one. -")
+                        {
+                            scoreTense = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "How much have you been bothered by feeling depressed in the past week? Select one. -")
+                        {
+                            scoreDepressed = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "In your view, how large is the risk that your current pain may become persistent? Select one. -")
+                        {
+                            scorePainPersistent = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "In your estimation, what are the chances that you will be able to work in six months? Select one. -")
+                        {
+                            scoreWorkChance = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "Physical activity makes my pain worse.")
+                        {
+                            scorePhysicalActivity = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "An increase in pain is an indication that I should stop what I’m doing until the pain decreases")
+                        {
+                            scorePainIndication = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "I should not do my normal work with my present pain.")
+                        {
+                            scorePresentPain = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "I can do light work for an hour.")
+                        {
+                            scoreLightWork = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "I can walk for an hour.")
+                        {
+                            scoreWalk = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "I can do ordinary household chores.")
+                        {
+                            scoreOrdinaryHousehold = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "I can do the weekly shopping")
+                        {
+                            scoreShopping = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                        else if (strTitle == "I can sleep at night.")
+                        {
+                            scoreSleep = GetScore_OMPQQuestions(List[i].answer_text);
+                        }
+                    }
+                }
+
+                TotalInjury = scoreNeck + scoreShoulder + scoreArm + scoreUpperBack + scoreLowerBack + scoreLeg + scoreOther;
+
+                #region OMPQScore
+                int InjuryScore = 0;
+
+                if (TotalInjury > 4)
+                    InjuryScore = 10;
+                else
+                    InjuryScore = (TotalInjury * 2);
+
+                TotalOMPQScore = InjuryScore + (scoreDaysOfWork + scoreCurrentPain + scoreMonotonous + scorePainRate + scorePainScale + scorePainExperienced + scoreJobSatisfied + scoreTense + scoreDepressed + scorePhysicalActivity + scorePainIndication + scorePresentPain) + 80 - (scorePainDecrease + scorePainPersistent + scoreWorkChance + scoreLightWork + scoreWalk + scoreOrdinaryHousehold + scoreShopping + scoreSleep);
+
+                EmailScore = TotalOMPQScore;
+
+                #endregion OMPQScore
+
+                objScore = new Score();
+                objScore.Title = "OMPQ Score";
+                objScore.Value = TotalOMPQScore;
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_OMPQ(string strTitle)
+        {
+            int ScoreOMPQ = 0;
+            DataTable dtStatic = dsStatic.Tables["OMPQ"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreOMPQ = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreOMPQ;
+        }
+
+        public int GetScore_OMPQQuestions(string strTitle)
+        {
+            int ScoreOMPQ = 0;
+            DataTable dtStatic = dsStatic.Tables["OMPQ_Question_Value"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreOMPQ = Convert.ToInt32(staticValue);
+                    }
+                }
+                else if (strTitle.Contains(staticText))
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreOMPQ = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreOMPQ;
+        }
+
+        #endregion OMPQ
+
+        #region NeckPain       
+
+        public string Calculate_NeckPain_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scorePainIntensity = 0, scorePersonalCare = 0, scoreLifting = 0, scoreReading = 0, scoreHeadaches = 0, scoreConcentrating = 0, scoreWork = 0, scoreDriving = 0, scoreSleeping = 0, scoreRecreation = 0, TotalNeckPainScore = 0;
+
+                if (List != null)
+                {
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        if (List[i].question_title == "Section 1 - Pain Intensity")
+                        {
+                            scorePainIntensity = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 2 - Personal Care (e.g., Washing, Dressing)")
+                        {
+                            scorePersonalCare = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 3 - Lifting")
+                        {
+                            scoreLifting = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 4 - Reading")
+                        {
+                            scoreReading = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 5 - Headaches")
+                        {
+                            scoreHeadaches = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 6 - Concentrating")
+                        {
+                            scoreConcentrating = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 7 - Work")
+                        {
+                            scoreWork = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 8 - Driving")
+                        {
+                            scoreDriving = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 9 - Sleeping")
+                        {
+                            scoreSleeping = GetScore_NeckPain(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 10 - Recreation")
+                        {
+                            scoreRecreation = GetScore_NeckPain(List[i].answer_text);
+                        }
+                    }
+                }
+
+                TotalNeckPainScore = scorePainIntensity + scorePersonalCare + scoreLifting + scoreReading + scoreHeadaches + scoreConcentrating + scoreWork + scoreDriving + scoreSleeping + scoreRecreation;
+
+                objScore = new Score();
+                objScore.Title = "NECKPAIN Score";
+                objScore.Value = TotalNeckPainScore;
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_NeckPain(string strTitle)
+        {
+            int ScoreNeckPain = 0;
+            DataTable dtStatic = dsStatic.Tables["NeckPain"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreNeckPain = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreNeckPain;
+        }
+
+        #endregion NeckPain
+
+        #region K10  
+
+        public string Calculate_K10_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scoreTired = 0, scoreNervous = 0, scoreCalm = 0, scoreHopeless = 0, scoreFidgety = 0, scoreRestless = 0, scoreDepressed = 0, scoreEffort = 0, scoreCheer = 0, K10Score = 0;
+                double TotalK10Score = 0;
+
+                if (List != null)
+                {
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        if (List[i].question_title == "During the last 30 days, about how often did you feel tired out for no good reason?")
+                        {
+                            scoreTired = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel nervous?")
+                        {
+                            scoreNervous = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel so nervous that nothing could calm you<br>down?")
+                        {
+                            scoreCalm = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel hopeless?")
+                        {
+                            scoreHopeless = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel restless or fidgety?")
+                        {
+                            scoreFidgety = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel so restless you could not sit still?")
+                        {
+                            scoreRestless = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel depressed?")
+                        {
+                            scoreDepressed = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel that everything was an effort?")
+                        {
+                            scoreEffort = GetScore_K10(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the last 30 days, about how often did you feel so sad that nothing could cheer you up?")
+                        {
+                            scoreCheer = GetScore_K10(List[i].answer_text);
+                        }
+                    }
+                }
+
+                K10Score = scoreTired + scoreNervous + scoreCalm + scoreHopeless + scoreFidgety;
+                TotalK10Score = GetLevelValue_K10(K10Score);
+
+                objScore = new Score();
+                objScore.Title = "K10 Score";
+                objScore.Value = TotalK10Score;
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_K10(string strTitle)
+        {
+            int ScoreK10 = 0;
+            DataTable dtStatic = dsStatic.Tables["K10"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreK10 = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreK10;
+        }
+
+        public double GetLevelValue_K10(int Score)
+        {
+            double ScoreK10 = 0;
+            DataTable dtStatic = dsStatic.Tables["K10LevelScore"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                var staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (Score.ToString() == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreK10 = Convert.ToDouble(staticValue);
+                    }
+                }
+                else if (Score > 20 && staticText == "20")
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreK10 = Convert.ToDouble(staticValue);
+                    }
+                }
+            }
+            return ScoreK10;
+        }
+
+        #endregion K10
+
+        #region QDASH       
+
+        public string Calculate_QDASH_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scoreTight = 0, scoreChores = 0, scoreShopping = 0, scoreWash = 0, scoreKnife = 0, scoreRecreational = 0, scoreSocial = 0, scoreDaily = 0, scoreSymptoms = 0, scoreTingling = 0, scoreDifficulty = 0;
+
+                decimal TotalQDashScore = 0;
+
+                if (List != null)
+                {
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        if (List[i].question_title == "Open a tight or new jar")
+                        {
+                            scoreTight = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Do heavy household chores (e.g. wash walls, wash floors)")
+                        {
+                            scoreChores = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Carry a shopping bag or briefcase")
+                        {
+                            scoreShopping = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Wash your back")
+                        {
+                            scoreWash = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Use a knife to cut food")
+                        {
+                            scoreKnife = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Recreational activities in which you take some force or impact through your arm, shoulder or hand (e.g. golf, hammering, tennis, etc.)")
+                        {
+                            scoreRecreational = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the past week, to what extent has your arm, shoulder or hand problem interfered with your normal social activities with family, friends, neighbours or groups?")
+                        {
+                            scoreSocial = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the past week, were you limited in your work or other regular daily activities as a result of your arm, shoulder or hand problem?")
+                        {
+                            scoreDaily = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Arm, shoulder or hand pain")
+                        {
+                            scoreSymptoms = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Tingling (pins and needles) in your arm, shoulder or hand")
+                        {
+                            scoreTingling = GetScore_QDASH(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "During the past week, how much difficulty have you had sleeping because of the pain in your arm, shoulder or hand?")
+                        {
+                            scoreDifficulty = GetScore_QDASH(List[i].answer_text);
+                        }
+                    }
+                }
+
+                decimal Sum = scoreTight + scoreChores + scoreShopping + scoreWash + scoreKnife + scoreRecreational + scoreSocial + scoreDaily + scoreSymptoms + scoreTingling + scoreDifficulty;
+
+                decimal value1 = Sum / 11;
+
+                decimal TotalScore = (value1 - 1) * 25;
+                TotalQDashScore = Math.Round(TotalScore, 1, MidpointRounding.ToEven);
+
+                objScore = new Score();
+                objScore.Title = "QDASH Score";
+                objScore.Value = Convert.ToDouble(TotalQDashScore);
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_QDASH(string strTitle)
+        {
+            int ScoreQDASH = 0;
+            DataTable dtStatic = dsStatic.Tables["QDASH"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreQDASH = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreQDASH;
+        }
+
+        #endregion QDASH
+
+        #region Oswestry       
+
+        public string Calculate_Oswestry_Score(ResponseCustomClass response)
+        {
+            try
+            {
+                var List = response.responselist;
+
+                int scorePainIntensity = 0, scorePersonalCare = 0, scoreLifting = 0, scoreWalking = 0, scoreSitting = 0, scoreStanding = 0, scoreSleeping = 0, scoreSocialLife = 0, scoreTraveling = 0, scoreHomeMaking = 0, TotalOwestreyScore = 0;
+
+                if (List != null)
+                {
+                    for (int i = 0; i < List.Count; i++)
+                    {
+                        if (List[i].question_title == "Section 1 - Pain Intensity")
+                        {
+                            scorePainIntensity = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 2 - Personal Care (e.g., Washing, Dressing)")
+                        {
+                            scorePersonalCare = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 3 - Lifting")
+                        {
+                            scoreLifting = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 4 - Walking")
+                        {
+                            scoreWalking = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 5 - Sitting")
+                        {
+                            scoreSitting = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 6 - Standing")
+                        {
+                            scoreStanding = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 7 - Sleeping")
+                        {
+                            scoreSleeping = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 8 - Social Life")
+                        {
+                            scoreSocialLife = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 9 - Traveling")
+                        {
+                            scoreTraveling = GetScore_Oswestry(List[i].answer_text);
+                        }
+                        else if (List[i].question_title == "Section 10 - Employment/Home-making")
+                        {
+                            scoreHomeMaking = GetScore_Oswestry(List[i].answer_text);
+                        }
+                    }
+                }
+
+                TotalOwestreyScore = scorePainIntensity + scorePersonalCare + scoreLifting + scoreWalking + scoreSitting + scoreStanding + scoreSleeping + scoreSocialLife + scoreTraveling + scoreHomeMaking;
+
+                objScore = new Score();
+                objScore.Title = "OWESTREY Score";
+                objScore.Value = TotalOwestreyScore;
+
+                List<Score> list = new List<Score>();
+                list.Add(objScore);
+                string str = JsonConvert.SerializeObject(list);
+                return str;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int GetScore_Oswestry(string strTitle)
+        {
+            int ScoreOswestry = 0;
+            DataTable dtStatic = dsStatic.Tables["OSWESTRY"];
+            for (int s = 0; s < dtStatic.Rows.Count; s++)
+            {
+                string staticText = dtStatic.Rows[s]["Text"].ToString();
+                var staticValue = dtStatic.Rows[s]["Value"];
+
+                if (strTitle == staticText)
+                {
+                    if (staticValue != null && staticValue.ToString() != "")
+                    {
+                        ScoreOswestry = Convert.ToInt32(staticValue);
+                    }
+                }
+            }
+            return ScoreOswestry;
+        }
+        #endregion Oswestry
+    }
+}

@@ -1,0 +1,20 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = "";
+    ViewBag.Title = "Session Expired";
+}
+
+<div class="row mt25" style="margin-top:50px">
+    <div class="col-xs-12" style="text-align:center;">
+        <h4 style="color:red; font-size:24px;">
+            Your session is expired.
+        </h4>
+    </div>
+</div>
+
+<div class="row" style="margin-top:100px">
+    <div class="col-xs-12" style="text-align:center;">
+        <button style="padding: 10px 20px;color: #fff;background-color: #F4D03F;border-color: #F4D03F;line-height: 1.44;text-transform: uppercase;" type="button" onclick="window.location.href = '/Login'">Login</button>
+    </div>
+</div>

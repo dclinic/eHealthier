@@ -1,0 +1,162 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Set Default Time";
+}
+
+<div class="box_modify" ng-controller="EpromsController">
+    <div ng-if="Eproms.IsLoading" class="loading-box">
+    </div>
+
+    <div class="fix-head-line" ng-show="Eproms.isLoad">
+        <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+            <a href="/Home">
+                <i class="fa fa-home"></i>
+            </a>
+            <i class="fa fa-angle-right"></i>
+            <span>Set Default Time</span>
+        </div>
+        <div class="shotcut-btn">
+            <div class="btn-group mob-search-block">
+                <div class="input-append searchdropdown">
+                    <input type="text" class="search-bar mt0" placeholder="Search" ng-model="Eproms.Search">
+                    <a class="add-on btn-search icon-search" ng-click="Eproms.Methods.GetEpromsSearch(0)">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fix-body-line" ng-show="Eproms.isLoad">
+        <div class="action-block">
+            <label style="margin-left: 30%">eProms</label>
+        </div>
+        <div class="pull-right plr15">
+            <label>Action</label>
+        </div>
+    </div>
+    <div ng-show="Eproms.isLoad" class="nat-list" ng-repeat="item in Eproms.Eproms" ng-cloak>
+        <div class="listviewDetails row-data mob-row-data">
+            <div class="grid1">
+                <div class="fold-upblock collapsed" data-toggle="collapse" data-target="{{ '#ItemSubList-' + item.ID }}">
+                    <div class="iconplus">
+                        <a title=""><span class="arrowplus"></span></a>
+                    </div>
+                    <div class="namelist" style="margin-top: -28px;">
+                        <div class="rest-info ml5">
+                            <div>
+                                <span id="Exdternaltitle" class="lbl-medium">{{item.ExternalTitle}}</span>
+                            </div>
+                            <div>
+                                <span class="lbl-small">{{item.Title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid2">
+                <div class="action-icon">
+                    <a ng-click='Eproms.Methods.GetEpromsById_Time(item.ID)' class="fa fa-edit"></a>
+                </div>
+            </div>
+        </div>
+        <div id="{{ 'ItemSubList-' + item.ID }}" class="collapse">
+            <div class="nat-sublist">
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">Category</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2"><span id="SurvayCategoryName" class="lbl-small">{{item.SurvayCategoryName}}</span></div>
+                </div>
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">URL</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.URL}}</span>
+                    </div>
+                </div>
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">ePROM Type</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.SurvayTypeName}}</span>
+                    </div>
+                </div>
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">Description</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.Description}}</span>
+                    </div>
+                </div>
+
+                <div class="row-data">
+                    <div class="grid1">
+                        <span class="list-sub-title">External ID</span>
+                        <div class="fa fa-double-angle-right  sublist-arrow"></div>
+                    </div>
+                    <div class="grid2">
+                        <span id="Description" class="lbl-small">{{item.ExternalID}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="DivPageNumber" class="pagination_body ">
+            <span id="LBLRecordsShow" class="total_record">Showing {{Eproms.PageParams.CurrentStartIndex + 1}} to {{Eproms.PageParams.CurrentEndIndex}} of Total {{Eproms.PageParams.TotalCount}} Records</span>
+            <div id="DivCustomDataPager" class="page_block">
+                <a ng-repeat="btn in Eproms.Buttons" ng-class='{active : Eproms.PageNo == btn.currentindex}' class="paginationbtn" ng-click="Eproms.Methods.GetEpromsSearch(btn.currentindex)">{{btn.currentindex}}</a>
+            </div>
+        </div>
+    </div>
+
+    <form name="formDays" ng-show="Eproms.isEdit">
+        <div class="fix-head-line" ng-show="Eproms.isEdit">
+            <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+                <a href="/Home">
+                    <i class="fa fa-home"></i>
+                </a>
+                <i class="fa fa-angle-right"></i>
+                <span>Set Default Time</span>
+            </div>
+        </div>
+
+        <div class="fix-body-line" ng-show="Eproms.isEdit">
+            <div class="head-title">
+                <span style="font-weight:bold;">Edit Set Default Time</span>
+            </div>
+            <div class="pull-right">
+                <div class="shotcut-btn pr15">
+                    <a ng-click="Eproms.Methods.Put()" class="head-btn">Save</a>
+                    <a ng-click='Eproms.Methods.Back()' class="head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="details">
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Days
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="Days" ng-model="Eproms.days" ng-required="true" name="Days" placeholder="Days" />
+                    <div ng-messages="formDays.days.$error" ng-if="formDays.issubmitted">
+                        <div ng-message="required" class="required">Days is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/eproms-js")
+}  

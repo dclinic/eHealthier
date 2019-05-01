@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/PatientLayout.cshtml";
+}
+<section style="min-height:300px;text-align:center" ng-app="app" ng-controller="PatientEpromController">
+    <h3 style="word-spacing:3px;">
+        {{PatientEprom.SurveyResponseMsg}}
+    </h3>
+
+    <h3 class="mt20">Thank You</h3>
+
+    <div class="row">
+        <div class="col-xs-12 text-center mt70">
+            <button class="btn btn-default yellow-btn" type="button" onclick="window.location.href = '/Patient/PatientDashboard'">MY DASHBOARD</button>
+
+            <button class="ml15 btn btn-default yellow-btn" type="button" onclick="window.location.href = '/Patient/PatientEprom'">My ePROMs</button>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/patient-eprom-js")
+}

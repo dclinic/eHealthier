@@ -1,0 +1,157 @@
+﻿@{
+    Layout = "~/Views/Shared/OrganizationLayout.cshtml";
+    ViewBag.Title = "My Detail";
+    ViewBag.PageTitle = "My Detail";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="OrganizationController">
+    <div class="loading-box" style="opacity:0.8 !important;" ng-if="Organization.IsStartLoading"> </div>
+    <div class="loading-box" ng-if="Organization.IsLoading"> </div>
+
+    <form name="formOrganizationDetail" class="set-border-margin">
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Organization Name</label>
+                    <input ng-model="Organization.Item.OrganizationName" name="orgname" required />
+                </md-input-container>
+                <div ng-messages="formOrganizationDetail.orgname.$error" ng-if="Organization.issubmitted">
+                    <div ng-message="required" class="required">Organization Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First Name</label>
+                    <input ng-model="Organization.Item.User.FirstName" name="fname" />
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <md-input-container style="width: 100%;">
+                    <label>Title</label>
+                    <md-select aria-label="salutation" ng-model="Organization.Item.SalutationID" name="salutation">
+                        <md-option ng-repeat="item in Organization.SalutationList" ng-if="item.SalutationName != ''" ng-cloak="true" ng-value="item.ID">{{item.SalutationName}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Middle Name</label>
+                    <input ng-model="Organization.Item.User.MiddleName" name="mname" />
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <label class="lbl-date-color">Date of Birth</label>
+                <md-datepicker ng-model="Organization.Item.User.DOB" md-placeholder="DOB" name="dob" md-open-on-focus></md-datepicker>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Surname</label>
+                    <input ng-model="Organization.Item.User.LastName" name="surname" />
+                </md-input-container>
+            </div>
+            <div class="col-sm-4">
+                <md-radio-group ng-model="Organization.Item.User.Gender">
+                    <div class="col-sm-6">
+                        <md-radio-button value="Male" class="md-primary"> Male </md-radio-button>
+                        <md-radio-button value="Female" class="md-primary"> Female </md-radio-button>
+                    </div>
+                    <div class="col-sm-6">
+                        <md-radio-button value="other" class="md-primary"> Other </md-radio-button>
+                        <md-radio-button value="NA" class="md-primary"> Rather not say </md-radio-button>
+                    </div>
+                </md-radio-group>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address Line 1</label>
+                    <input ng-model="Organization.Item.Address.Line1" name="address" required />
+                </md-input-container>
+                <div ng-messages="formOrganizationDetail.address.$error" ng-if="Organization.issubmitted">
+                    <div ng-message="required" class="required">Address is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address Line 2</label>
+                    <input ng-model="Organization.Item.Address.Line2" />
+                </md-input-container>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Suburb</label>
+                    <input ng-model="Organization.Item.Address.Suburb" name="suburb" required />
+                </md-input-container>
+                <div ng-messages="formOrganizationDetail.suburb.$error" ng-if="Organization.issubmitted">
+                    <div ng-message="required" class="required">Suburb is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Postcode</label>
+                    <input ng-model="Organization.Item.Address.ZipCode" name="zipcode" required />
+                </md-input-container>
+                <div ng-messages="formOrganizationDetail.zipcode.$error" ng-if="Organization.issubmitted">
+                    <div ng-message="required" class="required">ZipCode is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container style="width: 100%;">
+                    <label>State</label>
+                    <md-select aria-label="State" ng-model="Organization.Item.Address.StateID" name="state" required>
+                        <md-option ng-repeat="item in Organization.Items.States" ng-if="item.StateName != ''" ng-cloak="true" ng-value="item.ID">{{item.StateName}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <div ng-messages="formOrganizationDetail.state.$error" ng-if="Organization.issubmitted">
+                    <div ng-message="required" class="required">Please Select State</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container style="width: 100%;">
+                    <label>Country</label>
+                    <md-select aria-label="Country" ng-model="Organization.Item.Address.CountryID" name="country" required>
+                        <md-option ng-repeat="item in Organization.Items.Countries" ng-if="item.CountryName != ''" ng-cloak="true" ng-value="item.ID">{{item.CountryName}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <div ng-messages="formOrganizationDetail.country.$error" ng-if="Organization.issubmitted">
+                    <div ng-message="required" class="required">Please Select Country</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a href="javascript:;" class="btn btn-circle-black" data-toggle="tooltip" title="Questions?">
+                    <i class="fa fa-question"></i>
+                </a>
+
+                <button type="button" class="btn pull-right col-xs-3 btn-blue" ng-click="Organization.Methods.UpdateOrganizationDetails()">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/organization-js")
+}

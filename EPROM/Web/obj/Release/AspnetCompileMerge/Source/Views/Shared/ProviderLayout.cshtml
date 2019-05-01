@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="adminbg">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/bundles/user/bootstrap")
+    @Styles.Render("~/bundles/user/theme")
+    @Styles.Render("~/bundles/user/webresponsive")
+    <link href="~/Resources/styles/bootstrap-fileinput.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/user-js")
+    <script src="~/Resources/scripts/third-party/angular-filter.js"></script>
+    <script src="~/Resources/scripts/third-party/bootstrap-fileinput.js"></script>
+</head>
+<body class="custom-form" ng-app="app" ng-controller="ProviderMasterController">
+    <header></header>
+    <div class="container-fluid body-background">
+        <div class="container">
+            <div class="row header-borderbottom  backgroundcolor-white">
+                <div class="col-xs-2 col-sm-2 top-nav-contain-logo">
+                    <img class="logo" src="~/Resources/Images/ePROMS-new-logo.png" />
+                </div>
+                <div class="col-xs-6 col-sm-6 mt30 text-center resProviderHeader">
+                    @if (ViewBag.isFilterRequired != false)
+                    {
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <md-input-container style="width:100%;">
+                                    <md-select ng-model="ProviderMaster.OrganizationID" aria-label="Clinics" placeholder="Pathway" required name="organization" ng-change="ProviderMaster.Methods.GetPracticeListByOrgID(ProviderMaster.OrganizationID)">
+                                        <md-option ng-repeat="item in ProviderMaster.OrganizationList" ng-value="item.ID">{{item.OrganizationName}}</md-option>
+                                    </md-select>
+                                </md-input-container>
+                            </div>
+                            <div class="col-sm-6">
+                                <md-select ng-model="ProviderMaster.PracticeID" aria-label="Clinics" placeholder="Select Practice" required name="practice" ng-change="ProviderMaster.Methods.SetPracticeID(ProviderMaster.PracticeID)">
+                                    <md-option ng-if="item.ID" ng-repeat="item in ProviderMaster.PracticeList" ng-value="item.ID">{{item.PracticeName}}</md-option>
+                                </md-select>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="col-xs-4 col-sm-4 text-right resProviderHeader">
+                        <div class="top-nav-contain">
+                            <div class="user-nav">
+                                <div class="sidebar-toggler-mob"></div>
+                                <ul class="admin-nav">
+                                    <li class="dropdown pull-right identity-title">
+                                        <div class="text-center pull-left">
+                                            <img src="~/Resources/Images/Male.png" class="login-profile-pic" />
+                                            @if (ViewBag.isMandatoryStep != null && ViewBag.isMandatoryStep == false)
+                                            {
+                                                <h5 class="provider-title">PROVIDER</h5>
+                                            }
+                                        </div>
+                                        <div class="pull-right">
+                                            <a data-toggle="dropdown" class="dropdown-toggle profileimagename" href="#">
+                                                <span class="username">@this.User.Identity.Name<i class="fa fa-navicon ml5"></i></span>
+                                            </a>
+                                            <ul class="dropdown-menu user-dropdown">
+                                                @if (ViewBag.isMandatoryStep != null && ViewBag.isMandatoryStep == false)
+                                                {
+                                                    <li>
+                                                        @using (Html.BeginForm("epromAllocation", "Patient", FormMethod.Post, new { id = "epromAllocation" }))
+                                                        {
+                                                            <a href="javascript:document.getElementById('epromAllocation').submit()" class="logoff_link"><i class="fa fa-list-alt"></i>Assign ePROM</a>
+                                                        }
+                                                    </li>
+                                                    <li>
+                                                        @using (Html.BeginForm("Dashboard", "Provider", FormMethod.Post, new { id = "Dashboard" }))
+                                                        {
+                                                            <a href="javascript:document.getElementById('Dashboard').submit()" class="logoff_link"><i class="fa fa-list-alt"></i>Dashboard</a>
+                                                        }
+                                                    </li>
+                                                    <li>
+                                                        @using (Html.BeginForm("Index", "Patient", FormMethod.Post, new { id = "Index" }))
+                                                        {
+                                                            <a href="javascript:document.getElementById('Index').submit()" class="logoff_link"><i class="fa fa-list-alt"></i>Patient Management</a>
+                                                        }
+                                                    </li>
+                                                    <li>
+                                                        @using (Html.BeginForm("Preferences", "Provider", FormMethod.Post, new { id = "Preferences" }))
+                                                        {
+                                                            <a href="javascript:document.getElementById('Preferences').submit()" class="logoff_link"><i class="fa fa-list-alt"></i>Provider Management</a>
+                                                        }
+                                                    </li>
+                                                    <li>
+                                                        @using (Html.BeginForm("ProviderOrganization", "Provider", FormMethod.Post, new { id = "ProviderOrganization" }))
+                                                        {
+                                                            <a href="javascript:document.getElementById('ProviderOrganization').submit()" class="logoff_link"><i class="fa fa-list-alt"></i>Practice Details</a>
+                                                        }
+                                                    </li>
+                                                }
+                                                <li>
+                                                    @using (Html.BeginForm("LogOff", "Provider", FormMethod.Post, new { id = "logoutForm" }))
+                                                    {
+                                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="logoff_link"><i class="fa fa-power-off"></i>Log off</a>
+                                                    }
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row backgroundcolor-white">
+                <div class="col-xs-12 col-sm-5">
+                    <h3 class="page-title">@ViewBag.PageTitle</h3>
+                </div>
+            </div>
+            <div class="row backgroundcolor-white">
+                <div class="inner-wrapper">
+                    <toaster-container toaster-options="{'position-class': 'toast-top-right'}"></toaster-container>
+                    @RenderSection("featured", required: false)
+                    <section>
+                        <div ng-if="ProviderMaster.IsLoading" class="loading-box">
+                        </div>
+                        @RenderBody()
+
+                        <div class="foter-links ftr-link-size">
+                            <a href="javascript:;" class="uppercase">Company</a>
+                            <a href="javascript:;" class="uppercase">Contact Us</a>
+                            <a href="javascript:;" class="uppercase">Terms and Conditions</a>
+                            <a href="javascript:;" class="uppercase">Copyright Notice</a>
+                        </div>
+                    </section>
+                    @RenderSection("scripts", required: false)
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Resources/scripts/App/ProviderMasterController.js"></script>
+</body>
+</html>

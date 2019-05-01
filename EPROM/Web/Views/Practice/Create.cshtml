@@ -1,0 +1,308 @@
+﻿@{
+    Layout = "~/Views/Shared/OrganizationLayout.cshtml";
+    ViewBag.Title = "Add Practice";
+    ViewBag.PageTitle = "Add Practice";
+}
+
+<div class="set-border-body" ng-app="app" ng-controller="PracticeController">
+    <div class="loading-box" ng-if="Practice.IsLoading"> </div>
+
+    <form name="formAddPractice" class="set-border-margin">
+        <div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Practice Name</label>
+                        <input ng-model="Practice.Item.Practice.PracticeName" name="practicename" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.practicename.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Practice Name is required</div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <md-input-container style="width: 100%;">
+                        <label>Title</label>
+                        <md-select aria-label="salutation" ng-model="Practice.Item.Practice.SalutationID" name="salutation">
+                            <md-option ng-repeat="item in Practice.SalutationList" ng-if="item.SalutationName != ''" ng-cloak="true" ng-value="item.ID">{{item.SalutationName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="row hide">
+                <div class="col-sm-8">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>First Name</label>
+                        <input ng-model="Practice.Item.User.FirstName" name="fname" />
+                    </md-input-container>
+                </div>
+
+                <div class="col-sm-4 mt12">
+                    <label>DOB</label>
+                    <md-datepicker ng-model="Practice.Item.User.DOB" md-placeholder="DOB" name="dob" md-open-on-focus></md-datepicker>
+                </div>
+            </div>
+
+            <div class="row mb15 hide">
+                <div class="col-sm-8">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Middle Name</label>
+                        <input ng-model="Practice.Item.User.MiddleName" name="mname" />
+                    </md-input-container>
+                </div>
+                <div class="col-sm-4">
+                    <md-radio-group ng-model="Practice.Item.User.Gender">
+                        <md-radio-button value="Male" class="md-primary">Male</md-radio-button>
+                        <md-radio-button value="Female" class="md-primary"> Female </md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row mb15 hide">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Surname</label>
+                        <input ng-model="Practice.Item.User.LastName" name="surname" />
+                    </md-input-container>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Address Line 1</label>
+                        <input ng-model="Practice.Item.Address.Line1" name="address" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.address.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Address is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Address Line 2</label>
+                        <input ng-model="Practice.Item.Address.Line2" />
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Suburb</label>
+                        <input ng-model="Practice.Item.Address.Suburb" name="suburb" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.suburb.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Suburb is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Postcode</label>
+                        <input ng-model="Practice.Item.Address.ZipCode" name="zipcode" required />
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.zipcode.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">ZipCode is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container style="width: 100%;">
+                        <label>State</label>
+                        <md-select aria-label="State" ng-model="Practice.Item.Address.StateID" name="state" required>
+                            <md-option ng-repeat="item in Practice.Items.States" ng-if="item.StateName != ''" ng-cloak="true" ng-value="item.ID">{{item.StateName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.state.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Please Select State</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container style="width: 100%;">
+                        <label>Country</label>
+                        <md-select aria-label="Country" ng-model="Practice.Item.Address.CountryID" name="country" required>
+                            <md-option ng-repeat="item in Practice.Items.Countries" ng-if="item.CountryName != ''" ng-cloak="true" ng-value="item.ID">{{item.CountryName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.country.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Please Select Country</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm><label>Primary Phone</label><input ng-model="Practice.Item.Contact.Mobile" /></md-input-container>
+                </div>
+            </div>
+
+            <div class="row mb15">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm><label>Email </label><input ng-model="Practice.Item.Contact.EmailPersonal" type="email" name="email" ng-change="Practice.Methods.CheckExistingUser(Practice.Item.Contact.EmailPersonal)" required /></md-input-container>
+
+                    <div ng-messages="formAddPractice.email.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Email is required</div>
+                    </div>
+
+                    <div ng-messages="formAddPractice.email.$error" ng-if="Practice.isUserExist">
+                        <div class="required" style="margin-top:-15px;">Email already exists.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb15 hide">
+                <div class="col-md-8">
+                    <md-input-container style="width:100%;">
+                        <md-select ng-model="Practice.Item.Insurer" aria-label="insurer">
+                            <md-option value="Default to" selected>Default to</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-md-3">
+                    <md-checkbox md-no-ink aria-label="InsurerAccess" class="md-primary">Insurer Access</md-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="hide">
+            <div class="divider"></div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Login Name</label>
+                        <input ng-model="Practice.Item.Email" name="loginname" type="email" ng-change="Practice.Methods.CheckExistingUser(Practice.Item.Email)" />
+                    </md-input-container>
+
+                    <div ng-messages="formAddPractice.loginname.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Login Name is required</div>
+                    </div>
+
+                    <div ng-messages="formAddPractice.loginname.$error" ng-if="Practice.isUserExist">
+                        <div class="required" style="margin-top:-15px;">User already exists.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <md-input-container class="md-block" flex-gt-sm><label>Password</label><input ng-model="Practice.Item.Password" type="password" name="password" ng-change="Practice.Methods.comparePassword()" /></md-input-container>
+                    <div ng-messages="formAddPractice.password.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Password is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <md-input-container class="md-block" flex-gt-sm><label>Confirm Password</label><input ng-model="Practice.Item.ConfirmPassword" type="password" name="confirmPassword" ng-change="Practice.Methods.comparePassword()" /></md-input-container>
+
+                    <div ng-messages="formAddPractice.confirmPassword.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Reconfirm password is required</div>
+                    </div>
+                    <div ng-show="Practice.IspasswordMatch">
+                        <div class="required">Password and confirm password not match</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-md-2 control-label">Secret Question</label>
+                <div class="col-md-10">
+                    <md-radio-group ng-model="Practice.Item.SecretQuestionID">
+                        <md-radio-button ng-repeat="item in Practice.SecretQuestionlist" ng-value="item.ID" class="md-primary">{{item.Questions}}</md-radio-button>
+                    </md-radio-group>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Answer</label>
+                        <input ng-model="Practice.Item.Answer" name="answer" />
+                    </md-input-container>
+                    <div ng-messages="formAddPractice.answer.$error" ng-if="Practice.issubmitted">
+                        <div ng-message="required" class="required">Answer is required</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <button type="button" class="btn btn-blue" ng-click="Practice.Methods.Register()" ng-disabled="Practice.isPracticeCreated">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row set-border-margin">
+        <div class="divider"></div>
+        <h3 class="page-title">Create Role</h3>
+        <form name="formPracticeRole">
+            <div class="row">
+                <div class="col-md-8">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Role Name</label>
+                        <input ng-model="Practice.PracticeRole.RoleName" name="rolename" required ng-change="Practice.Methods.CheckPracticeRoleExist(Practice.PracticeRole.RoleName)" ng-disabled="!Practice.isPracticeCreated" />
+                    </md-input-container>
+                    <div ng-messages="formPracticeRole.rolename.$error" ng-if="Practice.isRoleSubmitted" class="mb20">
+                        <div ng-message="required" class="required">Role Name is required</div>
+                    </div>
+
+                    <div ng-messages="formPracticeRole.rolename.$error" ng-if="Practice.isRoleExist" class="mb20">
+                        <div class="required" style="margin-top:-20px;">Role Name already exists.</div>
+                    </div>
+                </div>
+                <div class="col-md-2 mt20">
+                    <button type="button" class="btn btn-yellow pull-right" ng-click="Practice.Methods.ManagePracticeRole()" ng-disabled="!Practice.isPracticeCreated">Add Role</button>
+                </div>
+                <div class="col-md-2 mt20">
+                    <button type="button" class="btn btn-black pull-right" ng-click="Practice.Methods.CancelRole()">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped table-bordered table-indicator table-hover table-checkable order-column" ng-hide="Practice.RoleList.length == 0">
+                        <tr>
+                            <th>
+                                Role Name
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                        <tr ng-repeat="item in Practice.RoleList">
+                            <td>
+                                {{item.RoleName}}
+                            </td>
+                            <td>
+                                <a href="#" ng-click="Practice.Methods.SetEditPracticeRole(item.RoleName, item.RoleID)" tooltip="edit" class="icon-size">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <a href="#" ng-click="Practice.Methods.DeletePracticeRole(item.RoleID)" tooltip="delete" class="icon-size">
+                                    <i class="fa fa-trash-o "></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/moment-js")
+    @Scripts.Render("~/bundles/practice-js")
+}

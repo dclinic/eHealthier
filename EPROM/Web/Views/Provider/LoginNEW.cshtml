@@ -1,0 +1,145 @@
+﻿@model ePRom.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="row vertical-offset-10" ng-app="loginApp" ng-controller="LoginCtrl">
+    <div id="divloader" class="loading-box" style="display:none;"></div>
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel login-panel">
+            <div class="panel-body">
+                <img class="login-logo" src="~/Resources/Images/NEW_PHOTO/Logo.png" />
+                <form>
+                    <fieldset id="loginForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control txt-login" name="username" placeholder="username" ng-model="userName" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control txt-login" name="password" placeholder="password" ng-model="password">
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+
+                        <a href="#" class="lbl-forgotpassword" onclick="forgotPassword()">Forgot Password?</a>
+
+                        <input class="btn btn-lg btn-warning btn-block btn-login" type="submit" value="Login" ng-click="loggedIn()">
+                    </fieldset>
+                </form>
+
+                <div id="forgotpassword" class="forgot-password" style="display:none;">
+                    <div class="form-group">
+                        <select id="questionList" class="form-control ddl-login">
+                            <option value="">Secret Question</option>
+                            <option value="1">My Pet's Name</option>
+                            <option value="2">My Favourite Holiday</option>
+                            <option value="3">My Favourite Food</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input id="txtanswer" class="form-control txt-login" placeholder="Answer" type="text" />
+                    </div>
+                    <div class="form-group">
+                        <input id="email" class="form-control txt-login" placeholder="Email" type="email" />
+                    </div>
+                    <div class="form-group">
+                        <label id="lblMsg"></label>
+                    </div>
+                    <button type="button" class="btn btn-lg btn-warning btn-login" onclick="SubmitForgotPassword()">Send me an email</button>
+                    <button type="button" class="btn btn-lg btn-default btn-back" onclick="RedirectToLogin()">Back</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel login-register-panel">
+            <div class="panel-body">
+                <a href="/Register" class="lbl-register-login">Register to create your account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if (window.location.href.indexOf("Token") == -1) {
+            if ("@Session["isConfirmed"]" == "False") {
+                showToasterMessage("Please Check your registered email to verify ePROMs account", "info");
+            }
+        }
+        function showToasterMessage(msg, msgType) {
+            $.toast({
+                heading: msgType,
+                loaderBg: '#097b9c',
+                text: [
+                    msg
+                ],
+                icon: msgType
+            })
+        }
+    });
+    $("#UserName").keyup(function () {
+        if ($(this).val() != null && $(this).val() != "")
+            $(".eprom-username").hide();
+    });
+    $("#Password").keyup(function () {
+        if ($(this).val() != null && $(this).val() != "")
+            $(".eprom-password").hide();
+    });
+    function forgotPassword() {
+        $("#forgotpassword").toggle();
+        $("#loginForm").toggle();
+        $("#lblMsg").html('');
+        if ($("#forgotpassword")[0].style.display == "block" || $("#forgotpassword")[0].style.display == "")
+            $('#btnlogin').prop('disabled', true);
+        else
+            $('#btnlogin').prop('disabled', false);
+    }
+    function RedirectToLogin() {
+        $("#forgotpassword").toggle();
+        $("#loginForm").toggle();
+    }
+    function SubmitForgotPassword() {
+        $("#divloader").show();
+        var email = $("#email").val();
+        var answer = $("#txtanswer").val();
+        var questionId = $('#questionList').find(":selected").val();
+        if (email != null && email != "" && answer != null && answer != "" && questionId != null && questionId != "") {
+            $.get("/api/Provider/CheckSecretQuestionAnswer?UserName=" + email + "&QuestionId=" + questionId + "&answer=" + answer, function (data, status) {
+                if (data != null && data != "") {
+                    $("#divloader").hide();
+                    $("#lblMsg").addClass("required");
+                    $("#lblMsg").html(data);
+                }
+                else {
+                    $.get("/api/Email/ForgotPasswordEmail?ToAddress=" + email + "&URL=" + '@ViewBag.EmailURL', function (data, status) {
+                        $("#divloader").hide();
+                        if (data == "1") {
+                            $("#lblMsg").addClass("success");
+                            $("#forgotpassword").toggle();
+                            $("#loginForm").toggle();
+                            $("#email").val('');
+                            $("#txtanswer").val('');
+                            $('#btnlogin').prop('disabled', false);
+                            $("#lblMsg").html('Please Check your Email to get Password');
+                        }
+                        else {
+                            $("#lblMsg").addClass("required");
+                            $("#lblMsg").html('There is some issue. Please try again.');
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            $("#divloader").hide();
+            $("#lblMsg").addClass("required");
+            if (questionId == null || questionId == "")
+                $("#lblMsg").html('Select Question');
+            else if (answer == null || answer == "")
+                $("#lblMsg").html('Answer is required');
+            else if (email == null || email == "")
+                $("#lblMsg").html('Email is required');
+        }
+    }
+</script>

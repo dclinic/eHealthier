@@ -1,0 +1,161 @@
+﻿@{
+    ViewBag.Title = "Registration";
+    ViewBag.pageTitle = "Registration";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="row vertical-offset-2" ng-app="loginApp" ng-controller="RegisterController">
+    <div class="loading-box" ng-if="Provider.IsLoading"></div>
+    <div class="loading-box" style="opacity:0.8 !important;" ng-if="Provider.IsStartLoading"></div>
+    <div class="col-md-4 col-md-offset-4">
+        <a href="/Login" class="btn btn-lg btn-warning btn-login btn-margin-bottom-2"> <i class="fa fa-backward"></i> Back to Login </a>
+        <div class="panel login-panel">
+            <div class="panel-body">
+                <img class="login-logo" src="~/Resources/Images/NEW_PHOTO/Logo.png" />
+
+                <form name="frmRegister">
+                    <fieldset>
+                        <div class="form-group">
+                            <input class="form-control txt-login" ng-model="Provider.Item.email" type="email" name="loginname" ng-change="Provider.Methods.CheckExistingUser(Provider.Item.email)" placeholder="Email" required />
+                            <div ng-messages="frmRegister.loginname.$error" ng-if="Provider.issubmitted">
+                                <div ng-message="required" class="required">Login Name is required</div>
+                            </div>
+                            <div ng-messages="frmRegister.loginname.$error" ng-if="Provider.isUserExist">
+                                <div class="required" style="margin-top:-15px;">User already exists.</div>
+                            </div>
+                            <div class="required" ng-show="frmRegister.loginname.$invalid && !frmRegister.loginname.$pristine">
+                                Invalid email address.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control txt-login" ng-model="Provider.Item.Password" type="password" name="password" ng-change="Provider.Methods.comparePassword()" placeholder="Password" required />
+                            <div ng-messages="frmRegister.password.$error" ng-if="Provider.issubmitted">
+                                <div ng-message="required" class="required">Password is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control txt-login" ng-model="Provider.Item.confirmPassword" type="password" name="confirmPassword" ng-change="Provider.Methods.comparePassword()" placeholder="Confirm Password" required />
+                            <div ng-messages="frmRegister.confirmPassword.$error" ng-if="Provider.issubmitted">
+                                <div ng-message="required" class="required">Reconfirm password is required</div>
+                            </div>
+                            <div ng-show="Provider.IspasswordMatch">
+                                <div class="required">Password and confirm password not match</div>
+                            </div>
+                        </div>
+                        <div class="form-group margin-top-30">
+                            <label class="control-label">Secret Question:</label>
+                            <md-radio-group ng-model="Provider.Item.SecretQuestionID">
+                                <md-radio-button value="1" class="md-primary margin-bottom-5" selected="true">My Pet's Name</md-radio-button>
+                                <md-radio-button value="2" class="md-primary margin-bottom-5"> My Favourite Holiday </md-radio-button>
+                                <md-radio-button value="3" class="md-primary margin-bottom-5">My Favourite Food</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                        <div class="form-group">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Answer</label>
+                                <input ng-model="Provider.Item.Answer" name="answer" required />
+                            </md-input-container>
+                            <div ng-messages="frmRegister.answer.$error" ng-if="Provider.issubmitted" class="margin-top-m-40">
+                                <div ng-message="required" class="required">Answer is required</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="panel login-register-panel">
+            <div class="panel-body">
+                <a href="#" class="lbl-register-login" ng-click="Provider.Methods.Register()">Create your account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    loginApp.controller('RegisterController', ['$scope', '$http', '$window', '$location', 'toaster', function ($scope, $http, $window, $location, toaster) {
+        $scope.Provider = {
+            Item: { SecretQuestionID: '1', Answer: '', User: {} },
+            issubmitted: false,
+            IspasswordMatch: false,
+            isEmailVerified: false,
+            isUserExist: false,
+            IsLoading: false,
+            IsStartLoading: false,
+            RegisterEmail: '',
+            Methods: {
+                Initialize: function () {
+                    $scope.Provider.IsStartLoading = false;
+                },
+                Register: function (data) {
+                    $scope.Provider.issubmitted = true;
+                    if ($scope.frmRegister.$valid && (!$scope.Provider.isUserExist) && (!$scope.Provider.IspasswordMatch)) {
+                        $scope.Provider.issubmitted = false;
+                        $scope.Provider.Services.Register($scope.Provider.Item);
+                    }
+                },
+                SendVerificationMail: function () {
+                    var email = $scope.Provider.RegisterEmail;
+                    $scope.Provider.Services.SendVerificationMail(email);
+                    $scope.Provider.Services.GetEmailVerificationStatus(email);
+                },
+                comparePassword: function () {
+                    if ($scope.Provider.Item.confirmPassword != undefined && $scope.Provider.Item.confirmPassword != "") {
+                        if ($scope.Provider.Item.Password != $scope.Provider.Item.confirmPassword)
+                            $scope.Provider.IspasswordMatch = true;
+                        else
+                            $scope.Provider.IspasswordMatch = false;
+                    }
+                },
+                CheckExistingUser: function (UserName) {
+                    $scope.Provider.Services.CheckExistingUser(UserName);
+                },
+            },
+            Services: {
+                Register: function (data) {
+                    $scope.Provider.IsLoading = true;
+                    $http.post('/Provider/Register/', data).success(function (value) {
+                        if (value != null) {
+                            $scope.Provider.RegisterEmail = value.Email;
+                            $scope.Provider.Methods.SendVerificationMail();
+                            toaster.pop('success', '', "Registered successfully. Please verify through your registered email.");
+
+                            setTimeout(function () {
+                                $scope.Provider.IsLoading = false;
+                                window.location.href = "/Login";
+                            }, 5000)
+                        }
+                        else {
+                            $scope.Provider.IsLoading = true;
+                        }
+                    });
+                },
+                SendVerificationMail: function (data) {
+                    $http.post('/api/Email/SendVerificationMail/?ToAddress=' + data).success(function (value) {
+                        if (value != null) {
+                            if (value == "1") {
+                                $scope.Provider.isEmailVerified = true;
+                                $scope.Provider.emailNotification = "Please verify your account through email notification link sent on your register email address"
+                            }
+                            else {
+                                $scope.Provider.isEmailVerified = false;
+                                toaster.pop('success', '', "Mail has been sent already.");
+                            }
+                        }
+                    });
+                },
+                GetEmailVerificationStatus: function (UserName) {
+                    $http.get('/api/Provider/GetEmailVerificationStatus?UserName=' + UserName).success(function (data) {
+                        $scope.Provider.isEmailVerified = data;
+                    });
+                },
+                CheckExistingUser: function (UserName) {
+                    $http.get('/api/Provider/CheckExistingUser?UserName=' + UserName).success(function (data) {
+                        $scope.Provider.isUserExist = data;
+                    });
+                }
+            },
+        }
+
+        $scope.Provider.Methods.Initialize();
+    }]);
+</script>

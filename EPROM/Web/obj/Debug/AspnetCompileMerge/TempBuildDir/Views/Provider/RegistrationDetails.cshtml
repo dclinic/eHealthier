@@ -1,0 +1,191 @@
+﻿@{
+    Layout = "~/Views/Shared/ProviderLayout.cshtml";
+    ViewBag.Title = "My Detail";
+    ViewBag.PageTitle = "My Detail";
+}
+
+<section ng-app="app" ng-controller="providerController">
+    <div class="loading-box" style="opacity:0.8 !important;" ng-if="Provider.IsStartLoading">
+    </div>
+    <div class="loading-box" ng-if="Provider.IsLoading">
+    </div>
+    <form name="formRegistrationDetail">
+        <div class="row">
+            <div class="col-sm-8">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First Name</label>
+                    <input ng-model="Provider.Item.User.FirstName" name="fname" required />
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.fname.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">First Name is required</div>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <md-input-container style="width: 100%;">
+                    <label>Title</label>
+                    <md-select aria-label="salutationname" ng-model="Provider.Item.SalutationID" name="salutationname" tabindex="1">
+                        <md-option ng-repeat="item in Provider.SalutationList" ng-if="item.SalutationName != ''" ng-cloak="true" ng-value="item.ID">{{item.SalutationName}}</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Middle Name</label>
+                    <input ng-model="Provider.Item.User.MiddleName" name="mname" />
+                </md-input-container>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Surname</label>
+                    <input ng-model="Provider.Item.User.LastName" name="surname" required />
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.surname.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Surname is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address Line 1</label>
+                    <input ng-model="Provider.Item.Address.Line1" name="address" required />
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.address.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Address is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Address Line 2</label>
+                    <input ng-model="Provider.Item.Address.Line2" />
+                </md-input-container>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Suburb</label>
+                    <input ng-model="Provider.Item.Address.Suburb" name="suburb" required />
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.suburb.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Suburb is required</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Postcode</label>
+                    <input ng-model="Provider.Item.Address.ZipCode" name="zipcode" required />
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.zipcode.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">ZipCode is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container style="width: 100%;">
+                    <label>State</label>
+                    <md-select aria-label="State" ng-model="Provider.Item.Address.StateID" name="state" required>
+                        <md-option ng-repeat="item in Provider.Items.States" ng-if="item.StateName != ''" ng-cloak="true" ng-value="item.ID">{{item.StateName}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.state.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Please Select State</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <md-input-container style="width: 100%;">
+                    <label>Country</label>
+                    <md-select aria-label="Country" ng-model="Provider.Item.Address.CountryID" name="country" required>
+                        <md-option ng-repeat="item in Provider.Items.Countries" ng-if="item.CountryName != ''" ng-cloak="true" ng-value="item.ID">{{item.CountryName}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <div ng-messages="formRegistrationDetail.country.$error" ng-if="Provider.issubmitted">
+                    <div ng-message="required" class="required">Please Select Country</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb15 submit-login-provider">
+            <div class="col-md-12 text-right">
+                <a href="javascript:;" class="btn btn-circle btn-icon-only greymint" data-toggle="tooltip" title="Questions?">
+                    <i class="fa fa-question"></i>
+                </a>
+
+                <md-button class="md-raised md-primary" ng-click="Provider.Methods.UpdateProviderDetails()">Submit</md-button>
+
+                @*<md-button class="md-raised md-primary" ng-hide="Provider.IstermsAccept" data-toggle="modal" data-target="#termsModal">Submit</md-button>*@
+                @*<a class="btn custom-btn" ng-click="Provider.Methods.UpdateProviderDetails()">Submit</a>*@
+            </div>
+        </div>
+        @*Terms Model*@
+        <div id="termsModal" class="modal fade" role="dialog" ng-model="Provider.termsModal" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="page-title">Generic Terms and Conditions Template</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="inner-wrapper">
+                            <h4>Terms and conditions ("Terms")</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.<a href="javascript:;"> This is your own terms and conditions</a></p>
+                            <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <div class="row mb15">
+
+                                <div class="form-md-checkboxes ">
+                                    <div class="md-checkbox-inline text-center">
+                                        <div class="md-checkbox mb15">
+                                            <input type="checkbox" id="checkbox1" class="md-check" ng-model="Provider.acceptTerms">
+                                            <label for="checkbox1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> Accept
+                                            </label>
+                                        </div>
+                                        <div class="md-checkbox pull-right">
+                                            <button type="button" class="btn custom-btn">Print</button>
+                                            <button type="button" class="btn custom-btn" data-dismiss="modal">Back</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/select-js")
+    @Scripts.Render("~/bundles/datepicker-js")
+    @Scripts.Render("~/bundles/datatable-js")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/provider-js")
+}

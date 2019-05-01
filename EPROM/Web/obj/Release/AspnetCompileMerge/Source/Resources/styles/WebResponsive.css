@@ -1,0 +1,137 @@
+﻿@media only screen and (max-width : 320px) {
+    .login-logo-parent {
+        width: 100%;
+    }
+
+    .centertext {
+        text-align: center;
+    }
+
+    .mrgright34 {
+        margin-right: 34%;
+    }
+
+    .top-nav-contain-logo {
+        width: 100% !important;
+    }
+
+    .custom-btn {
+        padding: 10px;
+    }
+
+    .resbutton {
+        float: left;
+    }
+
+    .reswidth {
+        width: 60% !important;
+    }
+
+    .resProviderHeader {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width : 321px) and (max-width : 480px) {
+    .login-logo-parent {
+        width: 100%;
+    }
+
+    .centertext {
+        text-align: center;
+    }
+
+    .mrgright34 {
+        margin-right: 34%;
+    }
+
+    .top-nav-contain-logo {
+        width: 50% !important;
+    }
+
+    .resbutton {
+        float: left;
+    }
+
+    .reswidth {
+        width: 60% !important;
+    }
+
+    .resProviderHeader {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width : 481px) and (max-width : 640px) {
+    .login-logo-parent {
+        width: 100%;
+    }
+
+    .centertext {
+        text-align: center;
+    }
+
+    .mrgright34 {
+        margin-right: 44%;
+    }
+
+    .top-nav-contain-logo {
+        width: 50% !important;
+    }
+
+    .resbutton {
+        float: left;
+    }
+
+    .reswidth {
+        width: 60% !important;
+    }
+
+    .resProviderHeader {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width : 641px) and (max-width : 768px) {
+    .login-logo-parent {
+        width: 100%;
+    }
+
+    .centertext {
+        text-align: center;
+    }
+
+    .mrgright34 {
+        margin-right: 44%;
+    }
+
+    .top-nav-contain-logo {
+        width: 50% !important;
+    }
+
+    .resbutton {
+        float: left;
+    }
+
+    .reswidth {
+        width: 40% !important;
+    }
+
+    .resProviderHeader {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width : 769px) and (max-width : 991px) {
+    .resbutton {
+        float: left;
+    }
+
+    .reswidth {
+        width: 40% !important;
+    }
+
+    .resProviderHeader {
+        width: 100%;
+    }
+}

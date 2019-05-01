@@ -1,0 +1,97 @@
+﻿@{
+    // Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="box_modify" ng-controller="surveyMonkeyController">
+    <form name="frmSystemFlag">
+        <div class="fix-head-line">
+            <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block"><a href="/Admin/Home"><i class="fa fa-home"></i></a><i class="fa fa-angle-right"></i><span>System Flag</span></div>
+        </div>
+        <div class="fix-body-line">
+            <div class="pull-left mt5">
+                <span style="font-weight:bold;">Create System Flag</span>
+            </div>
+            <div class="pull-right">
+                <div class="shotcut-btn">
+                    <a ng-click="AddSystemFlag.Methods.Update()" class="head-btn">Save</a>
+                    <a ng-click="AddSystemFlag.Methods.RedirecttoList()" class="head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div ng-if="AddSystemFlag.IsLoading" class="loading-box"></div>
+        <div class="details">
+            <div class="row-fluid">
+                <div class="span8">
+                    <div class="p10">
+                        <div class="row-fluid ">
+                            <div class="span3">
+                                API Key
+                            </div>
+                            <div class="span6">
+                                <input type="text" class="form-control" id="SystemFlagName" ng-model="SurverMonkey.Item.SystemFlagName" ng-required="true" name="SystemFlagName" placeholder="System FlagName" />
+                                <div ng-messages="frmSystemFlag.SystemFlagName.$error" ng-if="AddSystemFlag.issubmitted">
+                                    <div ng-message="required" class="required">API Key is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid ">
+                            <div class="span3">
+                                Secret Key
+                            </div>
+                            <div class="span6">
+                                <select ng-model="AddSystemFlag.FlagGroupID" name="FlagGroup" ng-options="a.ID as a.FlagGroupName for a in AddSystemFlag.list_FlagGroup" ng-required="true">
+                                    <option value="">Select Flag Group</option>
+                                </select>
+                                <div ng-messages="frmSystemFlag.AddSystemFlag.$error" ng-if="AddSystemFlag.issubmitted">
+                                    <div ng-message="required" class="required">Secret Key is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid ">
+                            <div class="span3">
+                                Access Token
+                            </div>
+                            <div class="span6">
+                                <input type="text" class="form-control" id="DefaultValue" ng-model="AddSystemFlag.DefaultValue" ng-required="true" name="DefaultValue" placeholder="Default Value" />
+                                <div ng-messages="frmSystemFlag.DefaultValue.$error" ng-if="AddSystemFlag.issubmitted">
+                                    <div ng-message="required" class="required">Access Token is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid ">
+                            <div class="span3">
+                                Client ID
+                            </div>
+                            <div class="span6">
+                                <input type="text" class="form-control" id="Value" ng-model="AddSystemFlag.Value" ng-required="true" name="Value" placeholder="Value" />
+                                <div ng-messages="frmSystemFlag.Value.$error" ng-if="AddSystemFlag.issubmitted">
+                                    <div ng-message="required" class="required">Client ID is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid ">
+                            <div class="span3">
+                                CallBack URL
+                            </div>
+                            <div class="span6">
+                                <input type="text" class="form-control" id="Value" ng-model="AddSystemFlag.Value" ng-required="true" name="Value" placeholder="Value" />
+                                <div ng-messages="frmSystemFlag.Value.$error" ng-if="AddSystemFlag.issubmitted">
+                                    <div ng-message="required" class="required">CallBack URL is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/survey-monkey-js")
+}
+

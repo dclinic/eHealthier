@@ -1,0 +1,68 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Indicators";
+}
+<div class="box_modify" ng-controller="AddIndicatorsController">
+    <form name="frmAddIndicators">
+        <div class="fix-head-line">
+            <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+                <a href="/Admin/Home">
+                    <i class="fa fa-home"></i>
+                </a>
+                <i class="fa fa-angle-right"></i>
+                <span>Indicators</span>
+            </div>
+        </div>
+
+        <div class="fix-body-line">
+            <div class="head-title">
+                <span style="font-weight:bold;">Create Indicators</span>
+            </div>
+            <div class="pull-right">
+                <div class="shotcut-btn pr15">
+                    <a ng-click="AddIndicators.Methods.Create()" class="head-btn">Save</a>
+                    <a ng-click="AddIndicators.Methods.RedirecttoList()" class="head-btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div ng-if="AddIndicators.IsLoading" class="loading-box">
+        </div>
+        <div class="details">
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Indicator Name
+                </div>
+                <div class="col-xs-4">
+                    <input type="text" class="form-control" id="name" ng-model="AddIndicators.IndicatorName" ng-required="true" name="name" placeholder="Indicator Name" />
+                    <div ng-messages="frmAddIndicators.name.$error" ng-if="AddIndicators.issubmitted">
+                        <div ng-message="required" class="required">Indicator Name is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+                    Description
+                </div>
+                <div class="col-xs-4">
+                    <textarea ng-model="AddIndicators.Description" name="description" placeholder="Description" class="form-control"></textarea>
+
+                </div>
+            </div>
+
+            <div class="row m0 mt10">
+                <div class="col-xs-2">
+
+                </div>
+                <div class="col-xs-4">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" ng-model="AddIndicators.IsActive" checked="checked"> Is Active
+                    </label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/add-indicators-js")
+}

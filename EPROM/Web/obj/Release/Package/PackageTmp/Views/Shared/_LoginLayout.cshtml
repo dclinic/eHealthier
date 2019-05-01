@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    @Styles.Render("~/bundles/user/bootstrap")
+    @Styles.Render("~/bundles/user/theme")
+    @Styles.Render("~/bundles/user/webresponsive")
+    @Scripts.Render("~/bundles/jquery")
+    <link href="~/Resources/styles/jquery.toast.css" rel="stylesheet" />
+    <script src="~/Resources/scripts/third-party/jquery.toast.js"></script>
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/user-js")
+    <script src="~/Resources/scripts/third-party/angular-filter.js"></script>
+</head>
+<body>   
+    <div class="login-logo-parent">
+        <img style="" class="login-logo" src="/Resources/Images/ePROMS-new-logo.png" />
+    </div>
+
+    <div class="login-wrapper">
+        @RenderSection("featured", required: false)
+        <div class="custom-form">
+            @RenderBody()
+
+            <div class="foter-links ftr-link-size">
+                <a href="javascript:;" class="uppercase">Company</a>
+                <a href="javascript:;" class="uppercase">Contact Us</a>
+                <a href="javascript:;" class="uppercase">Terms and Conditions</a>
+                <a href="javascript:;" class="uppercase">Copyright Notice</a>
+            </div>
+        </div>
+        @RenderSection("scripts", required: false)
+    </div>
+
+</body>
+</html>

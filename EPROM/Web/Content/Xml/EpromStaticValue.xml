@@ -1,0 +1,2566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Eprom>
+  <!-- Region Eprom PROMISG10 -->
+  <!-- Start Eprom PROMISG10 -->
+  <PROMISG10>
+    <Text>Poor</Text>
+    <Value>1</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Fair</Text>
+    <Value>2</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Good</Text>
+    <Value>3</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Very Good</Text>
+    <Value>4</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Excellent</Text>
+    <Value>5</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Not at all</Text>
+    <Value>1</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>A little</Text>
+    <Value>2</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Moderately</Text>
+    <Value>3</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Mostly</Text>
+    <Value>4</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Completely</Text>
+    <Value>5</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Always</Text>
+    <Value>1</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Often</Text>
+    <Value>2</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Sometimes</Text>
+    <Value>3</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Rarely</Text>
+    <Value>4</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Never</Text>
+    <Value>5</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Very Severe</Text>
+    <Value>4</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Severe</Text>
+    <Value>1</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Moderate</Text>
+    <Value>3</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>Mild</Text>
+    <Value>3</Value>
+  </PROMISG10>
+
+  <PROMISG10>
+    <Text>None</Text>
+    <Value>3</Value>
+  </PROMISG10>
+  <!-- End Eprom PROMISG10 -->
+
+  <!--Start Eprom PROMISG10Score -->
+
+  <PROMISG10Score>
+    <Text>1</Text>
+    <Value>4</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>2</Text>
+    <Value>4</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>3</Text>
+    <Value>4</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>4</Text>
+    <Value>3</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>5</Text>
+    <Value>3</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>6</Text>
+    <Value>3</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>7</Text>
+    <Value>2</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>8</Text>
+    <Value>2</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>9</Text>
+    <Value>2</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>0 No Pain</Text>
+    <Value>5</Value>
+  </PROMISG10Score>
+
+  <PROMISG10Score>
+    <Text>10 Worst Pain Imaginable</Text>
+    <Value>1</Value>
+  </PROMISG10Score>
+  <!-- End Eprom PROMISG10Score -->
+
+  <!-- Start PROMISG10_GlobalPhysicalScore -->
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>4</Text>
+    <Value>16.2</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>5</Text>
+    <Value>19.9</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>6</Text>
+    <Value>23.5</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>7</Text>
+    <Value>26.7</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>8</Text>
+    <Value>29.6</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>9</Text>
+    <Value>32.4</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>10</Text>
+    <Value>34.9</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>11</Text>
+    <Value>37.4</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>12</Text>
+    <Value>39.8</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>13</Text>
+    <Value>42.3</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>14</Text>
+    <Value>44.9</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>15</Text>
+    <Value>47.7</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>16</Text>
+    <Value>50.8</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>17</Text>
+    <Value>54.1</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>18</Text>
+    <Value>57.7</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>19</Text>
+    <Value>61.9</Value>
+  </PROMISG10_GlobalPhysicalScore>
+
+  <PROMISG10_GlobalPhysicalScore>
+    <Text>20</Text>
+    <Value>67.7</Value>
+  </PROMISG10_GlobalPhysicalScore>
+  <!-- End PROMISG10_GlobalPhysicalScore -->
+
+  <!-- Start PROMISG10_GlobalMentalScore -->
+  <PROMISG10_GlobalMentalScore>
+    <Text>4</Text>
+    <Value>21.2</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>5</Text>
+    <Value>25.1</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>6</Text>
+    <Value>28.4</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>7</Text>
+    <Value>31.3</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>8</Text>
+    <Value>33.8</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>9</Text>
+    <Value>36.3</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>10</Text>
+    <Value>38.8</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>11</Text>
+    <Value>41.1</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>12</Text>
+    <Value>43.5</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>13</Text>
+    <Value>45.8</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>14</Text>
+    <Value>48.3</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>15</Text>
+    <Value>50.8</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>16</Text>
+    <Value>53.3</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>17</Text>
+    <Value>56</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>18</Text>
+    <Value>59</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>19</Text>
+    <Value>62.5</Value>
+  </PROMISG10_GlobalMentalScore>
+
+  <PROMISG10_GlobalMentalScore>
+    <Text>20</Text>
+    <Value>67.6</Value>
+  </PROMISG10_GlobalMentalScore>
+  <!-- End PROMISG10_GlobalMentalScore -->
+  <!-- EndRegion PROMISG10 -->
+
+
+  <!-- Region Eprom OMPQ -->
+  <!--Start OMPQ Score -->
+  <OMPQ>
+    <Text>0 days (1)</Text>
+    <Value>1</Value>
+  </OMPQ>
+  <OMPQ>
+    <Text>1-2 days (2)</Text>
+    <Value>2</Value>
+  </OMPQ>
+  <OMPQ>
+    <Text>3-7 days (3)</Text>
+    <Value>3</Value>
+  </OMPQ>
+  <OMPQ>
+    <Text>8-14 days (4)</Text>
+    <Value>4</Value>
+  </OMPQ>
+  <OMPQ>
+    <Text>15-30 days (5)</Text>
+    <Value>5</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>1 month (6)</Text>
+    <Value>6</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>2 months (7)</Text>
+    <Value>7</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>3-6 months (8)</Text>
+    <Value>8</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>6-12 months (9)</Text>
+    <Value>9</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>0-1 week (1)</Text>
+    <Value>1</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>1-2 weeks (2)</Text>
+    <Value>2</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>3-4 weeks (3)</Text>
+    <Value>3</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>4-5 weeks (4)</Text>
+    <Value>4</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>6-8 weeks (5)</Text>
+    <Value>5</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>9-11 weeks (6)</Text>
+    <Value>6</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>3-6 months (7)</Text>
+    <Value>7</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>6-9 months (8)</Text>
+    <Value>8</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>9-12 months (9)</Text>
+    <Value>9</Value>
+  </OMPQ>
+
+  <OMPQ>
+    <Text>over 1 year (10)</Text>
+    <Value>10</Value>
+  </OMPQ>
+
+  <!--END OMPQ Score-->
+  <!--Start OMPQ Question Value-->
+
+  <OMPQ_Question_Value>
+    <Text>Not at all</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>No Pain </Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text> Never </Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text> Can’t decrease it at all </Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Not satisfied at all</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Absolutely calm and relaxed</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>No risk</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>No chance</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Completely disagree</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text> Can’t do it because of pain problem</Text>
+    <Value>0</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>1</Text>
+    <Value>1</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>2</Text>
+    <Value>2</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>3</Text>
+    <Value>3</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>4</Text>
+    <Value>4</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>5</Text>
+    <Value>5</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>6</Text>
+    <Value>6</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>7</Text>
+    <Value>7</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>8</Text>
+    <Value>8</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>9</Text>
+    <Value>9</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Extremely</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Pain as bad as it could be</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Always</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Can decrease it completely</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Completely satisfied</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>As tense and anxious as I’ve ever felt</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Very large risk</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Very large chance</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Completely agree</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <OMPQ_Question_Value>
+    <Text>Can do it without pain being a problem</Text>
+    <Value>10</Value>
+  </OMPQ_Question_Value>
+
+  <!--End OMPQ Question Value-->
+  <!--End Eprom OMPQ -->
+
+  <!-- Region Eprom HOOS -->
+  <!--Start Eprom HOOS -->
+  <HOOS>
+    <Text>None</Text>
+    <Value>0</Value>
+  </HOOS>
+  <HOOS>
+    <Text>Mild</Text>
+    <Value>1</Value>
+  </HOOS>
+  <HOOS>
+    <Text>Moderate</Text>
+    <Value>2</Value>
+  </HOOS>
+  <HOOS>
+    <Text>Severe</Text>
+    <Value>3</Value>
+  </HOOS>
+  <HOOS>
+    <Text>Extreme</Text>
+    <Value>4</Value>
+  </HOOS>
+
+  <!--Start HOOS Level Score-->
+  <HOOSLevelScore>
+    <Text>0</Text>
+    <Value>0</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>1</Text>
+    <Value>4.6</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>2</Text>
+    <Value>8.8</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>3</Text>
+    <Value>12.7</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>4</Text>
+    <Value>16.4</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>5</Text>
+    <Value>20</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>6</Text>
+    <Value>23.4</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>7</Text>
+    <Value>26.9</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>8</Text>
+    <Value>30.4</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>9</Text>
+    <Value>33.9</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>10</Text>
+    <Value>37.7</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>11</Text>
+    <Value>41.7</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>12</Text>
+    <Value>46.1</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>13</Text>
+    <Value>50.8</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>14</Text>
+    <Value>55.9</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>15</Text>
+    <Value>61.6</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>16</Text>
+    <Value>67.9</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>17</Text>
+    <Value>74.8</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>18</Text>
+    <Value>82.4</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>19</Text>
+    <Value>90.8</Value>
+  </HOOSLevelScore>
+
+  <HOOSLevelScore>
+    <Text>20</Text>
+    <Value>100</Value>
+  </HOOSLevelScore>
+  <!--End HOOS Level Score-->
+  <!--End Eprom HOOS -->
+
+  <!-- Region Eprom Neck Pain -->
+  <!--Start Neck Pain -->
+  <NeckPain>
+    <Text>I have no pain at the moment</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>The pain is fairly severe at the moment</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>The pain is moderate at the moment</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>The pain is the worst imaginable at the moment</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>The pain is very mild at the moment</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>The pain is very severe at the moment</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <!--<Text>I can look after myself normally without causing extra pain</Text>
+    <Value>0</Value>-->
+    <Text>I can take care of myself normally, but it increases my pain.</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <!--<Text>I can look after myself normally, but it causes extra pain</Text>-->
+    <Text>I can take care of myself normally without causing increased pain.</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I do not get dressed, I wash with difficulty, and stay in bed</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I need help every day in most aspects of my care.</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I need some help, but I am able to manage most of my personal care</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>It is painful to take care of myself, and I am slow and careful.</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can lift heavy weights without increased pain.</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can lift heavy weights without extra pain</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can lift heavy weights, but it gives extra pain</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can lift only very light weights.</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot lift or carry anything at all</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>Pain prevents me from lifting heavy weights off the floor, but I can manage if the weights are conveniently positioned (e.g., on a table).</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned.</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can hardly read at all because of severe pain in my neck</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can read as much as I want to with no pain in my neck</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can read as much as I want to with slight pain in my neck</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can read as much as I want with moderate pain in my neck</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot read as much as I want because of moderate pain in my neck</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot read at all</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have headaches most of the time</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have moderate headaches which come frequently</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have moderate headaches which come infrequently</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have no headaches at all</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have severe headaches which come frequently</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <!--<Text>I have slight headaches which come infrequently</Text>-->
+    <Text>I have slight headaches which come infrequentlyI can sit in my favourite chair for as long as I like</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can concentrate fully when I want to with no difficulty</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can concentrate fully when I want to with slight difficulty</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot concentrate at all</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have a fair degree of difficulty in concentrating when I want to</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have a great deal of difficulty in concentrating when I want to</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have a lot of difficulty in concentrating when I want to</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can do as much work as I want to</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can do most of my usual work but no more</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can hardly do any work at all</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can only do my usual work but no more</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot do any work at all</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot do my usual work</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can drive my car as long as I want with moderate pain in my neck</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can drive my car as long as I want with slight pain in my neck</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can drive my car without any neck pain</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can hardly drive at all because of severe pain in my neck</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot drive my car as long as I want because of moderate pain in my neck</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot drive my car at all</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I have no trouble in sleeping</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>My sleep is completely disturbed (5-7 hours sleepless)</Text>
+    <Value>10</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>My sleep is greatly disturbed (3-5 hours sleepless)</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>My sleep is mildly disturbed (1-2 hours sleepless)</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>My sleep is moderately disturbed (2-3 hours sleepless)</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>My sleep is slightly disturbed (less than 1 hour sleepless)</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I am able to engage in a few of my usual recreational activities because of pain in my neck</Text>
+    <Value>6</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I am able to engage in all my recreational activities with no neck pain at all</Text>
+    <Value>0</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I am able to engage in all my recreational activities with some neck pain</Text>
+    <Value>2</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I am able to engage in most, but not all, of my usual recreational activities because pain in my neck</Text>
+    <Value>4</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I can hardly do any recreational activities because of pain in my neck</Text>
+    <Value>8</Value>
+  </NeckPain>
+  <NeckPain>
+    <Text>I cannot do any recreation activities at all</Text>
+    <Value>10</Value>
+  </NeckPain>
+
+  <!--End Neck Pain-->
+  <!--End Region Neck Pain -->
+
+
+  <!-- Region Eprom KOOS -->
+  <!--Start Eprom Score KOOS -->
+  <KOOS>
+    <Text>None</Text>
+    <Value>0</Value>
+  </KOOS>
+  <KOOS>
+    <Text>Mild</Text>
+    <Value>1</Value>
+  </KOOS>
+  <KOOS>
+    <Text>Moderate</Text>
+    <Value>2</Value>
+  </KOOS>
+  <KOOS>
+    <Text>Severe</Text>
+    <Value>3</Value>
+  </KOOS>
+  <KOOS>
+    <Text>Extreme</Text>
+    <Value>4</Value>
+  </KOOS>
+  <!--End Eprom Score KOOS -->
+
+  <!--Start KOOS Level Score-->
+  <KoosLevelScore>
+    <Text>0</Text>
+    <Value>0</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>1</Text>
+    <Value>5.6</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>2</Text>
+    <Value>10.5</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>3</Text>
+    <Value>14.8</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>4</Text>
+    <Value>18.6</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>5</Text>
+    <Value>22</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>6</Text>
+    <Value>24.9</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>7</Text>
+    <Value>27.5</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>8</Text>
+    <Value>29.7</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>9</Text>
+    <Value>31.8</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>10</Text>
+    <Value>33.6</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>11</Text>
+    <Value>35.3</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>12</Text>
+    <Value>37</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>13</Text>
+    <Value>38.6</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>14</Text>
+    <Value>40.3</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>15</Text>
+    <Value>42</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>16</Text>
+    <Value>44</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>17</Text>
+    <Value>46.1</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>18</Text>
+    <Value>48.5</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>19</Text>
+    <Value>51.2</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>20</Text>
+    <Value>54.4</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>21</Text>
+    <Value>57.9</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>22</Text>
+    <Value>62</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>23</Text>
+    <Value>66.6</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>24</Text>
+    <Value>71.8</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>25</Text>
+    <Value>77.7</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>26</Text>
+    <Value>84.3</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>27</Text>
+    <Value>91.8</Value>
+  </KoosLevelScore>
+
+  <KoosLevelScore>
+    <Text>28</Text>
+    <Value>100</Value>
+  </KoosLevelScore>
+  <!--End K10 Level Score-->
+  <!--End Eprom K10 -->
+
+  <!-- Region Eprom K10 -->
+  <!--Start Eprom K10 -->
+  <K10>
+    <Text>None of the time</Text>
+    <Value>1</Value>
+  </K10>
+  <K10>
+    <Text>A little of the time</Text>
+    <Value>2</Value>
+  </K10>
+  <K10>
+    <Text>Some of the time</Text>
+    <Value>3</Value>
+  </K10>
+  <K10>
+    <Text>Most of the time</Text>
+    <Value>4</Value>
+  </K10>
+  <K10>
+    <Text>All of the time</Text>
+    <Value>5</Value>
+  </K10>
+
+  <!--Start K10 Level Score-->
+  <K10LevelScore>
+    <Text>0</Text>
+    <Value>0</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>1</Text>
+    <Value>4.6</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>2</Text>
+    <Value>8.8</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>3</Text>
+    <Value>12.7</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>4</Text>
+    <Value>16.4</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>5</Text>
+    <Value>20</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>6</Text>
+    <Value>23.4</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>7</Text>
+    <Value>26.9</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>8</Text>
+    <Value>30.4</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>9</Text>
+    <Value>33.9</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>10</Text>
+    <Value>37.7</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>11</Text>
+    <Value>41.7</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>12</Text>
+    <Value>46.1</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>13</Text>
+    <Value>50.8</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>14</Text>
+    <Value>55.9</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>15</Text>
+    <Value>61.6</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>16</Text>
+    <Value>67.9</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>17</Text>
+    <Value>74.8</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>18</Text>
+    <Value>82.4</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>19</Text>
+    <Value>90.8</Value>
+  </K10LevelScore>
+
+  <K10LevelScore>
+    <Text>20</Text>
+    <Value>100</Value>
+  </K10LevelScore>
+  <!--End K10 Level Score-->
+  <!--End Eprom K10 -->
+
+  <!--Start Eprom QDASH -->
+  <QDASH>
+    <Text>No difficulty</Text>
+    <Value>1</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Mild difficulty</Text>
+    <Value>2</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Moderate difficulty</Text>
+    <Value>3</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Severe difficulty</Text>
+    <Value>4</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Unable</Text>
+    <Value>5</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Not at all</Text>
+    <Value>1</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Slightly</Text>
+    <Value>2</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Moderately</Text>
+    <Value>3</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Quite a bit</Text>
+    <Value>4</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Extremely</Text>
+    <Value>5</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Not limited at all</Text>
+    <Value>1</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Slightly limited</Text>
+    <Value>2</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Moderately limited</Text>
+    <Value>3</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Very limited</Text>
+    <Value>4</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Unable</Text>
+    <Value>5</Value>
+  </QDASH>
+  <QDASH>
+    <Text>None</Text>
+    <Value>1</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Mild</Text>
+    <Value>2</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Moderate</Text>
+    <Value>3</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Severe</Text>
+    <Value>4</Value>
+  </QDASH>
+  <QDASH>
+    <Text>Extreme</Text>
+    <Value>5</Value>
+  </QDASH>
+  <QDASH>
+    <Text>So much difficulty I can't sleep</Text>
+    <Value>5</Value>
+  </QDASH>
+  <!--End Eprom QDASH -->
+
+  <!--Start Eprom OSWESTRY -->
+  <OSWESTRY>
+    <Text>Even when I take medication, I sleep less than 2 hours.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Even when I take medication, I sleep less than 4 hours.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Even when I take medication, I sleep less than 6 hours.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I am in bed most of the time and have to crawl to the toilet.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can lift heavy weights without increased pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can lift heavy weights, but it causes increased pain.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can lift only very light weights.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can perform most of my home-making/job duties, but pain prevents me from performing more physically stressful activities (e.g. lifting, vacuuming).</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can sit in any chair as long as I like</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can sit in my favourite chair for as long as I like</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can sleep well only using pain medication.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can stand as long as I want but it increases my pain.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can stand as long as I want without increased pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can take care of myself normally without causing increased pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can take care of myself normally, but it increases my pain.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can tolerate the pain I have without having to use pain medication.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can travel anywhere without increased pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can travel anywhere, but it increases my pain..</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I can walk only with crutches or a cane.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I cannot lift or carry anything at all.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I do not get dressed, I wash with difficulty, and stay in bed.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I have hardly any social life because of my pain.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I need help every day in most aspects of my care.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>I need help, but I am able to manage most of my personal care.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>It is painful to take care of myself, and I am slow and careful.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My normal home-making/job activities do not cause pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My normal home-making/job activities increase my pain, but I can still perform all that is required of me.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My pain prevents all travel except for visits to the physician/therapist or hospital.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My pain restricts my travel over 1 hour.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My pain restricts my travel over 2 hours.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My pain restricts my travel to short necessary journeys under 1/2 hour.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My sleep is never disturbed by pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My social life is normal and does not increase my pain.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>My social life is normal, but it increases my level of pain.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain does not prevent me from walking any distance.</Text>
+    <Value>0</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain has restricted my social life to my home.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain medication has no effect on my pain</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain medication provides me with complete relief from pain.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain medication provides me with little relief from pain</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain medication provides me with moderate relief from pain</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from doing anything but light duties</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from doing even light duties.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from going out very often.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from lifting heavy weights off the floor, but I can manage if the weights are conveniently positioned (e.g., on a table).</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from lifting heavy weights, but I can manage light to medium weights if they are conveniently positioned.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from participating in more energetic activities (e.g., sports, dancing).</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from performing any job or home-making chores.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from sitting at all.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from sitting for more than ½ an hour</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from sitting for more than 1 hour.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from sitting for more that 10 minutes</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from sleeping at all.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from standing at all.</Text>
+    <Value>10</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from standing for more than ½ an hour.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from standing for more than 1 hour.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from standing for more than 10 minutes.</Text>
+    <Value>8</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from walking more than 1 mile. (1 mile = 1.6 km)</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from walking more than 1/2 mile.</Text>
+    <Value>4</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>Pain prevents me from walking more than 1/4 mile.</Text>
+    <Value>6</Value>
+  </OSWESTRY>
+  <OSWESTRY>
+    <Text>The pain is bad, but I can manage without having to take pain medication.</Text>
+    <Value>2</Value>
+  </OSWESTRY>
+  <!--End Eprom OSWESTRY -->
+
+  <PREVENTICVE>
+    <Text>I don’t eat vegetables</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>Less than 1 serve</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>1 to less than 5 serves</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>5 to less than 6 serves</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>6 or more serves</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+
+  <PREVENTICVE>
+    <Text>Yes to all 3 items above</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>I was able to achieve items 2 and 3 above</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>I achieved  at least 150 minutes of moderate intensity physical activity (spread over less than 5 days last week)</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>TEMP1</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>No I did not achieve any of the above items last week</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+
+  <PREVENTICVE>
+    <Text>Smoke daily</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>Smoke occasionally</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>Do not smoke now but used to</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>have tried a few time but never smoked regularly</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>TEMP2</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>Never smoked</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+
+  <PREVENTICVE>
+    <Text>Less than 1 Standard Drink</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>1 to 2 Standard drinks</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>More than 2 standard drinks</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+
+  <PREVENTICVE>
+    <Text>I do not eat fruit</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>Less than 1 serve</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>About 1 serve</Text>
+    <Value>risk factor</Value>
+  </PREVENTICVE>
+  <PREVENTICVE>
+    <Text>2 Serves or more</Text>
+    <Value>no risk factor</Value>
+  </PREVENTICVE>
+
+  <CFE>
+    <Text>Terrible</Text>
+    <Value>0</Value>
+  </CFE>
+  <CFE>
+    <Text>Poor</Text>
+    <Value>1</Value>
+  </CFE>
+  <CFE>
+    <Text>Adequate</Text>
+    <Value>2</Value>
+  </CFE>
+  <CFE>
+    <Text>Good</Text>
+    <Value>3</Value>
+  </CFE>
+  <CFE>
+    <Text>Excellent</Text>
+    <Value>4</Value>
+  </CFE>
+
+  <CFE>
+    <Text>None of the time</Text>
+    <Value>0</Value>
+  </CFE>
+  <CFE>
+    <Text>A little of the time</Text>
+    <Value>1</Value>
+  </CFE>
+  <CFE>
+    <Text>Some of the time</Text>
+    <Value>2</Value>
+  </CFE>
+  <CFE>
+    <Text>Most of the time</Text>
+    <Value>3</Value>
+  </CFE>
+  <CFE>
+    <Text>All of the time</Text>
+    <Value>4</Value>
+  </CFE>
+
+  <K5>
+    <Text>None of the time</Text>
+    <Value>1</Value>
+  </K5>
+  <K5>
+    <Text>A little of the time</Text>
+    <Value>2</Value>
+  </K5>
+  <K5>
+    <Text>Some of the time</Text>
+    <Value>3</Value>
+  </K5>
+  <K5>
+    <Text>Most of the time</Text>
+    <Value>4</Value>
+  </K5>
+  <K5>
+    <Text>All of the time</Text>
+    <Value>5</Value>
+  </K5>
+
+  <K10Plus>
+    <Text>None of the time</Text>
+    <Value>1</Value>
+  </K10Plus>
+  <K10Plus>
+    <Text>A little of the time</Text>
+    <Value>2</Value>
+  </K10Plus>
+  <K10Plus>
+    <Text>Some of the time</Text>
+    <Value>3</Value>
+  </K10Plus>
+  <K10Plus>
+    <Text>Most of the time</Text>
+    <Value>4</Value>
+  </K10Plus>
+  <K10Plus>
+    <Text>All of the time</Text>
+    <Value>5</Value>
+  </K10Plus>
+
+  <PROMISE29>
+    <Text>Unable to do</Text>
+    <Value>1</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>With much difficulty</Text>
+    <Value>2</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>With some difficulty</Text>
+    <Value>3</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>With a little difficulty</Text>
+    <Value>4</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Without any difficulty</Text>
+    <Value>5</Value>
+  </PROMISE29>
+
+  <PROMISE29>
+    <Text>Never</Text>
+    <Value>1</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Rarely</Text>
+    <Value>2</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Sometimes</Text>
+    <Value>3</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Often</Text>
+    <Value>4</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Always</Text>
+    <Value>5</Value>
+  </PROMISE29>
+
+  <PROMISE29>
+    <Text>Not at all</Text>
+    <Value>1</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>A little bit</Text>
+    <Value>2</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Somewhat</Text>
+    <Value>3</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Quite a bit</Text>
+    <Value>4</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Very much</Text>
+    <Value>5</Value>
+  </PROMISE29>
+
+  <PROMISE29>
+    <Text>Very good</Text>
+    <Value>1</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Good</Text>
+    <Value>2</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Fair</Text>
+    <Value>3</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Poor</Text>
+    <Value>4</Value>
+  </PROMISE29>
+  <PROMISE29>
+    <Text>Very poor</Text>
+    <Value>5</Value>
+  </PROMISE29>
+
+  <P29PF>
+    <Text>4</Text>
+    <Value>22.9</Value>
+  </P29PF>
+  <P29PF>
+    <Text>5</Text>
+    <Value>26.9</Value>
+  </P29PF>
+  <P29PF>
+    <Text>6</Text>
+    <Value>29.1</Value>
+  </P29PF>
+  <P29PF>
+    <Text>7</Text>
+    <Value>30.7</Value>
+  </P29PF>
+  <P29PF>
+    <Text>8</Text>
+    <Value>32.1</Value>
+  </P29PF>
+  <P29PF>
+    <Text>9</Text>
+    <Value>33.3</Value>
+  </P29PF>
+  <P29PF>
+    <Text>10</Text>
+    <Value>34.4</Value>
+  </P29PF>
+  <P29PF>
+    <Text>11</Text>
+    <Value>35.6</Value>
+  </P29PF>
+  <P29PF>
+    <Text>12</Text>
+    <Value>36.7</Value>
+  </P29PF>
+  <P29PF>
+    <Text>13</Text>
+    <Value>37.9</Value>
+  </P29PF>
+  <P29PF>
+    <Text>14</Text>
+    <Value>39.1</Value>
+  </P29PF>
+  <P29PF>
+    <Text>15</Text>
+    <Value>40.4</Value>
+  </P29PF>
+  <P29PF>
+    <Text>16</Text>
+    <Value>41.8</Value>
+  </P29PF>
+  <P29PF>
+    <Text>17</Text>
+    <Value>43.4</Value>
+  </P29PF>
+  <P29PF>
+    <Text>18</Text>
+    <Value>45.3</Value>
+  </P29PF>
+  <P29PF>
+    <Text>19</Text>
+    <Value>48.0</Value>
+  </P29PF>
+  <P29PF>
+    <Text>20</Text>
+    <Value>56.9</Value>
+  </P29PF>
+
+  <P29A>
+    <Text>4</Text>
+    <Value>40.3</Value>
+  </P29A>
+  <P29A>
+    <Text>5</Text>
+    <Value>48.0</Value>
+  </P29A>
+  <P29A>
+    <Text>6</Text>
+    <Value>51.2</Value>
+  </P29A>
+  <P29A>
+    <Text>7</Text>
+    <Value>53.7</Value>
+  </P29A>
+  <P29A>
+    <Text>8</Text>
+    <Value>55.8</Value>
+  </P29A>
+  <P29A>
+    <Text>9</Text>
+    <Value>57.7</Value>
+  </P29A>
+  <P29A>
+    <Text>10</Text>
+    <Value>59.5</Value>
+  </P29A>
+  <P29A>
+    <Text>11</Text>
+    <Value>61.4</Value>
+  </P29A>
+  <P29A>
+    <Text>12</Text>
+    <Value>63.4</Value>
+  </P29A>
+  <P29A>
+    <Text>13</Text>
+    <Value>65.3</Value>
+  </P29A>
+  <P29A>
+    <Text>14</Text>
+    <Value>67.3</Value>
+  </P29A>
+  <P29A>
+    <Text>15</Text>
+    <Value>69.3</Value>
+  </P29A>
+  <P29A>
+    <Text>16</Text>
+    <Value>71.2</Value>
+  </P29A>
+  <P29A>
+    <Text>17</Text>
+    <Value>73.3</Value>
+  </P29A>
+  <P29A>
+    <Text>18</Text>
+    <Value>75.4</Value>
+  </P29A>
+  <P29A>
+    <Text>19</Text>
+    <Value>77.9</Value>
+  </P29A>
+  <P29A>
+    <Text>20</Text>
+    <Value>81.6</Value>
+  </P29A>
+
+  <P29D>
+    <Text>4</Text>
+    <Value>41.0</Value>
+  </P29D>
+  <P29D>
+    <Text>5</Text>
+    <Value>49.0</Value>
+  </P29D>
+  <P29D>
+    <Text>6</Text>
+    <Value>51.8</Value>
+  </P29D>
+  <P29D>
+    <Text>7</Text>
+    <Value>53.9</Value>
+  </P29D>
+  <P29D>
+    <Text>8</Text>
+    <Value>55.7</Value>
+  </P29D>
+  <P29D>
+    <Text>9</Text>
+    <Value>57.3</Value>
+  </P29D>
+  <P29D>
+    <Text>10</Text>
+    <Value>58.9</Value>
+  </P29D>
+  <P29D>
+    <Text>11</Text>
+    <Value>60.5</Value>
+  </P29D>
+  <P29D>
+    <Text>12</Text>
+    <Value>62.2</Value>
+  </P29D>
+  <P29D>
+    <Text>13</Text>
+    <Value>63.9</Value>
+  </P29D>
+  <P29D>
+    <Text>14</Text>
+    <Value>65.7</Value>
+  </P29D>
+  <P29D>
+    <Text>15</Text>
+    <Value>67.5</Value>
+  </P29D>
+  <P29D>
+    <Text>16</Text>
+    <Value>69.4</Value>
+  </P29D>
+  <P29D>
+    <Text>17</Text>
+    <Value>71.2</Value>
+  </P29D>
+  <P29D>
+    <Text>18</Text>
+    <Value>73.3</Value>
+  </P29D>
+  <P29D>
+    <Text>19</Text>
+    <Value>75.7</Value>
+  </P29D>
+  <P29D>
+    <Text>20</Text>
+    <Value>79.4</Value>
+  </P29D>
+
+  <P29F>
+    <Text>4</Text>
+    <Value>33.7</Value>
+  </P29F>
+  <P29F>
+    <Text>5</Text>
+    <Value>39.7</Value>
+  </P29F>
+  <P29F>
+    <Text>6</Text>
+    <Value>43.1</Value>
+  </P29F>
+  <P29F>
+    <Text>7</Text>
+    <Value>46.0</Value>
+  </P29F>
+  <P29F>
+    <Text>8</Text>
+    <Value>48.6</Value>
+  </P29F>
+  <P29F>
+    <Text>9</Text>
+    <Value>51.0</Value>
+  </P29F>
+  <P29F>
+    <Text>10</Text>
+    <Value>53.1</Value>
+  </P29F>
+  <P29F>
+    <Text>11</Text>
+    <Value>55.1</Value>
+  </P29F>
+  <P29F>
+    <Text>12</Text>
+    <Value>57.0</Value>
+  </P29F>
+  <P29F>
+    <Text>13</Text>
+    <Value>58.8</Value>
+  </P29F>
+  <P29F>
+    <Text>14</Text>
+    <Value>60.7</Value>
+  </P29F>
+  <P29F>
+    <Text>15</Text>
+    <Value>62.7</Value>
+  </P29F>
+  <P29F>
+    <Text>16</Text>
+    <Value>64.6</Value>
+  </P29F>
+  <P29F>
+    <Text>17</Text>
+    <Value>66.7</Value>
+  </P29F>
+  <P29F>
+    <Text>18</Text>
+    <Value>69.0</Value>
+  </P29F>
+  <P29F>
+    <Text>19</Text>
+    <Value>71.6</Value>
+  </P29F>
+  <P29F>
+    <Text>20</Text>
+    <Value>75.8</Value>
+  </P29F>
+
+  <P29SD>
+    <Text>4</Text>
+    <Value>32.0</Value>
+  </P29SD>
+  <P29SD>
+    <Text>5</Text>
+    <Value>37.5</Value>
+  </P29SD>
+  <P29SD>
+    <Text>6</Text>
+    <Value>41.1</Value>
+  </P29SD>
+  <P29SD>
+    <Text>7</Text>
+    <Value>43.8</Value>
+  </P29SD>
+  <P29SD>
+    <Text>8</Text>
+    <Value>46.2</Value>
+  </P29SD>
+  <P29SD>
+    <Text>9</Text>
+    <Value>48.4</Value>
+  </P29SD>
+  <P29SD>
+    <Text>10</Text>
+    <Value>50.5</Value>
+  </P29SD>
+  <P29SD>
+    <Text>11</Text>
+    <Value>52.4</Value>
+  </P29SD>
+  <P29SD>
+    <Text>12</Text>
+    <Value>54.3</Value>
+  </P29SD>
+  <P29SD>
+    <Text>13</Text>
+    <Value>56.1</Value>
+  </P29SD>
+  <P29SD>
+    <Text>14</Text>
+    <Value>57.9</Value>
+  </P29SD>
+  <P29SD>
+    <Text>15</Text>
+    <Value>59.8</Value>
+  </P29SD>
+  <P29SD>
+    <Text>16</Text>
+    <Value>61.7</Value>
+  </P29SD>
+  <P29SD>
+    <Text>17</Text>
+    <Value>63.8</Value>
+  </P29SD>
+  <P29SD>
+    <Text>18</Text>
+    <Value>66.0</Value>
+  </P29SD>
+  <P29SD>
+    <Text>19</Text>
+    <Value>68.8</Value>
+  </P29SD>
+  <P29SD>
+    <Text>20</Text>
+    <Value>73.3</Value>
+  </P29SD>
+
+  <P29S>
+    <Text>4</Text>
+    <Value>29.0</Value>
+  </P29S>
+  <P29S>
+    <Text>5</Text>
+    <Value>33.6</Value>
+  </P29S>
+  <P29S>
+    <Text>6</Text>
+    <Value>35.7</Value>
+  </P29S>
+  <P29S>
+    <Text>7</Text>
+    <Value>37.3</Value>
+  </P29S>
+  <P29S>
+    <Text>8</Text>
+    <Value>38.8</Value>
+  </P29S>
+  <P29S>
+    <Text>9</Text>
+    <Value>40.3</Value>
+  </P29S>
+  <P29S>
+    <Text>10</Text>
+    <Value>41.7</Value>
+  </P29S>
+  <P29S>
+    <Text>11</Text>
+    <Value>43.2</Value>
+  </P29S>
+  <P29S>
+    <Text>12</Text>
+    <Value>44.8</Value>
+  </P29S>
+  <P29S>
+    <Text>13</Text>
+    <Value>46.4</Value>
+  </P29S>
+  <P29S>
+    <Text>14</Text>
+    <Value>48.1</Value>
+  </P29S>
+  <P29S>
+    <Text>15</Text>
+    <Value>49.8</Value>
+  </P29S>
+  <P29S>
+    <Text>16</Text>
+    <Value>51.6</Value>
+  </P29S>
+  <P29S>
+    <Text>17</Text>
+    <Value>53.5</Value>
+  </P29S>
+  <P29S>
+    <Text>18</Text>
+    <Value>55.6</Value>
+  </P29S>
+  <P29S>
+    <Text>19</Text>
+    <Value>58.1</Value>
+  </P29S>
+  <P29S>
+    <Text>20</Text>
+    <Value>64.1</Value>
+  </P29S>
+
+  <P29P>
+    <Text>4</Text>
+    <Value>41.6</Value>
+  </P29P>
+  <P29P>
+    <Text>5</Text>
+    <Value>49.6</Value>
+  </P29P>
+  <P29P>
+    <Text>6</Text>
+    <Value>52</Value>
+  </P29P>
+  <P29P>
+    <Text>7</Text>
+    <Value>53.9</Value>
+  </P29P>
+  <P29P>
+    <Text>8</Text>
+    <Value>55.6</Value>
+  </P29P>
+  <P29P>
+    <Text>9</Text>
+    <Value>57.1</Value>
+  </P29P>
+  <P29P>
+    <Text>10</Text>
+    <Value>58.5</Value>
+  </P29P>
+  <P29P>
+    <Text>11</Text>
+    <Value>59.9</Value>
+  </P29P>
+  <P29P>
+    <Text>12</Text>
+    <Value>61.2</Value>
+  </P29P>
+  <P29P>
+    <Text>13</Text>
+    <Value>62.5</Value>
+  </P29P>
+  <P29P>
+    <Text>14</Text>
+    <Value>63.8</Value>
+  </P29P>
+  <P29P>
+    <Text>15</Text>
+    <Value>65.2</Value>
+  </P29P>
+  <P29P>
+    <Text>16</Text>
+    <Value>66.6</Value>
+  </P29P>
+  <P29P>
+    <Text>17</Text>
+    <Value>68.0</Value>
+  </P29P>
+  <P29P>
+    <Text>18</Text>
+    <Value>69.7</Value>
+  </P29P>
+  <P29P>
+    <Text>19</Text>
+    <Value>71.6</Value>
+  </P29P>
+  <P29P>
+    <Text>20</Text>
+    <Value>75.6</Value>
+  </P29P>
+
+  <SDQ>
+    <Text>Not True</Text>
+    <Value>0</Value>
+  </SDQ>
+  <SDQ>
+    <Text>Somewhat True</Text>
+    <Value>1</Value>
+  </SDQ>
+  <SDQ>
+    <Text>Certainly True</Text>
+    <Value>2</Value>
+  </SDQ>
+  <ASDQ>
+    <Text>Not True</Text>
+    <Value>2</Value>
+  </ASDQ>
+  <ASDQ>
+    <Text>Somewhat True</Text>
+    <Value>1</Value>
+  </ASDQ>
+  <ASDQ>
+    <Text>Certainly True</Text>
+    <Value>0</Value>
+  </ASDQ>
+
+  <DASS>
+    <Text>0  Did not apply to me at all</Text>
+    <Value>0</Value>
+  </DASS>
+  <DASS>
+    <Text>1  Applied to me to some degree, or some of the time</Text>
+    <Value>1</Value>
+  </DASS>
+  <DASS>
+    <Text>2 Applied to me to a considerable degree, or a good part of time</Text>
+    <Value>2</Value>
+  </DASS>
+  <DASS>
+    <Text>3  Applied to me very much, or most of the time</Text>
+    <Value>3</Value>
+  </DASS>
+
+  <Cataracts>
+    <Text>Cannot decide</Text>
+    <Value>0</Value>
+  </Cataracts>
+  <Cataracts>
+    <Text>No, no difficulty</Text>
+    <Value>1</Value>
+  </Cataracts>
+  <Cataracts>
+    <Text>Yes, some difficulty</Text>
+    <Value>2</Value>
+  </Cataracts>
+  <Cataracts>
+    <Text>Yes, great difficulty</Text>
+    <Value>3</Value>
+  </Cataracts>
+  <Cataracts>
+    <Text>Yes, very great difficulty</Text>
+    <Value>4</Value>
+  </Cataracts>
+
+  <SF1>
+    <Text>1</Text>
+    <Value>-3.98</Value>
+  </SF1>
+  <SF1>
+    <Text>2</Text>
+    <Value>-1.26</Value>
+  </SF1>
+  <SF1>
+    <Text>3</Text>
+    <Value>1.21</Value>
+  </SF1>
+  <SF1>
+    <Text>4</Text>
+    <Value>3.22</Value>
+  </SF1>
+
+  <SF2>
+    <Text>1</Text>
+    <Value>-2.53</Value>
+  </SF2>
+  <SF2>
+    <Text>2</Text>
+    <Value>0.2</Value>
+  </SF2>
+  <SF2>
+    <Text>3</Text>
+    <Value>2.67</Value>
+  </SF2>
+  <SF2>
+    <Text>4</Text>
+    <Value>4.67</Value>
+  </SF2>
+
+  <SF3>
+    <Text>1</Text>
+    <Value>-4.18</Value>
+  </SF3>
+  <SF3>
+    <Text>2</Text>
+    <Value>-1.46</Value>
+  </SF3>
+  <SF3>
+    <Text>3</Text>
+    <Value>1.01</Value>
+  </SF3>
+  <SF3>
+    <Text>4</Text>
+    <Value>3.02</Value>
+  </SF3>
+
+  <SF4>
+    <Text>1</Text>
+    <Value>-3.63</Value>
+  </SF4>
+  <SF4>
+    <Text>2</Text>
+    <Value>-0.91</Value>
+  </SF4>
+  <SF4>
+    <Text>3</Text>
+    <Value>1.56</Value>
+  </SF4>
+  <SF4>
+    <Text>4</Text>
+    <Value>3.57</Value>
+  </SF4>
+
+  <SF5>
+    <Text>1</Text>
+    <Value>-4.44</Value>
+  </SF5>
+  <SF5>
+    <Text>2</Text>
+    <Value>-1.72</Value>
+  </SF5>
+  <SF5>
+    <Text>3</Text>
+    <Value>0.75</Value>
+  </SF5>
+  <SF5>
+    <Text>4</Text>
+    <Value>2.76</Value>
+  </SF5>
+
+  <SF6>
+    <Text>1</Text>
+    <Value>-3.77</Value>
+  </SF6>
+  <SF6>
+    <Text>2</Text>
+    <Value>-1.05</Value>
+  </SF6>
+  <SF6>
+    <Text>3</Text>
+    <Value>1.42</Value>
+  </SF6>
+  <SF6>
+    <Text>4</Text>
+    <Value>3.42</Value>
+  </SF6>
+
+  <SF7>
+    <Text>1</Text>
+    <Value>-3.37</Value>
+  </SF7>
+  <SF7>
+    <Text>2</Text>
+    <Value>-0.65</Value>
+  </SF7>
+  <SF7>
+    <Text>3</Text>
+    <Value>1.82</Value>
+  </SF7>
+  <SF7>
+    <Text>4</Text>
+    <Value>3.83</Value>
+  </SF7>
+
+  <SF8>
+    <Text>1</Text>
+    <Value>-4.59</Value>
+  </SF8>
+  <SF8>
+    <Text>2</Text>
+    <Value>-1.31</Value>
+  </SF8>
+  <SF8>
+    <Text>3</Text>
+    <Value>1.98</Value>
+  </SF8>
+  <SF8>
+    <Text>4</Text>
+    <Value>4.25</Value>
+  </SF8>
+
+  <SF9>
+    <Text>1</Text>
+    <Value>-4.95</Value>
+  </SF9>
+  <SF9>
+    <Text>2</Text>
+    <Value>-2.51</Value>
+  </SF9>
+  <SF9>
+    <Text>3</Text>
+    <Value>0.34</Value>
+  </SF9>
+  <SF9>
+    <Text>4</Text>
+    <Value>2.98</Value>
+  </SF9>
+</Eprom>

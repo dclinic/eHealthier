@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/bundles/admin/bootstrap")
+    @Styles.Render("~/bundles/admin/theme")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/admin-angular-js")
+    @Scripts.Render("~/bundles/admin-js")
+</head>
+<body ng-app="app">
+    <header>
+        <div id="header">
+            <div class="top-nav-contain">
+                <div class="logo-block">
+                    <a class="brand-logo">
+                        <img src="~/Resources/Images/ePROMS-new-logo.png" />
+                        <span></span>
+                    </a>
+                </div>
+                <div class="user-nav">
+                    <div class="sidebar-toggler-mob"></div>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="content" ng-controller="MasterController">
+        <!--Menu Bar -->
+        <div class="leftpanel">
+            <div class="sidebar-toggler"></div>
+            @if (this.User.Identity.IsAuthenticated)
+            {
+                <div style="height: 653px; display: block;" id="MenuLeftNav" class="leftnav">
+                    <a style="display: none;" class="menu-scroll down" data-toggle="tooltip" data-placement="left" data-original-title="Menu Scroll"><i class="fa fa-arrow-down"></i></a>
+                    <div class="leftnav_scroll">
+                        <ul id="ULAdminMenu" class="MenuLevel1">
+                            <li class="MenuOptionLevel1 collapsed " data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/PatientCategory/Index')"><i class="fa fa-filter MenuLevel1-icon hide"></i><span class="menutitle">Patient Category</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/Category/Index')"><i class="fa fa-tags MenuLevel1-icon hide"></i><span class="menutitle">Category</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/Eproms/Index')"><i class="fa fa-universal-access  MenuLevel1-icon hide"></i><span class="menutitle">ePROMs</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed " data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/Indicators/Index')"><i class="fa fa-indent MenuLevel1-icon hide"></i><span class="menutitle">Indicators</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed " data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/ThirdPartyApp/Index')"><i class="fa fa-indent MenuLevel1-icon hide"></i><span class="menutitle">3rd Party App</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/SystemFlag/Index')"><i class="fa fa-flag  MenuLevel1-icon hide"></i><span class="menutitle">System Flag</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/FlagGroup/Index')"><i class="fa fa-group  MenuLevel1-icon hide"></i><span class="menutitle">Flag Group</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" style="display:none;" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/SurveyMonkey/Index')"><i class="fa fa-flag-checkered  MenuLevel1-icon"></i><span class="menutitle">Survey Monkey</span></a></li>
+
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/Pathway/Index')"><i class="fa fa-flag-checkered  MenuLevel1-icon"></i><span class="menutitle">Pathway</span></a></li>
+                            
+                            <li class="MenuOptionLevel1 collapsed" data-target="#InnerMenu111" data-toggle="collapse"><a title="" ng-click="Master.Methods.ClearStorage('/Eproms/DefaultTime')"><i class="fa fa-times MenuLevel1-icon"></i><span class="menutitle">Set Default Time</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="display: none;" class="leftnav-icon">
+                    <ul id="ULAdminMenuIcon" class="MenuLevel1">
+                        <li class="MenuOptionLevel1 collapsed "><a title="" href="/PatientCategory/Index"><i class="fa fa-filter MenuLevel1-icon"></i><span class="menutitle">Patient Category</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed"><a title="" href="/Category/Index"><i class="fa fa-tags MenuLevel1-icon"></i><span class="menutitle">Category</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed"><a title="" href="/Eproms/Index"><i class="fa fa-universal-access MenuLevel1-icon"></i><span class="menutitle">ePROMs</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed "><a title="" href="/Indicators/Index"><i class="fa fa-indent MenuLevel1-icon"></i><span class="menutitle">Indicators</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed "><a title="" href="/ThirdPartyApp/Index"><i class="fa fa-indent MenuLevel1-icon"></i><span class="menutitle">3rd Party App</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed"><a title="" href="/SystemFlag/Index"><i class="fa fa-flag MenuLevel1-icon"></i><span class="menutitle">System Flag</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed"><a title="" href="/FlagGroup/Index"><i class="fa fa-group MenuLevel1-icon"></i><span class="menutitle">Flag Group</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed" style="display:none;"><a title="" href="/SurveyMonkey/Index"><i class="fa fa-flag-checkered MenuLevel1-icon"></i><span class="menutitle">Survey Monkey</span></a></li>
+
+                        <li class="MenuOptionLevel1 collapsed"><a title="" href="/Pathway/Index"><i class="fa fa-flag MenuLevel1-icon"></i><span class="menutitle">Pathway</span></a></li>
+                    </ul>
+                </div>
+            }
+        </div>
+        <div class="rightpanel">
+            <div class="page-body">
+                <toaster-container toaster-options="{'position-class': 'toast-bottom-left'}"></toaster-container>
+                @RenderSection("featured", required: false)
+                @RenderBody()
+
+                <div class="foter-links ftr-link-size">
+                    <a href="javascript:;" class="uppercase">Company</a>
+                    <a href="javascript:;" class="uppercase">Contact Us</a>
+                    <a href="javascript:;" class="uppercase">Terms and Conditions</a>
+                    <a href="javascript:;" class="uppercase">Copyright Notice</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $('.sidebar-toggler').click(function () {
+            $('#MenuLeftNav').toggle();
+            $('.leftnav-icon').toggle();
+            $('.rightpanel').toggleClass('marginpanel');
+            $('.page_block').toggleClass('marginpage_block');
+        });
+    </script>
+    @Scripts.Render("~/bundles/master-js")
+</body>
+</html>

@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Resources/NEW_DESIGN/bootstrap3.3.7.min.css" rel="stylesheet" />
+    <link href="~/Resources/styles/font-awesome.css" rel="stylesheet" />
+    <link href="~/Resources/styles/animate.css" rel="stylesheet" />
+    <link href="~/Resources/styles/toaster.css" rel="stylesheet" />
+    <link href="~/Resources/styles/angular-material.min.css" rel="stylesheet" />
+
+    <link href="~/Resources/NEW_DESIGN/header.css" rel="stylesheet" />
+    <link href="~/Resources/NEW_DESIGN/style.css" rel="stylesheet" />
+    <link href="~/Resources/NEW_DESIGN/footer.css" rel="stylesheet" />
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular-js")
+    @Scripts.Render("~/bundles/user-js")
+</head>
+<body ng-app="app" ng-controller="ProviderMasterController">
+    <header>
+        <div class="container">
+            <div class="col-md-8">
+                <img src="~/Resources/Images/NEW_PHOTO/Logo.png" class="img-logo" />
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-md-4">
+                    <div class="col-md-4 set-lbl">
+                        <img src="~/Resources/Images/Male.png" class="img-male" />
+                        <h5 class="lbl-title">PROVIDER</h5>
+                    </div>
+                    <div class="col-md-8 menu-ddl">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">@User.Identity.Name <i class="fa fa-navicon"></i></span>
+                        </a>
+                        <ul class="dropdown-menu user-dropdown menu-ul">
+                            <li class="menu-li">
+                                @using (Html.BeginForm("epromAllocation", "Patient", FormMethod.Post, new { id = "epromAllocation" }))
+                                {
+                                    <a href="javascript:document.getElementById('epromAllocation').submit()" class="menu-link"><i class="fa fa-list-alt"></i> Assign ePROM</a>
+                                }
+                            </li>
+                            <li class="menu-li">
+                                @using (Html.BeginForm("Dashboard", "Provider", FormMethod.Post, new { id = "Dashboard" }))
+                                {
+                                    <a href="javascript:document.getElementById('Dashboard').submit()" class="menu-link"><i class="fa fa-list-alt"></i> Dashboard</a>
+                                }
+                            </li>
+                            <li class="menu-li">
+                                @using (Html.BeginForm("Index", "Patient", FormMethod.Post, new { id = "Index" }))
+                                {
+                                    <a href="javascript:document.getElementById('Index').submit()" class="menu-link"><i class="fa fa-list-alt"></i> Patient Management</a>
+                                }
+                            </li>
+                            <li class="menu-li">
+                                @using (Html.BeginForm("Preferences", "Provider", FormMethod.Post, new { id = "Preferences" }))
+                                {
+                                    <a href="javascript:document.getElementById('Preferences').submit()" class="menu-link"><i class="fa fa-list-alt"></i> Provider Management</a>
+                                }
+                            </li>
+                            <li class="menu-li">
+                                @using (Html.BeginForm("ProviderOrganization", "Provider", FormMethod.Post, new { id = "ProviderOrganization" }))
+                                {
+                                    <a href="javascript:document.getElementById('ProviderOrganization').submit()" class="menu-link"><i class="fa fa-list-alt"></i> Practice Details</a>
+                                }
+                            </li>
+                            <li class="menu-li">
+                                <form id="logoutForm">
+                                    <a ng-click="ProviderMaster.Methods.Logout()" style="cursor: pointer" class="menu-link"><i class="fa fa-power-off"></i> Logout</a>
+                                </form>
+                                @*@using (Html.BeginForm("LogOff", "Provider", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="menu-link"><i class="fa fa-power-off"></i> Log off</a>
+                                }*@
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </header>
+
+    <img src="~/Resources/Images/NEW_PHOTO/header_img.png" class="img-banner" />
+
+    @if (ViewBag.isFilterRequired != false)
+    {
+        <div class="container">
+            <div class="col-md-8 margin-top-m-7 margin-left-3" id="setfontsize">
+                <div class="col-sm-6">
+                    <md-input-container style="width:100%;">
+                        <md-select ng-model="ProviderMaster.OrganizationID" aria-label="Clinics" placeholder="Pathway" required name="organization" ng-change="ProviderMaster.Methods.GetPracticeListByOrgID(ProviderMaster.OrganizationID)">
+                            <md-option ng-repeat="item in ProviderMaster.OrganizationList" ng-value="item.ID">{{item.OrganizationName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-sm-6">
+                    <md-input-container style="width:100%;">
+                        <md-select ng-model="ProviderMaster.PracticeID" aria-label="Clinics" placeholder="Select Practice" required name="practice" ng-change="ProviderMaster.Methods.SetPracticeID(ProviderMaster.PracticeID)">
+                            <md-option ng-if="item.ID" ng-repeat="item in ProviderMaster.PracticeList" ng-value="item.ID">{{item.PracticeName}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+    }
+
+    <toaster-container toaster-options="{'position-class': 'toast-bottom-left'}"></toaster-container>
+
+    <section>
+        @RenderSection("featured", required: false)
+        <div class="container">
+            <div class="col-xs-12">
+                <h3 class="set-page-title">@ViewBag.PageTitle</h3>
+
+                @RenderBody()
+            </div>
+        </div>
+        @RenderSection("scripts", required: false)
+    </section>
+
+    <footer>
+        <a href="#"> Company </a> <b>|</b>
+        <a href="#"> Contact Us </a> <b>|</b>
+        <a href="#"> Terms and Conditions </a> <b>|</b>
+        <a href="#"> Copyright Notice</a>
+    </footer>
+
+    <script src="~/Resources/scripts/third-party/angular-filter.js"></script>
+    <script src="~/Resources/scripts/third-party/bootstrap-fileinput.js"></script>
+    <script src="~/Resources/scripts/App/ProviderMasterController.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Indicators";
+}
+<div class="box_modify" ng-controller="IndicatorsController">
+    <div class="fix-head-line">
+        <div id="AdminBreadcrumb_DivBreadcrumbControl" class="breadcrumb-title breadcrumb-block">
+            <a href="/Admin/Home"><i class="fa fa-home"></i></a>
+            <i class="fa fa-angle-right"></i>
+            <span>Indicators</span>
+        </div>
+
+        <div class="shotcut-btn">
+            <div class="btn-group pb6">
+                <a class="AccessAdd head-btn" ng-click="Indicators.Methods.RedirecttoCreate()">
+                    <i class="fa fa-plus"></i>
+                    <span class="pl5">Add</span>
+                </a>
+            </div>
+            <div class="btn-group mob-search-block">
+                <div class="input-append searchdropdown">
+                    <input type="text" placeholder="Search" ng-model="Indicators.Search" class="search-bar mt0">
+                    <a class="add-on btn-search icon-search" ng-click="Indicators.Methods.GetIndicatorSearch(0)">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fix-body-line">
+        <div class="action-block">
+            <div class="btn-group allcheck">
+                <input type="checkbox" ng-model="Indicators.Methods.allSelected" ng-model-options="{getterSetter: true}" />
+            </div>
+            <div class="btn-group mt-1">
+                <select id="DDLAction" class="form-control" ng-change="Indicators.Methods.UpdateIsActiveStatus(Indicators.Action)" ng-model="Indicators.Action">
+                    <option value="">Action</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                    <option>Delete</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pull-right plr15">
+            <span class="lbl-small">Filter By</span>
+            <div class="btn-group mt1">
+                <select id="DDLFilterBy" class="form-control" ng-change="Indicators.Methods.GetIndicatorSearch(0)" ng-model="Indicators.Filter">
+                    <option>All</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+
+            <span class="lbl-small">Page Size</span>
+            <div class="btn-group mt1">
+                <select id="DDLPageSize" class="form-control" ng-change="Indicators.Methods.GetIndicatorSearch(0)" ng-model="Indicators.PageParams.FetchRecords" ng-options="page.id as page.name for page in Indicators.PageSize"></select>
+            </div>
+        </div>
+    </div>
+    <div class="nat-list">
+        <div ng-if="Indicators.IsLoading" class="loading-box">
+        </div>
+
+        <div class="nat-list" ng-repeat="item in Indicators.Indicators" ng-cloak>
+            <div class="listviewDetails row-data mob-row-data">
+                <div class="grid1">
+                    <div class="fold-upblock collapsed">
+                        <div class="namelist" style="margin-top:-25px;">
+                            <div class="rest-info ml5">
+                                <div style="margin-top: 25px;">
+                                    <span id="Name" class="lbl-medium">{{item.IndicatorName}}</span>
+                                </div>
+                                <div>
+                                    <span class="lbl-small">{{item.Description}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chk-action">
+                        <input type="checkbox" ng-model="item.Selected">
+                        <input type="hidden" ng-model="Indicators.IndicatorID" />
+                    </div>
+                </div>
+                <div class="grid2">
+                    <div class="action-icon">
+                        <input type="checkbox" ng-model="item.IsActive" ng-change="Indicators.Methods.SwitchStatus(item.ID,item.IsActive)" bootstrap-switch />
+                        <a ng-click='Indicators.Methods.GetIndicatorById(item.ID)' class="fa fa-edit"></a>
+                        <a ng-click='Indicators.Methods.OpenDeleteDialog(item.ID)' class="fa fa-trash"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="DivPageNumber" class="pagination_body ">
+                <span id="LBLRecordsShow" class="total_record">Showing {{Indicators.PageParams.CurrentStartIndex + 1}} to {{Indicators.PageParams.CurrentEndIndex}} of Total {{Indicators.PageParams.TotalCount}} Records</span>
+                <div id="DivCustomDataPager" class="page_block">
+                    <a ng-repeat="btn in Indicators.Buttons" ng-class='{active : Indicators.PageNo == btn.currentindex}' class="paginationbtn" ng-click="Indicators.Methods.GetIndicatorSearch(btn.currentindex)">{{btn.currentindex}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/indicators-js")
+}   

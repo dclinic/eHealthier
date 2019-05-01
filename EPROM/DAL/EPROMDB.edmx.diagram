@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5e93d989de140999307eecae34ab80c" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="EPROMDBModel.Address" Width="1.5" PointX="6" PointY="23.625" />
+        <EntityTypeShape EntityType="EPROMDBModel.Contact" Width="1.5" PointX="3" PointY="55.875" />
+        <EntityTypeShape EntityType="EPROMDBModel.ControlType" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.Country" Width="1.5" PointX="3.75" PointY="22.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.FlagGroup" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="EPROMDBModel.Indicator" Width="1.5" PointX="8.25" PointY="50.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.Organization" Width="1.5" PointX="3" PointY="33" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientCategory" Width="1.5" PointX="6" PointY="50.125" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientIndicator" Width="1.5" PointX="10.5" PointY="43.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientProvider" Width="1.5" PointX="13.5" PointY="38.5" />
+        <EntityTypeShape EntityType="EPROMDBModel.Patient" Width="1.5" PointX="8.25" PointY="39.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientSuggestion" Width="1.5" PointX="13.5" PointY="29" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientSurvey" Width="1.5" PointX="11.25" PointY="32.5" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientSurveyStatu" Width="1.5" PointX="13.5" PointY="43.5" />
+        <EntityTypeShape EntityType="EPROMDBModel.Practice" Width="1.5" PointX="5.25" PointY="34.375" />
+        <EntityTypeShape EntityType="EPROMDBModel.PracticeRole" Width="1.5" PointX="7.5" PointY="35.625" />
+        <EntityTypeShape EntityType="EPROMDBModel.Property" Width="1.5" PointX="0.75" PointY="21.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.ProviderOrganization" Width="1.5" PointX="10.5" PointY="38.5" />
+        <EntityTypeShape EntityType="EPROMDBModel.ProviderPatientThirdPartyApp" Width="1.5" PointX="16.5" PointY="34.5" />
+        <EntityTypeShape EntityType="EPROMDBModel.ProviderPractice" Width="1.5" PointX="15.75" PointY="39.375" />
+        <EntityTypeShape EntityType="EPROMDBModel.ProviderPracticeRole" Width="1.5" PointX="18" PointY="39.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.Provider" Width="1.5" PointX="5.25" PointY="41.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.ProviderTerm" Width="1.5" PointX="7.5" PointY="46" />
+        <EntityTypeShape EntityType="EPROMDBModel.ProviderType" Width="1.5" PointX="3" PointY="43.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.Role" Width="1.5" PointX="0.75" PointY="23.625" />
+        <EntityTypeShape EntityType="EPROMDBModel.Salutation" Width="1.5" PointX="0.75" PointY="36" />
+        <EntityTypeShape EntityType="EPROMDBModel.SecretQuestion" Width="1.5" PointX="3.75" PointY="14.625" />
+        <EntityTypeShape EntityType="EPROMDBModel.State" Width="1.5" PointX="3.75" PointY="19" />
+        <EntityTypeShape EntityType="EPROMDBModel.Survey" Width="1.5" PointX="9" PointY="27.875" />
+        <EntityTypeShape EntityType="EPROMDBModel.SurveyCategory" Width="1.5" PointX="6.75" PointY="18.5" />
+        <EntityTypeShape EntityType="EPROMDBModel.SurveyType" Width="1.5" PointX="6.75" PointY="14.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.SystemFlag" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="EPROMDBModel.Term" Width="1.5" PointX="5.25" PointY="54.25" />
+        <EntityTypeShape EntityType="EPROMDBModel.ThirdPartyApp" Width="1.5" PointX="14.25" PointY="23" />
+        <EntityTypeShape EntityType="EPROMDBModel.Token" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.UserDetail" Width="1.5" PointX="0.75" PointY="27.875" />
+        <EntityTypeShape EntityType="EPROMDBModel.UserProfile" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="EPROMDBModel.UserProperty" Width="1.5" PointX="3" PointY="29.875" />
+        <EntityTypeShape EntityType="EPROMDBModel.UserSecretQuestion" Width="1.5" PointX="6" PointY="29.375" />
+        <EntityTypeShape EntityType="EPROMDBModel.UsersInRole" Width="1.5" PointX="3" PointY="27" />
+        <EntityTypeShape EntityType="EPROMDBModel.UserSurvey" Width="1.5" PointX="14.25" PointY="32.875" />
+        <EntityTypeShape EntityType="EPROMDBModel.webpages_Membership" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.webpages_OAuthMembership" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="EPROMDBModel.FK_Addresses_Countries" />
+        <AssociationConnector Association="EPROMDBModel.FK_Addresses_States" />
+        <AssociationConnector Association="EPROMDBModel.FK_Addresses_UserDetails" />
+        <AssociationConnector Association="EPROMDBModel.FK_Patients_Addresses" />
+        <AssociationConnector Association="EPROMDBModel.FK_Contacts_UserDetails" />
+        <AssociationConnector Association="EPROMDBModel.FK_Patients_Contacts" />
+        <AssociationConnector Association="EPROMDBModel.FK_Providers_Contacts" />
+        <AssociationConnector Association="EPROMDBModel.FK_SystemFlags_FlagGroups" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientIndicators_Indicators" />
+        <AssociationConnector Association="EPROMDBModel.FK_Organizations_Salutation" />
+        <AssociationConnector Association="EPROMDBModel.FK_Organizations_UserDetails" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientProviders_Organizations" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSurveys_Organizations" />
+        <AssociationConnector Association="EPROMDBModel.FK_Practitioner_Practitioner" />
+        <AssociationConnector Association="EPROMDBModel.FK_PractitionerRole_Organizations" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderOrganizations_Organizations" />
+        <AssociationConnector Association="EPROMDBModel.FK_Patients_Users" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientIndicators_Patients" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientProviders_Patients" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientProviders_Practice" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientProviders_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_Patients_Users1" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSurveys_Patients" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserSurveys_UserSurveys" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSuggestions_PatientSurveys" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSurveys_Practice" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSurveys_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSurveys_Survey" />
+        <AssociationConnector Association="EPROMDBModel.FK_PatientSurveyStatus_PatientSurveys" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPatientThirdPartyApp_PatientSurveys" />
+        <AssociationConnector Association="EPROMDBModel.FK_Practice_Salutation" />
+        <AssociationConnector Association="EPROMDBModel.FK_Practitioner_UserDetails" />
+        <AssociationConnector Association="EPROMDBModel.FK_PractitionerRole_Practitioner" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPractitioner_Practitioner" />
+        <AssociationConnector Association="EPROMDBModel.FK_PractitionerRole_UserDetails" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPracticeRole_PracticeRole" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserProperties_Properties" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderOrganizations_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPractice_ProviderOrganizations" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPatientThirdPartyApp_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPatientThirdPartyApp_ThirdPartyApp" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPracticeRole_ProviderPractice" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderPractitioner_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_Providers_ProviderTypes" />
+        <AssociationConnector Association="EPROMDBModel.FK_Providers_Salutation" />
+        <AssociationConnector Association="EPROMDBModel.FK_Providers_Users" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderTerms_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserSurveys_Providers" />
+        <AssociationConnector Association="EPROMDBModel.FK_ProviderTerms_Terms" />
+        <AssociationConnector Association="EPROMDBModel.FK_UsersInRoles_Roles" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserSecretQuestions_SecretQuestions" />
+        <AssociationConnector Association="EPROMDBModel.FK_Survey_SurveyCategories" />
+        <AssociationConnector Association="EPROMDBModel.FK_Survey_SurveyCategories1" />
+        <AssociationConnector Association="EPROMDBModel.FK_Survey_SurveyTypes" />
+        <AssociationConnector Association="EPROMDBModel.FK_Survey_Users" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserSurveys_Survey" />
+        <AssociationConnector Association="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories" />
+        <AssociationConnector Association="EPROMDBModel.FK_ThirdPartyApp_SurveyCategories1" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserProperties_Users" />
+        <AssociationConnector Association="EPROMDBModel.FK_UserSecretQuestions_Users" />
+        <AssociationConnector Association="EPROMDBModel.FK_UsersInRoles_Users" />
+        <AssociationConnector Association="EPROMDBModel.webpages_UsersInRoles" />
+        <EntityTypeShape EntityType="EPROMDBModel.AvailableEprom" Width="1.5" PointX="5.375" PointY="8.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.DefaultDay" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.PatientSurveys_Temp" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.LogManagement" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.CINTScore" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.OrganizationType" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="EPROMDBModel.UserType" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

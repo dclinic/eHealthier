@@ -1,0 +1,107 @@
+﻿@model ePRom.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div style="background-color:transparent;">
+    <hgroup class="title"></hgroup>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="verticalcenter_register login-shadow">
+            <div class="reg-page">
+                <div class="reg-header">
+                    <h2>Create a new account.</h2>
+                </div>
+                <div>
+                    @Html.ValidationSummary(true)
+                </div>
+                <br />
+                <div class="row-fluid ">
+                    <div class="span3 forgotlbl">
+                        First Name
+                    </div>
+                    <div class="span8">
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control input-reg", placeholder = "FirstName" })
+                        @Html.ValidationMessage("FirstName")
+                    </div>
+                </div>
+                <div class="row-fluid ">
+                    <div class="span3 forgotlbl">
+                        Last Name
+                    </div>
+                    <div class="span8">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control input-reg", placeholder = "LastName" })
+                        @Html.ValidationMessage("LastName")
+                        @*<span id='test' data-text="@ViewBag.Message"></span>*@
+                    </div>
+                </div>
+                <div class="row-fluid ">
+                    <div class="span3 forgotlbl">
+                        Email
+                    </div>
+                    <div class="span8">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-reg", placeholder = "Email" })
+                        @Html.ValidationMessage("Email")
+                    </div>
+                </div>
+                <div class="row-fluid ">
+                    <div class="span3 forgotlbl">
+                        ContactNo
+                    </div>
+                    <div class="span8">
+                        @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control input-reg", placeholder = "ContactNo" })
+                        @Html.ValidationMessage("ContactNo")
+                    </div>
+                </div>
+                @*<div class="row-fluid ">
+                        <div class="span3">
+                            User Name
+                        </div>
+                        <div class="span8">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control input-reg" , placeholder = "FirstName"})
+                            @Html.ValidationMessage("UserName")
+                        </div>
+                    </div>*@
+                <div class="row-fluid ">
+                    <div class="span3 forgotlbl">
+                        Password
+                    </div>
+                    <div class="span8">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control input-reg", placeholder = "Password" })
+                        @Html.ValidationMessage("Password")
+                    </div>
+                </div>
+                <div class="row-fluid ">
+                    <div class="span3 forgotlbl">
+                        Confirm Password
+                    </div>
+                    <div class="span8">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control input-reg", placeholder = "ConfirmPassword" })
+                        @Html.ValidationMessage("ConfirmPassword")
+                    </div>
+                </div>
+                <div class="row-fluid ">
+                    <div class="span3">
+
+                    </div>
+                    <div class="span8">
+                        <div class="pull-left">
+                            <input type="submit" value="Register" class="btn" />
+                        </div>
+
+                        <div class="pull-right">
+                            <a href="/admin/login" class="error-msg color-green">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

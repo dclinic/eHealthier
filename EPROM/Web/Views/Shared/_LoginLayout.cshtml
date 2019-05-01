@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+
+    <link href="~/Resources/styles/bootstrap.css" rel="stylesheet" />
+    <link href="~/Resources/styles/font-awesome.css" rel="stylesheet" />
+    <link href="~/Resources/styles/animate.css" rel="stylesheet" />
+    <link href="~/Resources/styles/toaster.css" rel="stylesheet" />
+    <link href="~/Resources/styles/angular-material.min.css" rel="stylesheet" />
+    <link href="~/Resources/NEW_DESIGN/epromDesign.css" rel="stylesheet" />
+
+    <script src="~/Resources/scripts/jquery-2.2.4.js"></script>
+    <script src="~/Resources/scripts/date.format.js"></script>
+    <script src="~/Resources/scripts/jquery.cookie.js"></script>
+    <script src="~/Resources/scripts/ClientTimeZone.js"></script>
+
+    <script src="~/Resources/scripts/angular.js"></script>
+    <script src="~/Resources/scripts/angular-route.js"></script>
+    <script src="~/Resources/scripts/third-party/angular-animate-1.5.5.min.js"></script>
+    <script src="~/Resources/scripts/third-party/angular-aria-1.5.5.min.js"></script>
+    <script src="~/Resources/scripts/third-party/angular-messages-1.5.5.min.js"></script>
+    <script src="~/Resources/scripts/third-party/angular-material-1.1.0.min.js"></script>
+    <script src="~/Resources/scripts/third-party/toaster.js"></script>
+    <script src="~/Resources/scripts/loginApp.js"></script>
+    <script src="~/Resources/scripts/loginApp/LoginCtrl.js"></script>
+    <script src="~/Resources/scripts/loginApp/LoginService.js"></script>
+    <script src="~/Resources/scripts/loginApp/AuthInterceptor.js"></script>
+    <script src="~/Resources/scripts/bootstrap.js"></script>
+</head>
+<body>
+    <section>
+        @RenderSection("featured", required: false)
+        <div class="container">
+            <div id="divloader" class="loading-box" style="display:none;"></div>
+            @RenderBody()
+        </div>
+        @RenderSection("scripts", required: false)
+    </section>
+    <div class="footer">
+        <a href="#" class="footer-link">Company | </a>
+        <a href="#" class="footer-link">Contact Us | </a>
+        <a href="#" class="footer-link">Terms and Conditions | </a>
+        <a href="#" class="footer-link">Copyright Notice</a>
+    </div>
+</body>
+</html>
